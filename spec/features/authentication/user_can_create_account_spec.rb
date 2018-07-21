@@ -27,7 +27,7 @@ describe 'when user visits /login page' do
     click_button 'Log In'
 
     expect(current_path).to eq(dashboard_index_path)
-    expect(page).to have_content("Logged in as #{username}")
+    expect(page).to have_content("Logged in as #{user.username}")
     expect(page).to have_link("Logout")
     expect(page).to_not have_link("Login")
   end
