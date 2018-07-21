@@ -1,0 +1,14 @@
+<h1>Trips</h1>
+
+<% @trips.each do |trip| %>
+  <p>Duration: <%= trip.duration %></p>
+  <p>Start Date: <%= trip.start_date %></p>
+  <p>End Date: <%= trip.end_date%></p>
+  <p>Start Station: <%= trip.start_station.name %></p>
+  <p>End Station: <%= trip.end_station.name %></p>
+  <p>Bike ID: <%= trip.bike_id %></p>
+  <p>Subscription Type: <%= trip.subscription_type %></p>
+  <p>Zip Code: <%= trip.zip_code %></p>
+<% end %>
+
+<%= will_paginate @trips %>
