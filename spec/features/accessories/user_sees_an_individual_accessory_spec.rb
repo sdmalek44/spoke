@@ -6,8 +6,6 @@ describe "User visits '/accessory/:id'" do
 
     visit accessory_path(accessory_1)
 
-    save_and_open_page
-
     expect(page).to have_content(accessory_1.title)
     expect(page).to have_content(accessory_1.description)
     expect(page).to have_content("$12.50")
