@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180721224350) do
+||||||| merged common ancestors
+ActiveRecord::Schema.define(version: 20180721172455) do
+=======
+ActiveRecord::Schema.define(version: 20180721210246) do
+>>>>>>> 84981c41cdaeb69320d4b30483ebc1dfe10a35c4
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accessories", force: :cascade do |t|
+    t.string "image", default: "https://www.hsjaa.com/images/joomlart/demo/default.jpg"
+    t.string "title"
+    t.text "description"
+    t.float "price"
+    t.boolean "retired?", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "conditions", force: :cascade do |t|
     t.datetime "date"
@@ -68,6 +84,14 @@ ActiveRecord::Schema.define(version: 20180721224350) do
     t.integer "bike_id"
     t.integer "subscription_type"
     t.integer "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
