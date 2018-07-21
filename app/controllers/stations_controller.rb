@@ -1,7 +1,7 @@
 class StationsController < ApplicationController
 
   def show
-    @station = Station.find(params[:id])
+    @station = Station.friendly.find(params[:id])
   end
 
   def index

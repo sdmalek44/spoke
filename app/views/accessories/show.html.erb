@@ -3,4 +3,8 @@
 <p><%= @accessory.description %></p>
 <p><%= number_to_currency(@accessory.price) %></p>
 
-<%= link_to 'Add to Cart' %>
+<% if @accessory.retired? %>
+  <p>Accessory Retired</p>
+<% else %>
+  <%= link_to 'Add to Cart' %>
+<% end %>
