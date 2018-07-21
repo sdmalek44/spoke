@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :stations, only: [:show, :index]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:show]
+  resources :accessories, only: [:show]
 end
