@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180721191555) do
     t.string "image", default: "https://asp24.ru/images/companies/1/toughswitch_poe/pics6_1.jpg"
     t.string "title"
     t.text "description"
-    t.integer "price"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
