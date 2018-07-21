@@ -6,13 +6,6 @@ Rails.application.routes.draw do
   resources :stations, only: [:show, :index]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:show]
-<<<<<<< HEAD
-
-
-
-||||||| merged common ancestors
-=======
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
->>>>>>> 84981c41cdaeb69320d4b30483ebc1dfe10a35c4
 end
