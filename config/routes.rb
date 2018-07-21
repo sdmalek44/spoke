@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:show]
   resources :dashboard, only: [:index]
+  resources :accessories, only: [:show]
 end

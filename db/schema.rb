@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 20180721210246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accessories", force: :cascade do |t|
+    t.string "image", default: "https://www.hsjaa.com/images/joomlart/demo/default.jpg"
+    t.string "title"
+    t.text "description"
+    t.float "price"
+    t.boolean "retired?", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.datetime "date"
     t.float "max_temperature"
