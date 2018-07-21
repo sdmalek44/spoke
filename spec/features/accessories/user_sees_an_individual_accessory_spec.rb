@@ -8,7 +8,7 @@ describe "A visitor visits '/accessory/:id'" do
 
     expect(page).to have_content(accessory_1.title)
     expect(page).to have_content(accessory_1.description)
-    expect(page).to have_content("$12.50")
+    expect(page).to have_content("$#{accessory_1.price}")
     expect(page).to have_link('Add to Cart')
   end
 
