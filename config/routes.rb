@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :trips, only: [:show]
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
+  resources :trips, only: [:index]
 end
