@@ -10,7 +10,13 @@
 
   <body>
     <nav>
-      
+      <% if current_user %>
+        <%= "Welcome #{current_user.username}" %>
+        <%= link_to "Logout", root_path %>
+      <% else %>
+       <%= link_to "Login", login_path %>
+       <%= link_to "Create Account", new_user_path %>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
