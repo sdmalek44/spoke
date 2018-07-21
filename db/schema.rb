@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180721191555) do
   enable_extension "plpgsql"
 
   create_table "accessories", force: :cascade do |t|
-    t.string "image", default: "https://asp24.ru/images/companies/1/toughswitch_poe/pics6_1.jpg"
+    t.string "image", default: "https://www.hsjaa.com/images/joomlart/demo/default.jpg"
     t.string "title"
     t.text "description"
     t.float "price"
