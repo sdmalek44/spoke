@@ -5,6 +5,7 @@ class CreateAccessories < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :description
       t.float :price
+      t.boolean :retired?, default: false
 
       t.timestamps
     end
