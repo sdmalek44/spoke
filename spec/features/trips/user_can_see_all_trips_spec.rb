@@ -28,8 +28,6 @@ describe "A visitor visits '/trips'" do
 
     visit trips_path
 
-    save_and_open_page
-
     expect(page).to have_content("Duration: #{Trip.all.last.duration}")
     expect(page).to have_content("Start Date: #{Trip.all.last.start_date}")
     expect(page).to have_content("End Date: #{Trip.all.last.end_date}")
