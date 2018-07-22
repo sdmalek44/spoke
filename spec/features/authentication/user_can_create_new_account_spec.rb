@@ -30,5 +30,6 @@ describe 'when user visits /login page' do
         click_button "Create Account"
 
         expect(current_path).to eq(users_path)
+        expect(page).to have_content("Invalid input. Please try again.")
   end
 end

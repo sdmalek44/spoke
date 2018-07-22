@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_index_path
     else
+      flash[:notice] = "Invalid input. Please try again."
       render :new
     end
   end
