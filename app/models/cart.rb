@@ -5,4 +5,7 @@ class Cart
     @contents = initial_contents || Hash.new(0)
   end
 
+  def add_accessory(id)
+    contents[id] += 1
+  end
 end
