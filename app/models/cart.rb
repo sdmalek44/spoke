@@ -8,4 +8,9 @@ class Cart
   def add_accessory(id)
     contents[id] += 1
   end
+
+  def total_count
+    contents.values.sum
+  end
+
 end
