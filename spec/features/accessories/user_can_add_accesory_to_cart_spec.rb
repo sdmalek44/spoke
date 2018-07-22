@@ -19,5 +19,8 @@ describe 'when user visits /bike-shop' do
 
     expect(page).to have_content(accessory1.title)
     expect(page).to have_content(accessory12.title)
+    within(".accessory-#{accessory1.id}") do
+      expect(page).to have_button("Add to Cart")
+    end
   end
 end

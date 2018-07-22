@@ -1,5 +1,9 @@
 <% @accessories.each do |accessory| %>
-Title: <%= accessory.title %>
-Description: <%= accessory.description %>
-Price: <%= number_to_currency(accessory.price) %>
+<div class="accessory-<%= accessory.id %>">
+  Title: <%= accessory.title %>
+  Description: <%= accessory.description %>
+  Price: <%= number_to_currency(accessory.price) %>
+  <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
+</div>
+
 <% end %>
