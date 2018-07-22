@@ -12,5 +12,8 @@ RSpec.describe Cart do
     it 'can get total accesories' do
       expect(subject.total_count).to eq(5)
     end
+    it 'can get total of specific accessory' do
+      expect(subject.count_of(2)).to eq(3)
+    end
   end
 end
