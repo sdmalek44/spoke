@@ -23,6 +23,8 @@ puts "Seeded #{Station.count} stations"
 trips_data = CSV.open('./db/csv/trip.csv', headers: true, header_converters: :symbol)
 trips_data.each_with_index do |trip, index|
   if index % 100 == 0
+    sub_type = 0
+    sub_type = 1 unless trip[:subscription_type].downcase == "customer"
     Trip.create(
       duration: trip[:duration],
       start_date: Time.strptime(trip[:start_date], "%m/%d/%Y %H:%M"),
@@ -30,7 +32,7 @@ trips_data.each_with_index do |trip, index|
       end_date: Time.strptime(trip[:end_date], "%m/%d/%Y %H:%M"),
       end_station_id: trip[:end_station_id],
       bike_id: trip[:bike_id],
-      subscription_type: trip[:subscription_type],
+      subscription_type: sub_type,
       zip_code: trip[:zip_code]
     )
   end
