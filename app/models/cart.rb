@@ -12,5 +12,4 @@ class Cart
   def total_count
     contents.values.sum
   end
-
 end
