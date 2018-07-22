@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20180721224350) do
     t.datetime "end_date"
     t.integer "end_station_id"
     t.integer "bike_id"
-    t.integer "subscription_type"
+    t.integer "subscription_type", default: 0
     t.integer "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

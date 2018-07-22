@@ -7,7 +7,7 @@ class CreateTrips < ActiveRecord::Migration[5.1]
       t.datetime :end_date
       t.integer :end_station_id
       t.integer :bike_id
-      t.integer :subscription_type
+      t.integer :subscription_type, default: 0
       t.integer :zip_code
 
       t.timestamps
