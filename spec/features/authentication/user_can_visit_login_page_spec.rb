@@ -32,5 +32,6 @@ describe "'when user visits the '/' page" do
     click_button 'Log In'
 
     expect(current_path).to eq(login_path)
+    expect(page).to have_content("Incorrect login information. Please try again.")
   end
 end
