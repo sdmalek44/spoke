@@ -1,0 +1,5 @@
+<% @accessories.each do |accessory| %>
+Title: <%= accessory.title %>
+Description: <%= accessory.description %>
+Price: <%= number_to_currency(accessory.price) %>
+<% end %>
