@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_index_path
     else
+      flash[:notice] = "Incorrect login information. Please try again."
       render :new
     end
   end

@@ -18,6 +18,7 @@
        <%= link_to "Create Account", new_user_path %>
       <% end %>
     </nav>
+    <%= flash[:notice] if flash[:notice] %>
     <%= yield %>
   </body>
 </html>
