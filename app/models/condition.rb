@@ -1,5 +1,5 @@
 class Condition < ApplicationRecord
-  validates_presence_of :date
+  validates :date, presence: true, uniqueness: true 
   validates_presence_of :max_temperature
   validates_presence_of :mean_temperature
   validates_presence_of :min_temperature
