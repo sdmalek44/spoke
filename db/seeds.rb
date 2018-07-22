@@ -18,5 +18,40 @@ station_data.each do |station|
   )
 end
 
-puts "Seeded #{Station.count} stations."
-puts "Installation Date: #{Station.last.installation_date}"
+puts "Seeded #{Station.count} stations"
+
+trips_data = CSV.open('./db/csv/trip.csv', headers: true, header_converters: :symbol)
+trips_data.each_with_index do |trip, index|
+  if index % 100 == 0
+    Trip.create(
+      duration: trip[:duration],
+      start_date: Time.strptime(trip[:start_date], "%m/%d/%Y %H:%M"),
+      start_station_id: trip[:start_station_id],
+      end_date: Time.strptime(trip[:end_date], "%m/%d/%Y %H:%M"),
+      end_station_id: trip[:end_station_id],
+      bike_id: trip[:bike_id],
+      subscription_type: trip[:subscription_type],
+      zip_code: trip[:zip_code]
+    )
+  end
+end
+
+puts "Seeded #{Trip.count} trips"
+
+weather_data = CSV.open('./db/csv/weather.csv', headers: true, header_converters: :symbol)
+weather_data.each do |condition|
+  Condition.create(
+    date: Date.strptime(condition[:date], "%m/%d/%Y"),
+    max_temperature: condition[:max_temperature_f].to_f,
+    mean_temperature: condition[:mean_temperature_f].to_f,
+    min_temperature: condition[:min_temperature_f].to_f,
+    mean_humidity: condition[:mean_humidity].to_f,
+    mean_visibility: condition[:mean_visibility_miles].to_f,
+    mean_wind_speed: condition[:mean_wind_speed_mph].to_f,
+    precipitation: condition[:precipitation_inches].to_f
+  )
+end
+
+puts "Seeded #{Condition.count} conditions"
+
+trip_data = CSV.open('./db/csv/trip.csv')
