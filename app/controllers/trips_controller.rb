@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.search(params[:term], params[:page])
+    @trips = Trip.search(params[:page])
   end
 
   def show
