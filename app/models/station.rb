@@ -10,4 +10,8 @@ class Station < ApplicationRecord
   has_many :statuses
 
   friendly_id :name, use: :slugged
+
+  def self.total_count
+    count
+  end
 end
