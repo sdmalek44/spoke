@@ -55,3 +55,21 @@ weather_data.each do |condition|
 end
 
 puts "Seeded #{Condition.count} conditions"
+
+Accessory.create(title: 'Bike Horn', description: 'Beep beep', price: 15.00)
+Accessory.create(title: 'Helmet', description: 'Head Protection', price: 25.00)
+Accessory.create(title: 'T-Shirt', description: 'S, M, or L', price: 20.00)
+Accessory.create(title: 'Bumper Sticker', description: 'Sticks to your car', price: 5.00)
+Accessory.create(title: 'Fridge Magnet', description: 'Sticks to your fridge', price: 5.00)
+Accessory.create(title: 'Map', description: 'Never get lost again!', price: 6.00)
+Accessory.create(title: 'Sweatshirt', description: 'Keep warm, comes in S, M, or L', price: 35.00)
+Accessory.create(title: 'Umbrella', description: 'Stay dry out there!', price: 8.00)
+Accessory.create(title: 'Ball Cap', description: 'One size fits all', price: 18.00)
+Accessory.create(title: 'Sunglasses', description: 'Keep the sun out of your eyes', price: 10.00)
+Accessory.create(title: 'Water Bottle', description: 'To stay hydrated', price: 12.00)
+Accessory.create(title: 'Fanny Pack', description: "It's like a backpack for your fanny", price: 15.00)
+Accessory.create(title: 'Postcard', description: 'Write home to your friends', price: 1.00)
+Accessory.create(title: 'Picture Frame', description: 'Display your favorite photos', price: 7.00)
+Accessory.create(title: 'Bike Seat', description: 'Stay comfortable on long bike rides', price: 30.00)
+
+puts "Seeded #{Accessory.count} accessories"
