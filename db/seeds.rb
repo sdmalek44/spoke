@@ -24,6 +24,8 @@ trips_data = CSV.open('./db/trim-data/trip-trim.csv', headers: true, header_conv
 trips_data.each_with_index do |trip, index|
   sub_type = 0
   sub_type = 1 unless trip[:subscription_type].downcase == "customer"
+  trip[:zip_code] = nil if trip[:zip_code] == 'nil'
+
   Trip.create(
     duration: trip[:duration],
     start_date: Time.strptime(trip[:start_date], "%m/%d/%Y %H:%M"),
