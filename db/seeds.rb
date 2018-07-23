@@ -38,7 +38,7 @@ end
 
 puts "Seeded #{Trip.count} trips"
 
-weather_data = CSV.open('./db/csv/weather.csv', headers: true, header_converters: :symbol)
+weather_data = CSV.open('./db/trim-data/weather-trim.csv', headers: true, header_converters: :symbol)
 weather_data.each do |condition|
   Condition.create(
     date: Date.strptime(condition[:date], "%m/%d/%Y"),
