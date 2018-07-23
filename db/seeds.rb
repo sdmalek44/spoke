@@ -53,5 +53,3 @@ weather_data.each do |condition|
 end
 
 puts "Seeded #{Condition.count} conditions"
-
-trip_data = CSV.open('./db/csv/trip.csv')
