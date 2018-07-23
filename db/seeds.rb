@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-station_data = CSV.open('./db/csv/station.csv', headers: true, header_converters: :symbol)
+station_data = CSV.open('./db/trim-data/station.csv', headers: true, header_converters: :symbol)
 station_data.each do |station|
   Station.create!(
     id: station[:id],
@@ -20,7 +20,7 @@ end
 
 puts "Seeded #{Station.count} stations"
 
-trips_data = CSV.open('./db/csv/trip-trim.csv', headers: true, header_converters: :symbol)
+trips_data = CSV.open('./db/trim-data/trip-trim.csv', headers: true, header_converters: :symbol)
 trips_data.each_with_index do |trip, index|
   sub_type = 0
   sub_type = 1 unless trip[:subscription_type].downcase == "customer"
