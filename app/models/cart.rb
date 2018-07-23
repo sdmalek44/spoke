@@ -6,6 +6,7 @@ class Cart
   end
 
   def add_accessory(id)
+    contents[id] = 0 unless contents[id]
     contents[id] += 1
   end
 
