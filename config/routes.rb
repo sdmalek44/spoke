@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :trips, only: [:index]
   get '/bike-shop', to: 'accessories#index'
   resources :carts, only: [:create]
+  get '/trips-dashboard', to: 'trips#dashboard'
 end

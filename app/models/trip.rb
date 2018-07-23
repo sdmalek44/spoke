@@ -12,4 +12,16 @@ class Trip < ApplicationRecord
 
   belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id
   belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id
+
+  def self.average_ride_duration
+    average(:duration)
+  end
+
+  def self.longest_ride_duration
+    maximum(:duration)
+  end
+
+  def self.shortest_ride_duration
+    minimum(:duration)
+  end
 end
