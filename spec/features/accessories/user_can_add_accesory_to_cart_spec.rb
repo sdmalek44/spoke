@@ -32,8 +32,11 @@ describe 'when user visits /bike-shop' do
     within(".accessory-#{@accessory1.id}") do
       click_button "Add to Cart"
     end
-    
-    expect(page).to have_content("You now have 1 #{@accessory1.title} in your cart.")
-    expect(page).to have_content("Cart Count: 1")
+    within(".accessory-#{@accessory12.id}") do
+      click_button "Add to Cart"
+    end
+
+    expect(page).to have_content("You now have 1 #{@accessory12.title} in your cart.")
+    expect(page).to have_content("Cart Count: 2")
   end
 end
