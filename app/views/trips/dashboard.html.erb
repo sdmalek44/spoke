@@ -26,5 +26,6 @@
 <div class="subscription-types">
   <% @subscription_type_count.each do |subscription, count| %>
     <p>Subscription Type: <%= subscription %>, Count: <%= count %></p>
+    <p>Percentage of Total Trips: <%= ((count.to_f / @total_trips.to_f) * 100).round(2) %>%</p>
   <% end %>
 </div>

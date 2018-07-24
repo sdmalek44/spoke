@@ -63,5 +63,7 @@ describe "A registered user visits 'trip-dashboard'" do
 
     expect(page).to have_content("Subscription Type: customer, Count: 3")
     expect(page).to have_content("Subscription Type: subscriber, Count: 5")
+    expect(page).to have_content("Percentage of Total Trips: 37.5%")
+    expect(page).to have_content("Percentage of Total Trips: 62.5%")
   end
 end
