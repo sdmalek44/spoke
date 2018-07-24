@@ -137,8 +137,8 @@ describe Trip, type: :model do
       trip_2 = Trip.create!(duration: 20, start_date: start_date, end_date: Date.new(2000, 1, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
       trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, zip_code: 68686)
 
-      expect(Trip.date_with_most_rides.first).to eq("2000-01-04 00:00:00 UTC")
-      expect(Trip.date_with_most_rides.last).to eq(2)
+      expect(Trip.date_with_most_rides[:date]).to eq("2000-01-04 00:00:00 UTC")
+      expect(Trip.date_with_most_rides[:rides]).to eq(2)
     end
 
     it '.date_with_least_rides' do
@@ -149,8 +149,8 @@ describe Trip, type: :model do
       trip_2 = Trip.create!(duration: 20, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
       trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, zip_code: 68686)
 
-      expect(Trip.date_with_least_rides.first).to eq("2000-02-04 00:00:00 UTC")
-      expect(Trip.date_with_least_rides.last).to eq(1)
+      expect(Trip.date_with_least_rides[:date]).to eq("2000-02-04 00:00:00 UTC")
+      expect(Trip.date_with_least_rides[:rides]).to eq(1)
     end
   end
 end
