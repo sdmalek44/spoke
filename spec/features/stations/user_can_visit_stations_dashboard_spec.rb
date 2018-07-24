@@ -47,6 +47,6 @@ describe 'when you visit /stations-dashboard' do
 
     visit stations_dashboard_path
 
-    expect(page).to have_content("Station With Least Bikes: #{Station.station_with_least_bikes.name}")
+    expect(page).to have_content("Station With Least Bikes: #{station.name}")
   end
 end

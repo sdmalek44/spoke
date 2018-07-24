@@ -37,10 +37,22 @@ describe Station, type: :model do
       expect(Station.station_with_most_bikes).to eq(station2)
     end
     it 'can get station with least bikes' do
-      station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2017, 3, 10))
+      station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2015, 3, 10))
       station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
 
       expect(Station.station_with_least_bikes).to eq(station1)
+    end
+    it 'most recently installed station' do
+      station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2015, 3, 10))
+      station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
+
+      expect(Station.newest_station).to eq(station2)
+    end
+    it 'oldest station' do
+      station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2015, 1, 10))
+      station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
+
+      expect(Station.oldest_station).to eq(station1)
     end
   end
 end
