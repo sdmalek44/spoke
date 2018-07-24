@@ -82,4 +82,14 @@ class Station < ApplicationRecord
                 .take
                 .zip_code
   end
+
+  def bike_id_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('bike_id, COUNT(bike_id) AS bike_id_count')
+                .group(:bike_id)
+                .order('bike_id_count DESC')
+                .limit(1)
+                .take
+                .bike_id
+  end
 end
