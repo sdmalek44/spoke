@@ -26,4 +26,8 @@ class Station < ApplicationRecord
   def self.station_with_most_bikes
     order(:dock_count).last
   end
+
+  def self.station_with_least_bikes
+    order(:dock_count).first
+  end
 end

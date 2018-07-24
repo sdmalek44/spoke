@@ -1,4 +1,6 @@
 <div>Total Station Count: <%= @stations_count %></div>
 <div>Average Bikes Per Station: <%= @avg_bikes %></div>
-<div>Most Bikes Per Station: <%= @most_bikes %></div>
+<div>Most Bikes Per Station: <%= @station_most_bikes.dock_count %></div>
 <div>Station With Most Bikes: <%= @station_most_bikes.name %></div>
+<div>Least Bikes Per Station: <%= @station_least_bikes.dock_count %></div>
+<div>Station With Least Bikes: <%= @station_least_bikes.name %></div>
