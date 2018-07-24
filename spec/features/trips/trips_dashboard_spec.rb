@@ -43,6 +43,14 @@ describe "A registered user visits 'trip-dashboard'" do
     expect(page).to have_content('March 2003 Rides: 4')
   end
 
+  it 'they see year by year breakdown of number of rides' do
+    visit trips_dashboard_path
+
+    expect(page).to have_content('Rides in 2001: 1')
+    expect(page).to have_content('Rides in 2002: 3')
+    expect(page).to have_content('Rides in 2003: 4')
+  end
+
   it 'they see most and least ridden bikes' do
     visit trips_dashboard_path
 

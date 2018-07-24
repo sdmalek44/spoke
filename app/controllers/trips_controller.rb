@@ -15,7 +15,7 @@ class TripsController < ApplicationController
     @most_frequent_start_station = Trip.most_frequent_start_station
     @most_frequent_end_station = Trip.most_frequent_end_station
     @rides_per_month = Trip.rides_per_month
-    # @rides_per_year = Trip.rides_per_year
+    @rides_per_year = Trip.rides_per_year
     @most_ridden_bike = Trip.most_ridden_bike
     @least_ridden_bike = Trip.least_ridden_bike
     @subscription_type_count = Trip.subscription_type_count
