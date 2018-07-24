@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  before_action :require_registered_user, only: [:dashboard]
 
   def index
     @trips = Trip.search(params[:page])

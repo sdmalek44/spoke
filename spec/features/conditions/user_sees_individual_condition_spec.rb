@@ -14,7 +14,7 @@ describe "A visitor visits '/conditions/:id'" do
 
     visit condition_path(condition_1)
 
-    expect(page).to have_content("Date: #{condition_1.date}")
+    expect(page).to have_content("Date: #{condition_1.date.strftime("%m/%d/%Y")}")
     expect(page).to have_content("Max Temperature: #{condition_1.max_temperature}")
     expect(page).to have_content("Mean Temperature: #{condition_1.mean_temperature}")
     expect(page).to have_content("Min Temperature: #{condition_1.min_temperature}")

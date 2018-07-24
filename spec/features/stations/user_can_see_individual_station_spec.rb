@@ -64,7 +64,7 @@ describe 'user can go to station show page' do
 
     visit station_path(station1)
 
-    expect(page).to have_content("Date with the Most Trips Started Here: #{station1.date_with_most_trips.strftime('%d/%m/%Y')}")
+    expect(page).to have_content("Date with the Most Trips Started Here: #{station1.date_with_most_trips.strftime('%m/%d/%Y')}")
   end
   it 'can see most frequent origination zip for trips that started at station' do
     station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
