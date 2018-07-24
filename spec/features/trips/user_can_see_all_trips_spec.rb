@@ -29,8 +29,8 @@ describe "A visitor visits '/trips'" do
     visit trips_path
 
     expect(page).to have_content("Duration: #{Trip.all.last.duration}")
-    expect(page).to have_content("Start Date: #{Trip.all.last.start_date}")
-    expect(page).to have_content("End Date: #{Trip.all.last.end_date}")
+    expect(page).to have_content("Start Date: #{Trip.all.last.start_date.strftime('%m/%d/%Y')}")
+    expect(page).to have_content("End Date: #{Trip.all.last.end_date.strftime('%m/%d/%Y')}")
     expect(page).to have_content("Start Station: #{Trip.all.last.start_station.name}")
     expect(page).to have_content("End Station: #{Trip.all.last.end_station.name}")
     expect(page).to have_content("Bike ID: #{Trip.all.last.bike_id}")
