@@ -34,4 +34,8 @@ class Station < ApplicationRecord
   def self.oldest_station
     order(:installation_date).first
   end
+
+  def rides_started_here
+    trips.where(start_station_id: id).length
+  end
 end

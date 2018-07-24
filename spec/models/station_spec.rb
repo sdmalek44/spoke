@@ -49,4 +49,13 @@ describe Station, type: :model do
       expect(Station.oldest_station).to eq(station1)
     end
   end
+  describe 'instance methods' do
+      it 'can calculate amount of trips started at station' do
+      station = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+      Trip.create!(duration: 44, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 5), start_station_id: station.id, end_station_id: station.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+      Trip.create!(duration: 44, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 5), start_station_id: station.id, end_station_id: station.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+
+      expect(station.rides_started_here).to eq(2)
+    end
+  end
 end
