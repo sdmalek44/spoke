@@ -10,3 +10,7 @@
 <% @rides_per_month.each do |date, count| %>
   <p><%= date.strftime('%B') %> <%= date.strftime('%Y') %> Rides: <%= count %></p>
 <% end %>
+
+<h3>Most Ridden Bike</h3>
+<p>Id: <%= @most_ridden_bike.keys.first %></p>
+<p>Rides: <%= @most_ridden_bike.values.first %></p>

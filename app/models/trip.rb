@@ -47,13 +47,21 @@ class Trip < ApplicationRecord
     group("date_trunc('month', start_date)").order('count_all DESC').count
   end
 
-  def self.most_ridden_bike_id
-    x = select('bike_id, COUNT(bike_id) AS bike_count')
+  def self.most_ridden_bike
+    most_ridden_bike = select('bike_id, COUNT(bike_id) AS ride_count')
     .group(:bike_id)
-    .order('bike_count DESC')
+    .order('ride_count DESC')
     .limit(1)
     .first
-    .bike_id
-    binding.pry
+    {most_ridden_bike.bike_id => most_ridden_bike.ride_count}
+  end
+
+  def self.least_ridden_bike
+    least_ridden_bike = select('bike_id, COUNT(bike_id) AS ride_count')
+    .group(:bike_id)
+    .order('ride_count ASC')
+    .limit(1)
+    .first
+    {least_ridden_bike.bike_id => least_ridden_bike.ride_count}
   end
 end
