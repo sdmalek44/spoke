@@ -12,7 +12,7 @@ describe Condition, type: :model do
     it {should validate_presence_of :precipitation}
   end
   describe 'class methods' do
-    it "return dates based on range of max_temperatures" do
+    it ".dates_within_max_temp_range" do
       @condition_1 = Condition.create(date: Date.new(2017, 12, 11), max_temperature: 75.0, mean_temperature: 65.0, min_temperature: 55.0, mean_humidity: 75.0, mean_visibility: 10.0, mean_wind_speed: 11.0, precipitation: 0.23)
       @condition_2 = Condition.create(date: Date.new(2016, 11, 10), max_temperature: 70.0, mean_temperature: 60.0, min_temperature: 50.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 12.0, precipitation: 0.12)
       @condition_3 = Condition.create(date: Date.new(2016, 1, 1), max_temperature: 81.0, mean_temperature: 66.0, min_temperature: 51.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 22.0, precipitation: 1.12)
