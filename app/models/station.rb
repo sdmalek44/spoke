@@ -62,4 +62,16 @@ class Station < ApplicationRecord
                 .first
     Station.find(start_trip.start_station_id)
   end
+
+  def date_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('start_date, COUNT(start_date) AS start_date_count')
+                .group(:start_date)
+                .order('start_date_count DESC')
+                .limit(1)
+                .take
+                .start_date
+  end
+
+  
 end
