@@ -16,6 +16,9 @@ class StationsController < ApplicationController
     @stations = Station.all
   end
 
+  def edit
+  end
+
   def dashboard
     @stations = Station.all
     @stations_count = @stations.total_count
