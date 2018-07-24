@@ -1,7 +1,7 @@
 <h1>Conditions</h1>
 
 <% @conditions.each do |condition| %>
-  <h3>Date: <%= condition.date %></h3>
+  <h3><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></h3>
   <p>Max Temperature: <%= condition.max_temperature %></p>
   <p>Mean Temperature: <%= condition.mean_temperature %></p>
   <p>Min Temperature: <%= condition.min_temperature %></p>

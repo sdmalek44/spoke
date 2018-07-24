@@ -4,5 +4,5 @@
   <h3><%= link_to station.name, station_path(station) %></h3>
   <p>Dock Count: <%= station.dock_count %></p>
   <p>City: <%= station.city %></p>
-  <p>Installation Date: <%= station.installation_date %></p>
+  <p>Installation Date: <%= station.installation_date.strftime('%m/%d/%Y') %></p>
 <% end %>

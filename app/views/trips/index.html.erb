@@ -1,9 +1,10 @@
 <h1>Trips</h1>
 
 <% @trips.each do |trip| %>
+  <%= link_to 'This Trip', trip_path(trip) %>
   <p>Duration: <%= trip.duration %></p>
-  <p>Start Date: <%= trip.start_date %></p>
-  <p>End Date: <%= trip.end_date%></p>
+  <p>Start Date: <%= trip.start_date.strftime('%m/%d/%Y') %></p>
+  <p>End Date: <%= trip.end_date.strftime('%m/%d/%Y') %></p>
   <p>Start Station: <%= trip.start_station.name %></p>
   <p>End Station: <%= trip.end_station.name %></p>
   <p>Bike ID: <%= trip.bike_id %></p>
