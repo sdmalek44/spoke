@@ -119,11 +119,26 @@ describe Trip, type: :model do
       station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
       station_2 = Station.create(name: 'Test 2', dock_count: 25, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
 
+      start_date = Date.new(2000, 1, 4)
+
+      trip_1 = Trip.create!(duration: 10, start_date: start_date, end_date: Date.new(2000, 1, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
+      trip_2 = Trip.create!(duration: 20, start_date: start_date, end_date: Date.new(2000, 1, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
+      trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, zip_code: 68686)
+
+      expect(Trip.date_with_most_rides.first).to eq("2000-01-04 00:00:00 UTC")
+      expect(Trip.date_with_most_rides.last).to eq(2)
+    end
+
+    it '.date_with_least_rides' do
+      station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
+      station_2 = Station.create(name: 'Test 2', dock_count: 25, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
+
       trip_1 = Trip.create!(duration: 10, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
       trip_2 = Trip.create!(duration: 20, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
       trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, zip_code: 68686)
 
-      expect(Trip.date_with_most_rides.first.to_s).to eq("[Tue, 04 Jan 2000 00:00:00 UTC +00:00, 1]")
+      expect(Trip.date_with_least_rides.first).to eq("2000-02-04 00:00:00 UTC")
+      expect(Trip.date_with_least_rides.last).to eq(1)
     end
   end
 end

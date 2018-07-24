@@ -70,14 +70,10 @@ class Trip < ApplicationRecord
   end
 
   def self.date_with_most_rides
-    date_with_most_rides = select('trips.*, COUNT(start_date) AS start_date_count')
-    .group(:id, :start_date)
-    .order('start_date_count DESC')
-    .limit(1)
-    .first
-    {date_with_most_rides.start_date => date_with_most_rides.start_date_count}
+    group(:start_date).order('count_all DESC').count.first
   end
 
   def self.date_with_least_rides
+    group(:start_date).order('count_all ASC').count.first
   end
 end
