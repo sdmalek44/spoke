@@ -103,5 +103,16 @@ describe Trip, type: :model do
 
       expect(Trip.least_ridden_bike).to eq(2 => 1)
     end
+
+    it '.subscription_types' do
+      station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
+      station_2 = Station.create(name: 'Test 2', dock_count: 25, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
+
+      trip_1 = Trip.create!(duration: 10, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686)
+      trip_2 = Trip.create!(duration: 20, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, zip_code: 68686, subscription_type: 1)
+      trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, zip_code: 68686, subscription_type: 1)
+
+      expect(Trip.subscription_type_count).to eq({'customer'=> 1, 'subscriber' => 2})
+    end
   end
 end

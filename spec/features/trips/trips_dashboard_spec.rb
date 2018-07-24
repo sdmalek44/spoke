@@ -57,4 +57,11 @@ describe "A registered user visits 'trip-dashboard'" do
       expect(page).to have_content("Rides: 1")
     end
   end
+
+  it 'they see information about user subscription types' do
+    visit trips_dashboard_path
+
+    expect(page).to have_content("Subscription Type: customer, Count: 3")
+    expect(page).to have_content("Subscription Type: subscriber, Count: 5")
+  end
 end

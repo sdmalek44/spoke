@@ -64,4 +64,8 @@ class Trip < ApplicationRecord
     .first
     {least_ridden_bike.bike_id => least_ridden_bike.ride_count}
   end
+
+  def self.subscription_type_count
+    group(:subscription_type).count
+  end
 end

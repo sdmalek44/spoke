@@ -22,3 +22,9 @@
   <p>Id: <%= @least_ridden_bike.keys.first %></p>
   <p>Rides: <%= @least_ridden_bike.values.first %></p>
 </div>
+
+<div class="subscription-types">
+  <% @subscription_type_count.each do |subscription, count| %>
+    <p>Subscription Type: <%= subscription %>, Count: <%= count %></p>
+  <% end %>
+</div>
