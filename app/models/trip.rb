@@ -68,4 +68,16 @@ class Trip < ApplicationRecord
   def self.subscription_type_count
     group(:subscription_type).count
   end
+
+  def self.date_with_most_rides
+    date_with_most_rides = select('trips.*, COUNT(start_date) AS start_date_count')
+    .group(:id, :start_date)
+    .order('start_date_count DESC')
+    .limit(1)
+    .first
+    {date_with_most_rides.start_date => date_with_most_rides.start_date_count}
+  end
+
+  def self.date_with_least_rides
+  end
 end
