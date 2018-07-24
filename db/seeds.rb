@@ -28,9 +28,9 @@ trips_data.each_with_index do |trip, index|
 
   Trip.create(
     duration: trip[:duration],
-    start_date: Time.strptime(trip[:start_date], "%m/%d/%Y %H:%M"),
+    start_date: Date.strptime(trip[:start_date], "%m/%d/%Y"),
     start_station_id: trip[:start_station_id],
-    end_date: Time.strptime(trip[:end_date], "%m/%d/%Y %H:%M"),
+    end_date: Date.strptime(trip[:end_date], "%m/%d/%Y"),
     end_station_id: trip[:end_station_id],
     bike_id: trip[:bike_id],
     subscription_type: sub_type,
