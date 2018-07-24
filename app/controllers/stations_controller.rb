@@ -13,5 +13,6 @@ class StationsController < ApplicationController
     @stations_count = @stations.total_count
     @avg_bikes = @stations.average_bikes_per_station
     @most_bikes = @stations.most_bikes_per_station
+    @station_most_bikes = @stations.station_with_most_bikes
   end
 end

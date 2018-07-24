@@ -25,4 +25,12 @@ describe 'when you visit /stations-dashboard' do
 
     expect(page).to have_content("Most Bikes Per Station: #{Station.most_bikes_per_station}")
   end
+  it 'see most bikes per stations' do
+    Station.create!(name: '2name', dock_count: 1, city: 'city', installation_date: Date.new(2017, 3, 10))
+    station = Station.create!(name: '2name', dock_count: 3, city: 'city', installation_date: Date.new(2017, 3, 10))
+
+    visit stations_dashboard_path
+
+    expect(page).to have_content("Station With Most Bikes: #{Station.station_with_most_bikes.name}")
+  end
 end
