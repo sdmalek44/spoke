@@ -1,9 +1,9 @@
 <p>This Trip</p>
-Duration: <%= @trip.duration %>
-Start Station: <%= @trip.start_station.name %>
-Start Date: <%= @trip.start_date %>
-End Station: <%= @trip.end_station.name %>
-End Date: <%= @trip.end_date %>
-Bike Id: <%= @trip.bike_id %>
-Subscription Type: <%= @trip.subscription_type %>
-Zip Code: <%= @trip.zip_code %>
+<div class="">Duration: <%= @trip.duration %></div>
+<div class="">Start Station: <%= @trip.start_station.name %></div>
+<div class="">Start Date: <%= @trip.start_date.strftime("%m/%d/%Y") %></div>
+<div class="">End Station: <%= @trip.end_station.name %></div>
+<div class="">End Date: <%= @trip.end_date.strftime("%m/%d/%Y") %></div>
+<div class="">Bike Id: <%= @trip.bike_id %></div>
+<div class="">Subscription Type: <%= @trip.subscription_type %></div>
+<div class="">Zip Code: <%= @trip.zip_code %></div>

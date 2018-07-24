@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'when you visit /stations-dashboard' do
+  before :each do
+    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+  end
+
   it 'see total count of stations' do
     Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
     Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))

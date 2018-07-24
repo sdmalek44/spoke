@@ -1,9 +1,9 @@
-Name: <%= @station.name %>
-Dock Count: <%= @station.dock_count %>
-City: <%= @station.city %>
-Installation Date:<%= @station.installation_date.strftime("%m/%d/%Y") %>
-Number of Rides Started Here: <%= @station.rides_started_here %>
-Number of Rides Ended Here: <%= @station.rides_ended_here %>
+<div class="">Name: <%= @station.name %></div>
+<div class="">Dock Count: <%= @station.dock_count %></div>
+<div class="">City: <%= @station.city %></div>
+<div class="">Installation Date:<%= @station.installation_date.strftime("%m/%d/%Y") %></div>
+<div class="">Number of Rides Started Here: <%= @station.rides_started_here %></div>
+<div class="">Number of Rides Ended Here: <%= @station.rides_ended_here %></div>
 <% unless @station.trips.empty? %>
   <div class="">Most Popular Place to Go to From Here: <%= @most_popular_destination.name %></div>
   <div class="">Most Popular Place to Come From to Here: <%= @most_popular_origination.name %></div>
