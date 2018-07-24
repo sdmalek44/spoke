@@ -73,5 +73,13 @@ class Station < ApplicationRecord
                 .start_date
   end
 
-  
+  def zip_code_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('zip_code, COUNT(zip_code) AS zip_code_count')
+                .group(:zip_code)
+                .order('zip_code_count DESC')
+                .limit(1)
+                .take
+                .zip_code
+  end
 end

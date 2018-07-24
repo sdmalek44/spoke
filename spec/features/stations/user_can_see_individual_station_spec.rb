@@ -53,4 +53,5 @@ describe 'user can go to station show page' do
     expect(station1.frequent_origination_station).to eq(station2)
     expect(page).to have_content("Most Popular Place to Come From to Here: #{station1.frequent_destination_station.name}")
   end
+
 end
