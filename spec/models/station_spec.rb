@@ -24,12 +24,6 @@ describe Station, type: :model do
 
       expect(Station.average_bikes_per_station).to eq(2)
     end
-    it 'can get total_count of stations' do
-      station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2017, 3, 10))
-      station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
-
-      expect(Station.most_bikes_per_station).to eq(3)
-    end
     it 'can get station with most bikes' do
       station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2017, 3, 10))
       station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
