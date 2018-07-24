@@ -42,4 +42,8 @@ class Trip < ApplicationRecord
     .first
     Station.find(station_id.end_station_id)
   end
+
+  def self.rides_by_month
+    group("date_trunc('month', start_date)").order('count_all DESC').count
+  end
 end

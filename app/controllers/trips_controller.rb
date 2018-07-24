@@ -14,5 +14,6 @@ class TripsController < ApplicationController
     @shortest_ride_duration = Trip.shortest_ride_duration
     @most_frequent_start_station = Trip.most_frequent_start_station
     @most_frequent_end_station = Trip.most_frequent_end_station
+    @rides_per_month = Trip.rides_by_month
   end
 end

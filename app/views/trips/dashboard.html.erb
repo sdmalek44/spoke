@@ -5,3 +5,8 @@
 <br>
 <p>Station Where Most Rides Start: <%= @most_frequent_start_station.name %></p>
 <p>Station Where Most Rides End: <%= @most_frequent_end_station.name %></p>
+<br>
+
+<% @rides_per_month.each do |date, count| %>
+  <p><%= date.strftime('%B') %> <%= date.strftime('%Y') %> Rides: <%= count %></p>
+<% end %>
