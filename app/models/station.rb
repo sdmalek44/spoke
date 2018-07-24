@@ -42,4 +42,14 @@ class Station < ApplicationRecord
   def rides_ended_here
     trips.where(end_station_id: id).length
   end
+
+  def frequent_destination_station
+    start_trips = Trip.where(start_station_id: id)
+    end_trip = start_trips.select('end_station_id, COUNT(end_station_id) AS end_station_count')
+                .group(:end_station_id)
+                .order('end_station_count DESC')
+                .limit(1)
+                .first
+    Station.find(end_trip.end_station_id)
+  end
 end
