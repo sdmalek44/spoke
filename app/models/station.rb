@@ -10,4 +10,28 @@ class Station < ApplicationRecord
   has_many :statuses
 
   friendly_id :name, use: :slugged
+
+  def self.total_count
+    count
+  end
+
+  def self.average_bikes_per_station
+    average(:dock_count).round(1)
+  end
+
+  def self.station_with_most_bikes
+    order(:dock_count).last
+  end
+
+  def self.station_with_least_bikes
+    order(:dock_count).first
+  end
+
+  def self.newest_station
+    order(:installation_date).last
+  end
+
+  def self.oldest_station
+    order(:installation_date).first
+  end
 end
