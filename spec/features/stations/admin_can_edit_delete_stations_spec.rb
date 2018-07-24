@@ -45,6 +45,6 @@ describe "admin user visits '/show/:id" do
     click_button 'Delete'
 
     expect(current_path).to eq(stations_path)
-    expect(page).to have_content("You have successfully deleted #{station.name} station")  
+    expect(page).to have_content("You have successfully deleted #{station.name}")  
   end
 end

@@ -22,7 +22,7 @@ class StationsController < ApplicationController
   def destroy
     station = Station.find_by(slug: params[:id])
     station.destroy
-    flash[:notice] = "You have successfully deleted #{station.name} station"
+    flash[:notice] = "You have successfully deleted #{station.name}"
     redirect_to stations_path
   end
 
