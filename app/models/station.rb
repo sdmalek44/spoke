@@ -38,4 +38,8 @@ class Station < ApplicationRecord
   def rides_started_here
     trips.where(start_station_id: id).length
   end
+
+  def rides_ended_here
+    trips.where(end_station_id: id).length
+  end
 end
