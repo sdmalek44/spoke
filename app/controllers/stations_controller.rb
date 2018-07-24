@@ -14,5 +14,7 @@ class StationsController < ApplicationController
     @avg_bikes = @stations.average_bikes_per_station
     @station_most_bikes = @stations.station_with_most_bikes
     @station_least_bikes = @stations.station_with_least_bikes
+    @newest_station = @stations.newest_station
+    @oldest_station = @stations.oldest_station
   end
 end

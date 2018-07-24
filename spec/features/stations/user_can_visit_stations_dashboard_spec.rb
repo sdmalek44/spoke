@@ -49,4 +49,20 @@ describe 'when you visit /stations-dashboard' do
 
     expect(page).to have_content("Station With Least Bikes: #{station.name}")
   end
+  it 'can see most recently installed station' do
+    station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2015, 3, 10))
+    station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
+
+    visit stations_dashboard_path
+
+    expect(page).to have_content("Newest Station: #{station2.name}")
+  end
+  it 'can see oldest station' do
+    station1 = Station.create!(name: '1name', dock_count: 1, city: 'city1', installation_date: Date.new(2015, 1, 10))
+    station2 = Station.create!(name: '2name', dock_count: 3, city: 'city2', installation_date: Date.new(2017, 3, 10))
+
+    visit stations_dashboard_path
+
+    expect(page).to have_content("Oldest Station: #{station1.name}")
+  end
 end
