@@ -20,3 +20,4 @@
 coverage
 
 /db/csv
+.rspec
