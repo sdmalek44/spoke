@@ -34,4 +34,62 @@ class Station < ApplicationRecord
   def self.oldest_station
     order(:installation_date).first
   end
+
+  def rides_started_here
+    trips.where(start_station_id: id).length
+  end
+
+  def rides_ended_here
+    trips.where(end_station_id: id).length
+  end
+
+  def frequent_destination_station
+    start_trips = Trip.where(start_station_id: id)
+    end_trip = start_trips.select('end_station_id, COUNT(end_station_id) AS end_station_count')
+                .group(:end_station_id)
+                .order('end_station_count DESC')
+                .limit(1)
+                .first
+    Station.find(end_trip.end_station_id)
+  end
+
+  def frequent_origination_station
+    end_trips = Trip.where(end_station_id: id)
+    start_trip = end_trips.select('start_station_id, COUNT(start_station_id) AS start_station_count')
+                .group(:start_station_id)
+                .order('start_station_count DESC')
+                .limit(1)
+                .first
+    Station.find(start_trip.start_station_id)
+  end
+
+  def date_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('start_date, COUNT(start_date) AS start_date_count')
+                .group(:start_date)
+                .order('start_date_count DESC')
+                .limit(1)
+                .take
+                .start_date
+  end
+
+  def zip_code_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('zip_code, COUNT(zip_code) AS zip_code_count')
+                .group(:zip_code)
+                .order('zip_code_count DESC')
+                .limit(1)
+                .take
+                .zip_code
+  end
+
+  def bike_id_with_most_trips
+    start_trips = Trip.where(start_station_id: id)
+    start_trips.select('bike_id, COUNT(bike_id) AS bike_id_count')
+                .group(:bike_id)
+                .order('bike_id_count DESC')
+                .limit(1)
+                .take
+                .bike_id
+  end
 end

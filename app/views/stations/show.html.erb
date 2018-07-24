@@ -2,3 +2,12 @@ Name: <%= @station.name %>
 Dock Count: <%= @station.dock_count %>
 City: <%= @station.city %>
 Installation Date:<%= @station.installation_date %>
+Number of Rides Started Here: <%= @station.rides_started_here %>
+Number of Rides Ended Here: <%= @station.rides_ended_here %>
+<% unless @station.trips.empty? %>
+  Most Popular Place to Go to From Here: <%= @most_popular_destination.name %>
+  Most Popular Place to Come From to Here: <%= @most_popular_origination.name %>
+  Date with the Most Trips Started Here: <%= @date_with_most_trips %>
+  Most Frequent Zip Code of Users Starting Here: <%= @zip_code_with_most_trips %>
+  Bike Id Starting Here Most Frequently: <%= @bike_id_with_most_trips %>
+<% end %>
