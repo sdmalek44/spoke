@@ -16,8 +16,8 @@ describe "A registered user visits 'trip-dashboard'" do
     @trip_4 = Trip.create!(duration: 40, start_date: Date.new(2002, 2, 4), end_date: Date.new(2002, 2, 4), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 1, subscription_type: 1, zip_code: 68686)
     @trip_5 = Trip.create!(duration: 50, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
     @trip_6 = Trip.create!(duration: 60, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
-    @trip_7 = Trip.create!(duration: 70, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
-    @trip_8 = Trip.create!(duration: 80, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+    @trip_7 = Trip.create!(duration: 70, start_date: Date.new(2004, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
+    @trip_8 = Trip.create!(duration: 80, start_date: Date.new(2004, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
   end
 
   it 'they see information about ride durations' do
@@ -40,6 +40,7 @@ describe "A registered user visits 'trip-dashboard'" do
 
     expect(page).to have_content('January 2001 Rides: 1')
     expect(page).to have_content('February 2002 Rides: 3')
-    expect(page).to have_content('March 2003 Rides: 4')
+    expect(page).to have_content('March 2003 Rides: 2')
+    expect(page).to have_content('March 2004 Rides: 2')
   end
 end
