@@ -4,3 +4,7 @@ City: <%= @station.city %>
 Installation Date:<%= @station.installation_date %>
 Number of Rides Started Here: <%= @station.rides_started_here %>
 Number of Rides Ended Here: <%= @station.rides_ended_here %>
+<% unless @station.trips.empty? %>
+  Most Popular Place to Go to From Here: <%= @most_popular_destination.name %>
+  Most Popular Place to Come From to Here: <%= @most_popular_origination.name %>
+<% end %>
