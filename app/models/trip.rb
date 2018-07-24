@@ -43,8 +43,12 @@ class Trip < ApplicationRecord
     Station.find(station_id.end_station_id)
   end
 
-  def self.rides_by_month
+  def self.rides_per_month
     group("date_trunc('month', start_date)").order('count_all DESC').count
+  end
+
+  def self.rides_per_year
+    group("date_trunc('year', start_date)").order('count_all DESC').count
   end
 
   def self.most_ridden_bike

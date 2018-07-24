@@ -9,7 +9,7 @@ require 'csv'
 
 station_data = CSV.open('./db/trim-data/station.csv', headers: true, header_converters: :symbol)
 station_data.each do |station|
-  Station.create!(
+  Station.create(
     id: station[:id],
     name: station[:name],
     dock_count: station[:dock_count],
