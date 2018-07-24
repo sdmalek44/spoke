@@ -79,7 +79,7 @@ describe 'user can go to station show page' do
 
     expect(page).to have_content("Most Frequent Zip Code of Users Starting Here: #{station1.zip_code_with_most_trips}")
   end
-  it 'can see most frequent origination zip for trips that started at station' do
+  it 'can see most frequent origination bike id for trips that started at station' do
     station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
     station2 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
     date = Date.new(2000, 2, 4)
