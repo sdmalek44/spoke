@@ -34,6 +34,17 @@ describe "admin user visits '/show/:id" do
 
     click_button 'Edit'
 
-    expect(current_path).to eq(edit_station_path(station))  
+    expect(current_path).to eq(edit_station_path(station))
+  end
+
+  it 'they can see a button next to each station to edit a station' do
+    station = Station.create!(name: 'test1', dock_count: 25, city: 'Denver', installation_date: Date.new(2017, 3, 10))
+
+    visit stations_path
+
+    click_button 'Delete'
+
+    expect(current_path).to eq(stations_path)
+    expect(page).to have_content("You have successfully deleted #{station.name} station")  
   end
 end

@@ -19,6 +19,13 @@ class StationsController < ApplicationController
   def edit
   end
 
+  def destroy
+    station = Station.find_by(slug: params[:id])
+    station.destroy
+    flash[:notice] = "You have successfully deleted #{station.name} station"
+    redirect_to stations_path
+  end
+
   def dashboard
     @stations = Station.all
     @stations_count = @stations.total_count
@@ -28,5 +35,4 @@ class StationsController < ApplicationController
     @newest_station = @stations.newest_station
     @oldest_station = @stations.oldest_station
   end
-
 end

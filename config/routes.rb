@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: [:new, :create]
-  resources :stations, only: [:show, :index, :edit]
+  resources :stations, only: [:show, :index, :edit, :update, :destroy]
   get '/stations-dashboard', to: 'stations#dashboard'
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:show]

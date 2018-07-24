@@ -7,5 +7,6 @@
   <p>Installation Date: <%= station.installation_date.strftime('%m/%d/%Y') %></p>
   <% if admin_user? %>
     <%= button_to 'Edit', edit_station_path(station), method: :get %>
+    <%= button_to 'Delete', station_path(station), method: :delete, data: {confirm: "Really want to delete this station?"} %>
   <% end %>
 <% end %>
