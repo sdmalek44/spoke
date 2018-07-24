@@ -1,0 +1,45 @@
+<h1>Trips Dashboard</h1>
+<p>Average Ride Duration: <%= @average_ride_duration.round(1) %></p>
+<p>Longest Ride Duration: <%= @longest_ride_duration.round(1) %></p>
+<p>Shortest Ride Duration: <%= @shortest_ride_duration.round(1) %></p>
+<br>
+<p>Station Where Most Rides Start: <%= @most_frequent_start_station.name %></p>
+<p>Station Where Most Rides End: <%= @most_frequent_end_station.name %></p>
+<br>
+
+<% @rides_per_month.each do |date, count| %>
+  <p><%= date.strftime('%B') %> <%= date.strftime('%Y') %> Rides: <%= count %></p>
+<% end %>
+
+<% @rides_per_year.each do |year, count| %>
+  <p>Rides in <%= year.strftime('%Y') %>: <%= count %></p>
+<% end %>
+
+<div class="most-ridden-bike">
+  <h3>Most Ridden Bike</h3>
+  <p>Id: <%= @most_ridden_bike.keys.first %></p>
+  <p>Rides: <%= @most_ridden_bike.values.first %></p>
+</div>
+
+<div class="least-ridden-bike">
+  <h3>Least Ridden Bike</h3>
+  <p>Id: <%= @least_ridden_bike.keys.first %></p>
+  <p>Rides: <%= @least_ridden_bike.values.first %></p>
+</div>
+
+<div class="subscription-types">
+  <% @subscription_type_count.each do |subscription, count| %>
+    <p>Subscription Type: <%= subscription %>, Count: <%= count %></p>
+    <p>Percentage of Total Trips: <%= ((count.to_f / @total_trips.to_f) * 100).round(2) %>%</p>
+  <% end %>
+</div>
+
+<div class="most-rides-by-date">
+  <p>Date With Most Rides: <%= @date_with_most_rides[:date].strftime('%d/%m/%Y') %>
+  <p>Ride Count: <%= @date_with_most_rides[:rides] %></p>
+</div>
+
+<div class="least-rides-by-date">
+  <p>Date With Fewest Rides: <%= @date_with_least_rides[:date].strftime('%d/%m/%Y') %>
+  <p>Ride Count: <%= @date_with_least_rides[:rides] %></p>
+</div>
