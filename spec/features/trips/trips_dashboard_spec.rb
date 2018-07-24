@@ -10,14 +10,14 @@ describe "A registered user visits 'trip-dashboard'" do
     @station_3 = Station.create(name: 'Test 3', dock_count: 30, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
     @station_4 = Station.create(name: 'Test 4', dock_count: 35, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
 
-    @trip_1 = Trip.create!(duration: 10, start_date: Date.new(2001, 1, 4), end_date: Date.new(2001, 1, 4), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
-    @trip_2 = Trip.create!(duration: 20, start_date: Date.new(2002, 2, 4), end_date: Date.new(2002, 2, 4), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
-    @trip_3 = Trip.create!(duration: 30, start_date: Date.new(2002, 2, 4), end_date: Date.new(2002, 2, 4), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
-    @trip_4 = Trip.create!(duration: 40, start_date: Date.new(2002, 2, 4), end_date: Date.new(2002, 2, 4), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 1, subscription_type: 1, zip_code: 68686)
-    @trip_5 = Trip.create!(duration: 50, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
-    @trip_6 = Trip.create!(duration: 60, start_date: Date.new(2003, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
-    @trip_7 = Trip.create!(duration: 70, start_date: Date.new(2004, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
-    @trip_8 = Trip.create!(duration: 80, start_date: Date.new(2004, 3, 4), end_date: Date.new(2003, 3, 4), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+    @trip_1 = Trip.create!(duration: 10, start_date: Date.new(2001, 1, 1), end_date: Date.new(2001, 1, 1), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
+    @trip_2 = Trip.create!(duration: 20, start_date: Date.new(2002, 2, 2), end_date: Date.new(2002, 2, 2), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
+    @trip_3 = Trip.create!(duration: 30, start_date: Date.new(2002, 2, 2), end_date: Date.new(2002, 2, 2), start_station_id: @station_1.id, end_station_id: @station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
+    @trip_4 = Trip.create!(duration: 40, start_date: Date.new(2002, 2, 2), end_date: Date.new(2002, 2, 2), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 1, subscription_type: 1, zip_code: 68686)
+    @trip_5 = Trip.create!(duration: 50, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_2.id, end_station_id: @station_1.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
+    @trip_6 = Trip.create!(duration: 60, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
+    @trip_7 = Trip.create!(duration: 70, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
+    @trip_8 = Trip.create!(duration: 80, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
   end
 
   it 'they see information about ride durations' do
@@ -40,8 +40,7 @@ describe "A registered user visits 'trip-dashboard'" do
 
     expect(page).to have_content('January 2001 Rides: 1')
     expect(page).to have_content('February 2002 Rides: 3')
-    expect(page).to have_content('March 2003 Rides: 2')
-    expect(page).to have_content('March 2004 Rides: 2')
+    expect(page).to have_content('March 2003 Rides: 4')
   end
 
   it 'they see most and least ridden bikes' do
@@ -65,5 +64,19 @@ describe "A registered user visits 'trip-dashboard'" do
     expect(page).to have_content("Subscription Type: subscriber, Count: 5")
     expect(page).to have_content("Percentage of Total Trips: 37.5%")
     expect(page).to have_content("Percentage of Total Trips: 62.5%")
+  end
+
+  it 'they see information about the dates with the mostest and fewest rides' do
+    visit trips_dashboard_path
+
+    within '.most-rides-by-date' do
+      expect(page).to have_content("Date With Most Rides: 03/03/2003")
+      expect(page).to have_content("Ride Count: 4")
+    end
+
+    within '.least-rides-by-date' do
+      expect(page).to have_content("Date With Fewest Rides: 01/01/2001")
+      expect(page).to have_content("Ride Count: 1")
+    end
   end
 end

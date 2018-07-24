@@ -19,5 +19,7 @@ class TripsController < ApplicationController
     @least_ridden_bike = Trip.least_ridden_bike
     @subscription_type_count = Trip.subscription_type_count
     @total_trips = Trip.all.count
+    @date_with_most_rides = Trip.date_with_most_rides
+    @date_with_least_rides = Trip.date_with_least_rides
   end
 end

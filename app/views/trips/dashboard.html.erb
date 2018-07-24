@@ -29,3 +29,13 @@
     <p>Percentage of Total Trips: <%= ((count.to_f / @total_trips.to_f) * 100).round(2) %>%</p>
   <% end %>
 </div>
+
+<div class="most-rides-by-date">
+  <p>Date With Most Rides: <%= @date_with_most_rides.first.strftime('%d/%m/%Y') %>
+  <p>Ride Count: <%= @date_with_most_rides.last %></p>
+</div>
+
+<div class="least-rides-by-date">
+  <p>Date With Fewest Rides: <%= @date_with_least_rides.first.strftime('%d/%m/%Y') %>
+  <p>Ride Count: <%= @date_with_least_rides.last %></p>
+</div>
