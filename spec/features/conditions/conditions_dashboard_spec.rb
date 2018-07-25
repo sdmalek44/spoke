@@ -44,4 +44,13 @@ describe 'a registered user visits /conditions-dashboard' do
     ride_count = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(0)
     expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
+  it 'sees average number of rides with max temperature in 10 degree chunks' do
+    visit conditions_dashboard_path
+
+    ride_count = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(70)
+    expect(page).to have_content("Average number of rides: #{ride_count}")
+
+    ride_count = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(0)
+    expect(page).to have_content("Average number of rides: #{ride_count}")
+  end
 end

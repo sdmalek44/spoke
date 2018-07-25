@@ -23,5 +23,12 @@ class ConditionsController < ApplicationController
     @lowest_number_of_rides_on_a_day_in_the_70s = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(70)
     @lowest_number_of_rides_on_a_day_in_the_80s = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(80)
     @lowest_number_of_rides_on_a_day_in_the_90s = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(90)
+    @average_number_of_rides_on_a_day_in_the_30s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(30)
+    @average_number_of_rides_on_a_day_in_the_40s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(40)
+    @average_number_of_rides_on_a_day_in_the_50s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(50)
+    @average_number_of_rides_on_a_day_in_the_60s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(60)
+    @average_number_of_rides_on_a_day_in_the_70s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(70)
+    @average_number_of_rides_on_a_day_in_the_80s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(80)
+    @average_number_of_rides_on_a_day_in_the_90s = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(90)
   end
 end
