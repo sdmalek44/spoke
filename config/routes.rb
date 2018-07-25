@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :edit]
     resources :trips, only: [:new, :edit]
   end
+  get '/cart', to: 'carts#show'
+  delete '/cart', to: 'carts#destroy'
 end

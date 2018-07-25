@@ -6,15 +6,41 @@ class Cart
   end
 
   def add_accessory(id)
-    contents[id] = 0 unless contents[id]
-    contents[id] += 1
+    @contents[id.to_s] ||= 0
+    @contents[id.to_s] += 1
+    @contents
   end
 
   def total_count
-    contents.values.sum
+    @contents.values.sum
   end
 
   def count_of(id)
-    contents[id].to_i
+    @contents[id.to_s].to_i
   end
+
+  def make_accessories
+    Accessory.where(id: @contents.keys)
+  end
+
+  def subtotal(accessory)
+    @contents[accessory.id.to_s] * accessory.price
+  end
+
+  def grand_total(all_accessories)
+    all_accessories.inject(0) do |sum, accessory|
+       sum += @contents[accessory.id.to_s] * accessory.price
+    end
+  end
+
+  def remove_accessory(id)
+    @contents = @contents.find_all {|key, value| id.to_s != key }.to_h
+  end
+
+  def decrease_quantity(id)
+    @contents[id.to_s] -= 1 if @contents[id.to_s] > 0
+    remove_accessory(id) if @contents[id.to_s] <= 0
+    @contents
+  end
+
 end
