@@ -1,9 +1,12 @@
 <% @accessories.each do |accessory| %>
-<div class="accessory-<%= accessory.id %>">
-  <h3><%= link_to accessory.title, accessory_path(accessory) %></h3>
-  <p>Description: <%= accessory.description %></p>
-  <p>Price: <%= number_to_currency(accessory.price) %></p>
-  <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
-</div>
-
+  <div class="accessory-<%= accessory.id %>">
+    <h3><%= link_to accessory.title, accessory_path(accessory) %></h3>
+    <p>Description: <%= accessory.description %></p>
+    <p>Price: <%= number_to_currency(accessory.price) %></p>
+    <% if accessory.retired? %>
+      <p>Accessory Retired</p>
+    <% else %>
+      <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
+    <% end %>
+  </div>
 <% end %>
