@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :stations, only: [:show, :index, :create, :update, :destroy]
   resources :trips, only: [:show, :index, :create, :update, :destroy]
   resources :conditions, only: [:index, :show, :create, :update, :destroy]
+  get '/conditions-dashboard', to: 'conditions#dashboard'
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
   resources :carts, only: [:create]
@@ -19,4 +20,6 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :edit]
     resources :conditions, only: [:new, :edit]
   end
+  get '/cart', to: 'carts#show'
+  delete '/cart', to: 'carts#destroy'
 end
