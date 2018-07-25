@@ -33,7 +33,7 @@ class StationsController < ApplicationController
       flash[:notice] = "Successfully updated #{station.name}"
       redirect_to station_path(station)
     else
-      flash[:notce] = "Station was not updated. Try again."
+      flash[:notice] = "Station was not updated. Try again."
       redirect_to edit_admin_station_path(station)
     end
   end

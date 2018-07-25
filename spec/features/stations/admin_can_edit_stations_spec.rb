@@ -27,4 +27,23 @@ describe "admin user visits 'admin/stations/:name/edit" do
     expect(page).to have_content("Dock Count: #{editted_dock_count}")
     expect(page).to have_content("Installation Date: #{editted_installation_date.strftime('%d/%m/%Y')}")
   end
+  it 'admin cannot edit a station if the do not fill in the correct information' do
+    station = Station.create!(name: 'Test Station', dock_count: 45, city: 'Chicago', installation_date: Date.new(2017, 3, 10))
+
+    editted_name = 'Station Editted'
+    editted_dock_count = 25
+    editted_city = 'Denver'
+    editted_installation_date = Date.new(2003, 3, 3)
+
+    visit edit_admin_station_path(station)
+
+    fill_in :station_name, with: nil
+    fill_in :station_city, with: nil
+    fill_in :station_dock_count, with: editted_dock_count
+    fill_in :station_installation_date, with: editted_installation_date
+    click_on 'Update Station'
+
+    expect(current_path).to eq(edit_admin_station_path(station))
+    expect(page).to have_content("Station was not updated. Try again.")
+  end
 end
