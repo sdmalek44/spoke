@@ -62,4 +62,19 @@ describe 'when user visits /cart' do
     expect(page).to have_content("Subtotal: $#{subtotal1}")
     expect(page).to have_content("Grand Total: $#{grand_total}")
   end
+  it 'can click to remove an item from cart' do
+    visit cart_path
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      click_link "Remove"
+    end
+
+    expect(current_path).to eq(cart_path)
+
+    expect(page).to have_content("Successfully removed #{@accessory12.title} from your cart.")
+    expect(page).to_not have_css(".cart-accessory-#{@accessory12.id}")
+    click_link "#{@accessory12.title}"
+
+    expect(current_path).to eq(accessory_path(@accessory12))
+  end
 end

@@ -1,8 +1,14 @@
-<% @cart_accessories.each do |accessory| %>
-<img src="<%= accessory.image %>">
-<div class=""><%= accessory.title %></div>
-<div class=""><%= number_to_currency(accessory.price) %></div>
-<div class="">Quantity: <%= @cart.count_of(accessory.id) %></div>
-<div class="">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></div>
+<% if @removed_accessory %>
+  <div>Link to <%= link_to @removed_accessory.title, accessory_path(@removed_accessory) %> page.</div>
 <% end %>
-<div class="">Grand Total: <%= number_to_currency(@cart.grand_total(@cart_accessories)) %></div> %>
+<% @cart_accessories.each do |accessory| %>
+    <article class="cart-accessory-<%= accessory.id %>">
+      <img src="<%= accessory.image %>">
+      <div class=""><%= accessory.title %></div>
+      <div class=""><%= number_to_currency(accessory.price) %></div>
+      <div class="">Quantity: <%= @cart.count_of(accessory.id) %></div>
+      <div class="">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></div>
+      <%= link_to "Remove", cart_path(accessory_id: accessory.id), method: :delete %>
+    </article>
+  <% end %>
+<div class="">Grand Total: <%= number_to_currency(@cart.grand_total(@cart_accessories)) %></div>

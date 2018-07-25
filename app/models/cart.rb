@@ -32,4 +32,8 @@ class Cart
        sum += @contents[accessory.id.to_s] * accessory.price
     end
   end
+
+  def remove_accessory(id)
+    @contents.find_all {|key, value| id.to_s != key }.to_h
+  end
 end
