@@ -109,4 +109,15 @@ describe 'when user visits /cart' do
       expect(page).to have_content("Quantity: 3")
     end
   end
+  it 'can click checkout button and see flash messsage' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+    visit cart_path
+
+    click_button "Checkout"
+
+    expect(current_path).to eq(dashboard_path(user_id: @user.id))
+
+    expect(page).to have_content("Successfully submitted your order totalling $31.00")
+  end
 end

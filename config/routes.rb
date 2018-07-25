@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
+  resources :orders, only: [:create]
 end
