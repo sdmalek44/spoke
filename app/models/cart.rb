@@ -34,7 +34,8 @@ class Cart
   end
 
   def remove_accessory(id)
-    @contents = @contents.find_all {|key, value| id.to_s != key }.to_h
+    @contents.delete(id.to_s)
+    @contents
   end
 
   def decrease_quantity(id)
