@@ -98,6 +98,8 @@ describe 'when user visits /cart' do
     expect(page).to_not have_css(".cart-accessory-#{@accessory1.id}")
   end
   it 'can increase the quantity of a cart item' do
+    visit cart_path
+
     within(".cart-accessory-#{@accessory12.id}") do
       click_link "Increase Quantity"
     end

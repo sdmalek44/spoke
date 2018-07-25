@@ -9,8 +9,8 @@
       <div class="">Quantity: <%= @cart.count_of(accessory.id) %></div>
       <div class="">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></div>
       <%= link_to "Remove", cart_path(accessory_id: accessory.id, remove: true), method: :delete %>
-      <%= link_to "Decrease Quantity", cart_path(accessory_id: accessory.id, remove: false), method: :delete %>
-      <%= link_to "Increase Quantity", cart_path(accessory_id: accessory.id), method: :post %>
+      <%= link_to "Decrease Quantity", cart_path(accessory_id: accessory.id), method: :delete %>
+      <%= link_to "Increase Quantity", carts_path(accessory_id: accessory.id, in_cart: true), method: :post %>
     </article>
   <% end %>
 <div class="">Grand Total: <%= number_to_currency(@cart.grand_total(@cart_accessories)) %></div>
