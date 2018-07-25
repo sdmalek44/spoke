@@ -9,6 +9,22 @@ RSpec.describe Cart do
 
       expect(subject.contents).to eq({'1' => 3, '2' => 3})
     end
+    it 'can remove accessory' do
+      subject.remove_accessory(1)
+
+      expect(subject.contents).to eq({'2' => 3})
+    end
+    it 'can decrease quantity of accessory' do
+      subject.decrease_quantity(1)
+
+      expect(subject.contents).to eq({'1' => 1, '2' => 3})
+    end
+    it 'if quantity is zero it removes accessory' do
+      subject.decrease_quantity(1)
+      subject.decrease_quantity(1)
+
+      expect(subject.contents).to eq({'2' => 3})
+    end
     it 'can get total accesories' do
       expect(subject.total_count).to eq(5)
     end
