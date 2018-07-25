@@ -1,11 +1,12 @@
 class StationsController < ApplicationController
+  before_action :require_registered_user, only: [:dashboard]
 
   def show
     @station = Station.friendly.find(params[:id])
     unless @station.trips.empty?
       @most_popular_destination = @station.frequent_destination_station
       @most_popular_origination = @station.frequent_origination_station
-      @date_with_most_trips = @station.date_with_most_trips.strftime('%d/%m/%Y')
+      @date_with_most_trips = @station.date_with_most_trips.strftime('%m/%d/%Y')
       @zip_code_with_most_trips = @station.zip_code_with_most_trips
       @bike_id_with_most_trips = @station.bike_id_with_most_trips
     end
@@ -24,4 +25,5 @@ class StationsController < ApplicationController
     @newest_station = @stations.newest_station
     @oldest_station = @stations.oldest_station
   end
+
 end

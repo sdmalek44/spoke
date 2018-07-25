@@ -1,0 +1,8 @@
+<% @cart_accessories.each do |accessory| %>
+<img src="<%= accessory.image %>">
+<div class=""><%= accessory.title %></div>
+<div class=""><%= number_to_currency(accessory.price) %></div>
+<div class="">Quantity: <%= @cart.count_of(accessory.id) %></div>
+<div class="">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></div>
+<% end %>
+<div class="">Grand Total: <%= number_to_currency(@cart.grand_total(@cart_accessories)) %></div> %>

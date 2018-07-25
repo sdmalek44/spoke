@@ -39,7 +39,7 @@ describe 'user can go to station show page' do
 
     visit station_path(station1)
 
-    expect(page).to have_content("Most Popular Place to Go to From Here: #{station1.frequent_destination_station.name}")
+    expect(page).to have_content("Most Popular Place to Go From Here: #{station1.frequent_destination_station.name}")
   end
   it 'can see most frequent origination station for trips that started at station' do
     station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
@@ -51,7 +51,7 @@ describe 'user can go to station show page' do
     visit station_path(station1)
 
     expect(station1.frequent_origination_station).to eq(station2)
-    expect(page).to have_content("Most Popular Place to Come From to Here: #{station1.frequent_destination_station.name}")
+    expect(page).to have_content("Where Most Trips Come From: #{station1.frequent_origination_station.name}")
   end
   it 'can calculate most frequent origination date for trips that started at station' do
     station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
@@ -64,7 +64,7 @@ describe 'user can go to station show page' do
 
     visit station_path(station1)
 
-    expect(page).to have_content("Date with the Most Trips Started Here: #{station1.date_with_most_trips.strftime('%d/%m/%Y')}")
+    expect(page).to have_content("Date with the Most Trips Started Here: #{station1.date_with_most_trips.strftime('%m/%d/%Y')}")
   end
   it 'can see most frequent origination zip for trips that started at station' do
     station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))

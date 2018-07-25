@@ -36,11 +36,11 @@ class Station < ApplicationRecord
   end
 
   def rides_started_here
-    trips.where(start_station_id: id).length
+    Trip.where(start_station_id: id).count
   end
 
   def rides_ended_here
-    trips.where(end_station_id: id).length
+    Trip.where(end_station_id: id).count
   end
 
   def frequent_destination_station
