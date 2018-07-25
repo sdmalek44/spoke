@@ -61,6 +61,7 @@ describe 'when user visits /cart' do
     expect(page).to have_content("Subtotal: $#{subtotal12}")
     expect(page).to have_content("Subtotal: $#{subtotal1}")
     expect(page).to have_content("Grand Total: $#{grand_total}")
+    expect(page).to have_button("Checkout")
   end
   it 'can click to remove an item from cart' do
     visit cart_path
