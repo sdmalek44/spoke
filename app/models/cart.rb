@@ -22,4 +22,8 @@ class Cart
   def make_accessories
     Accessory.where(id: @contents.keys)
   end
+
+  def subtotal(accessory)
+    @contents[accessory.id.to_s] * accessory.price
+  end
 end
