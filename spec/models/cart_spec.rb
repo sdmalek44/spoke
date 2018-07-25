@@ -27,5 +27,11 @@ RSpec.describe Cart do
 
       expect(subject.subtotal(accessory_1)).to eq(25.00)
     end
+    it 'calculate total for whole cart' do
+      accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+      accessory_2 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+
+      expect(subject.grand_total(Accessory.all)) .to eq(62.50)
+    end
   end
 end

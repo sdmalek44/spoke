@@ -26,4 +26,10 @@ class Cart
   def subtotal(accessory)
     @contents[accessory.id.to_s] * accessory.price
   end
+
+  def grand_total(all_accessories)
+    all_accessories.inject(0) do |sum, accessory|
+       sum += @contents[accessory.id.to_s] * accessory.price
+    end
+  end
 end
