@@ -4,6 +4,10 @@
 <div class="">Start Date: <%= @trip.start_date.strftime("%m/%d/%Y") %></div>
 <div class="">End Station: <%= @trip.end_station.name %></div>
 <div class="">End Date: <%= @trip.end_date.strftime("%m/%d/%Y") %></div>
-<div class="">Bike Id: <%= @trip.bike_id %></div>
+<div class="">Bike ID: <%= @trip.bike_id %></div>
 <div class="">Subscription Type: <%= @trip.subscription_type %></div>
 <div class="">Zip Code: <%= @trip.zip_code %></div>
+<% if admin_user? %>
+  <%= button_to 'Edit', edit_admin_trip_path(@trip), method: :get %>
+  <%= button_to 'Delete', trip_path(@trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
+<% end %>
