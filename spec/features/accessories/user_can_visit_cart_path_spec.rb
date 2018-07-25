@@ -29,13 +29,13 @@ describe 'when user visits /cart' do
     end
 
   end
-  xit 'see all bike accessories i have added to my cart' do
+  it 'see all bike accessories i have added to my cart' do
     visit cart_path
 
     expect(page).to have_content(@accessory12.title)
-    expect(page).to have_content(number_to_currency(@accessory12.price))
+    expect(page).to have_content("$#{@accessory12.price}")
     expect(page).to have_content(@accessory1.title)
-    expect(page).to have_content(number_to_currency(@accessory1.price))
+    expect(page).to have_content("$#{@accessory1.price}")
     expect(page).to have_xpath("//img[@src='#{@accessory12.image}']")
   end
 end

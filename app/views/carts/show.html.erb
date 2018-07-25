@@ -1,0 +1,5 @@
+<% @cart_accessories.each do |accessory| %>
+<img src="<%= accessory.image %>">
+<div class=""><%= accessory.title %></div>
+<div class=""><%= number_to_currency(accessory.price) %></div>
+<% end %>
