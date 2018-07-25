@@ -28,14 +28,24 @@ describe 'when user visits /cart' do
       click_button "Add to Cart"
     end
 
+    within(".accessory-#{@accessory12.id}") do
+      click_button "Add to Cart"
+    end
+
+
   end
   it 'see all bike accessories i have added to my cart' do
     visit cart_path
-
+    subtotal12 = (@accessory12.price * 2)
+    subtotal1 = @accessory1.price
+    grand_total = subtotal12 + subtotal1
     expect(page).to have_content(@accessory12.title)
     expect(page).to have_content("$#{@accessory12.price}")
     expect(page).to have_content(@accessory1.title)
     expect(page).to have_content("$#{@accessory1.price}")
     expect(page).to have_xpath("//img[@src='#{@accessory12.image}']")
+    expect(page).to have_content("Subtotal: $#{subtotal12}")
+    expect(page).to have_content("Subtotal: $#{subtotal1}")
+    expect(page).to have_content("Grand Total: $#{grand_total}")
   end
 end
