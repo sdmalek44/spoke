@@ -13,9 +13,9 @@
       <%= link_to "Increase Quantity", carts_path(accessory_id: accessory.id, in_cart: true), method: :post %>
     </article>
   <% end %>
-<div class="">Grand Total: <%= number_to_currency(@cart.grand_total(@cart_accessories)) %></div>
+<div class="">Grand Total: <%= currency = number_to_currency(@cart.grand_total(@cart_accessories)) %></div>
 <% if current_user %>
-  <%= button_to "Checkout", orders_path(user_id: current_user.id), method: :post %>
+  <%= button_to "Checkout", orders_path(grand_total: currency), method: :post %>
 <% else %>
   <%= button_to "Checkout", login_path, method: :get %>
 <% end %>

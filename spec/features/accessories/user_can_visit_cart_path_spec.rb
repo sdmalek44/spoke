@@ -116,7 +116,7 @@ describe 'when user visits /cart' do
 
     click_button "Checkout"
 
-    expect(current_path).to eq(dashboard_path(user_id: @user.id))
+    expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content("Successfully submitted your order totalling $31.00")
   end
