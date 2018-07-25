@@ -1,5 +1,6 @@
 class StationsController < ApplicationController
   before_action :require_registered_user, only: [:dashboard]
+  before_action :require_admin_user, only: [:create, :update, :destroy]
 
   def show
     @station = Station.friendly.find(params[:id])
