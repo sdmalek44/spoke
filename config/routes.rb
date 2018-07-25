@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :stations, only: [:show, :index, :create, :update, :destroy]
   resources :trips, only: [:show, :index, :create, :update, :destroy]
-  resources :conditions, only: [:index, :show, :create, :destroy]
+  resources :conditions, only: [:index, :show, :create, :update, :destroy]
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
   resources :carts, only: [:create]
