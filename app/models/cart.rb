@@ -32,4 +32,15 @@ class Cart
        sum += @contents[accessory.id.to_s] * accessory.price
     end
   end
+
+  def remove_accessory(id)
+    @contents = @contents.find_all {|key, value| id.to_s != key }.to_h
+  end
+
+  def decrease_quantity(id)
+    @contents[id.to_s] -= 1 if @contents[id.to_s] > 0
+    remove_accessory(id) if @contents[id.to_s] <= 0
+    @contents
+  end
+
 end

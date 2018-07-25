@@ -62,4 +62,50 @@ describe 'when user visits /cart' do
     expect(page).to have_content("Subtotal: $#{subtotal1}")
     expect(page).to have_content("Grand Total: $#{grand_total}")
   end
+  it 'can click to remove an item from cart' do
+    visit cart_path
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      click_link "Remove"
+    end
+
+    expect(current_path).to eq(cart_path)
+
+    expect(page).to have_content("Successfully removed #{@accessory12.title} from your cart.")
+    expect(page).to_not have_css(".cart-accessory-#{@accessory12.id}")
+    click_link "#{@accessory12.title}"
+
+    expect(current_path).to eq(accessory_path(@accessory12))
+  end
+  it 'can decrease quantity of items in cart' do
+    visit cart_path
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      click_link "Decrease Quantity"
+    end
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      expect(page).to have_content("Quantity: 1")
+    end
+  end
+  it 'will remove item if quantity is 1 already' do
+    visit cart_path
+
+    within(".cart-accessory-#{@accessory1.id}") do
+      click_link "Decrease Quantity"
+    end
+
+    expect(page).to_not have_css(".cart-accessory-#{@accessory1.id}")
+  end
+  it 'can increase the quantity of a cart item' do
+    visit cart_path
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      click_link "Increase Quantity"
+    end
+
+    within(".cart-accessory-#{@accessory12.id}") do
+      expect(page).to have_content("Quantity: 3")
+    end
+  end
 end
