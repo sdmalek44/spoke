@@ -64,7 +64,14 @@ describe "A visitor visits '/trips'" do
       expect(page).to have_content("Bike ID: #{trip_1.bike_id}")
       expect(page).to have_content("Subscription Type: #{trip_1.subscription_type}")
       expect(page).to have_content("Zip Code: #{trip_1.zip_code}")
-      expect(page).to_not have_content("Zip Code: #{Trip.all.first.zip_code}")
+      expect(page).to have_content("Duration: #{trip_2.duration}")
+      expect(page).to have_content("Start Date: #{trip_2.start_date.strftime('%m/%d/%Y')}")
+      expect(page).to have_content("End Date: #{trip_2.end_date.strftime('%m/%d/%Y')}")
+      expect(page).to have_content("Start Station: #{trip_2.start_station.name}")
+      expect(page).to have_content("End Station: #{trip_2.end_station.name}")
+      expect(page).to have_content("Bike ID: #{trip_2.bike_id}")
+      expect(page).to have_content("Subscription Type: #{trip_2.subscription_type}")
+      expect(page).to have_content("Zip Code: #{trip_2.zip_code}")
     end
   end
 end
