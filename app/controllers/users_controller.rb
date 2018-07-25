@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @orders = current_user.orders
   end
 
   private
