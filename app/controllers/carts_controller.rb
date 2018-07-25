@@ -13,9 +13,11 @@ class CartsController < ApplicationController
 
   def destroy
     accessory = Accessory.find(params[:accessory_id])
-
-    session[:cart] = @cart.remove_accessory(accessory.id)
-
+    if params[:remove] = "true"
+      session[:cart] = @cart.remove_accessory(accessory.id)
+    else
+      session[:cart] = @cart.decrease_quantity(accessory.id)
+    end
     flash[:notice] = "Successfully removed #{accessory.title} from your cart."
 
     redirect_to cart_path(removed_id: accessory.id)
