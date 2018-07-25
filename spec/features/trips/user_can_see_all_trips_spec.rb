@@ -73,5 +73,28 @@ describe "A visitor visits '/trips'" do
       expect(page).to have_content("Subscription Type: #{trip_2.subscription_type}")
       expect(page).to have_content("Zip Code: #{trip_2.zip_code}")
     end
+    it 'they see a button next to each trip to edit that trip' do
+      station1 = Station.create!(name: 'name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+      station2 = Station.create!(name: 'eman', dock_count: 30, city: 'ytic', installation_date: Date.new(2013, 2, 15))
+      trip_1 = Trip.create!(duration: 44, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 0, zip_code: 67000)
+
+      visit trips_path
+
+      click_button 'Edit'
+
+      expect(current_path).to eq(edit_admin_trip_path(trip_1))
+    end
+    it 'they see a button next to each trip to delete that trip' do
+      station1 = Station.create!(name: 'name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+      station2 = Station.create!(name: 'eman', dock_count: 30, city: 'ytic', installation_date: Date.new(2013, 2, 15))
+      trip_1 = Trip.create!(duration: 44, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 0, zip_code: 67000)
+
+      visit trips_path
+
+      click_button 'Delete'
+
+      expect(current_path).to eq(trips_path)
+      expect(page).to have_content("Successfully deleted trip")
+    end
   end
 end

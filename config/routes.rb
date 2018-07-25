@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   resources :stations, only: [:show, :index, :destroy, :create, :update]
   get '/stations-dashboard', to: 'stations#dashboard'
   resources :conditions, only: [:index, :show]
-  resources :trips, only: [:show]
+  resources :trips, only: [:show, :index, :destroy]
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
-  resources :trips, only: [:index]
   get '/bike-shop', to: 'accessories#index'
   resources :carts, only: [:create]
   get '/trips-dashboard', to: 'trips#dashboard'
   namespace :admin do
     resources :stations, only: [:new, :edit]
+    resources :trips, only: [:new, :edit]
   end
 end

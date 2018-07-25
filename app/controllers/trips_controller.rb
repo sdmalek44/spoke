@@ -9,6 +9,13 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def destroy
+    trip = Trip.find(params[:id])
+    trip.destroy
+    flash[:notice] = "Successfully deleted trip."
+    redirect_to trips_path
+  end
+
   def dashboard
     @average_ride_duration = Trip.average_ride_duration
     @longest_ride_duration = Trip.longest_ride_duration

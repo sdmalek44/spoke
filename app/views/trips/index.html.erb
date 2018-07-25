@@ -10,6 +10,10 @@
   <p>Bike ID: <%= trip.bike_id %></p>
   <p>Subscription Type: <%= trip.subscription_type %></p>
   <p>Zip Code: <%= trip.zip_code %></p>
+  <% if admin_user? %>
+    <%= button_to 'Edit', edit_admin_trip_path(trip), method: :get %>
+    <%= button_to 'Delete', trip_path(trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
+  <% end %>
 <% end %>
 
 <%= will_paginate @trips %>
