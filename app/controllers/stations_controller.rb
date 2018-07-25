@@ -23,7 +23,7 @@ class StationsController < ApplicationController
       redirect_to station_path(station)
     else
       flash[:notice] = "Station not created, try again"
-      render :admin_new
+      redirect_to new_admin_station_path
     end
   end
 
