@@ -109,4 +109,38 @@ class Condition < ApplicationRecord
       0
     end
   end
+
+  def self.highest_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
+    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
+    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
+    .group(:start_date, :id)
+    .order('count(trips.id) desc').count
+    unless ride_counts.first.nil?
+      ride_counts.first.last
+    else
+      0
+    end
+  end
+
+  def self.lowest_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
+    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
+    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
+    .group(:start_date, :id)
+    .order('count(trips.id) asc').count
+    unless ride_counts.first.nil?
+      ride_counts.first.last
+    else
+      0
+    end
+  end
+
+  def self.average_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
+    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
+    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
+    if ride_counts.group(:start_date, :id).count.count > 0
+      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
+    else
+      0
+    end
+  end
 end
