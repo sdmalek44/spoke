@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :stations, only: [:show, :index, :destroy, :create, :update]
   get '/stations-dashboard', to: 'stations#dashboard'
   resources :conditions, only: [:index, :show]
+  get '/conditions-dashboard', to: 'conditions#dashboard'
   resources :trips, only: [:show, :index, :destroy, :create, :update]
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
