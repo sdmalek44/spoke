@@ -9,4 +9,8 @@
   <p>Mean Visibility: <%= condition.mean_visibility %> Miles</p>
   <p>Mean Wind Speed: <%= condition.mean_wind_speed %> mph</p>
   <p>Precipitation: <%= condition.precipitation %> "</p>
+  <% if admin_user? %>
+    <%= button_to 'Edit', edit_admin_condition_path(condition), method: :get %>
+    <%= button_to 'Delete', condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
+  <% end %>
 <% end %>
