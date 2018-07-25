@@ -16,7 +16,7 @@ describe 'a registered user visits /conditions-dashboard' do
     Condition.create!(date: Date.new(2016, 1, 1), max_temperature: 77.0, mean_temperature: 66.0, min_temperature: 51.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 22.0, precipitation: 1.12)
     Condition.create!(date: Date.new(2016, 5, 5), max_temperature: 76.0, mean_temperature: 68.0, min_temperature: 53.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 33.0, precipitation: 2.12)
     Trip.create!(duration: 11, start_date: Date.new(2017, 12, 11), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
-    Trip.create!(duration: 22, start_date: Date.new(2017, 12, 11), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+    Trip.create!(duration: 22, start_date: Date.new(2016, 11, 10), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
     Trip.create!(duration: 33, start_date: Date.new(2016, 11, 10), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
     Trip.create!(duration: 44, start_date: Date.new(2016, 11, 10), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
     Trip.create!(duration: 55, start_date: Date.new(2016, 1, 1), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
@@ -26,7 +26,7 @@ describe 'a registered user visits /conditions-dashboard' do
     Trip.create!(duration: 99, start_date: Date.new(2016, 5, 5), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
     Trip.create!(duration: 100, start_date: Date.new(2016, 5, 5), end_date: Date.new(2018, 2, 5), start_station_id: station1.id, end_station_id: station2.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
   end
-  it 'sees highest number of rides with high max temperature in 10 degree chunks' do
+  it 'sees highest number of rides with max temperature in 10 degree chunks' do
     visit conditions_dashboard_path
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_max_temperature_range(70)
@@ -34,5 +34,14 @@ describe 'a registered user visits /conditions-dashboard' do
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_max_temperature_range(0)
     expect(page).to have_content("Highest number of rides: #{ride_count}")
+  end
+  it 'sees lowest number of rides with max temperature in 10 degree chunks' do
+    visit conditions_dashboard_path
+
+    ride_count = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(70)
+    expect(page).to have_content("Lowest number of rides: #{ride_count}")
+
+    ride_count = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(0)
+    expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
 end
