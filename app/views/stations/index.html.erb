@@ -1,8 +1,15 @@
 <h1>Stations</h1>
+<% if admin_user? %>
+  <%= link_to 'Create New Station', new_admin_station_path %>
+<% end %>
 
 <% @stations.each do |station| %>
   <h3><%= link_to station.name, station_path(station) %></h3>
   <p>Dock Count: <%= station.dock_count %></p>
   <p>City: <%= station.city %></p>
   <p>Installation Date: <%= station.installation_date.strftime('%m/%d/%Y') %></p>
+  <% if admin_user? %>
+    <%= button_to 'Edit', edit_admin_station_path(station), method: :get %>
+    <%= button_to 'Delete', station_path(station), method: :delete, data: {confirm: "Really want to delete this station?"} %>
+  <% end %>
 <% end %>

@@ -92,4 +92,41 @@ describe 'user can go to station show page' do
 
     expect(page).to have_content("Bike Id Starting Here Most Frequently: #{station1.bike_id_with_most_trips}")
   end
+
+  describe "admin user visits 'stations/:id'" do
+    before :each do
+      user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
+    it 'they can see all station attributes' do
+      station = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+
+      visit station_path(station)
+
+      expect(current_path).to eq('/stations/2name')
+      expect(page).to have_content(station.name)
+      expect(page).to have_content(station.dock_count)
+      expect(page).to have_content(station.city)
+      expect(page).to have_content(station.installation_date.strftime("%m/%d/%Y"))
+    end
+    it 'they see a button to go to a station edit page' do
+      station = Station.create!(name: 'test1', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+
+      visit station_path(station)
+
+      click_button 'Edit'
+
+      expect(current_path).to eq(edit_admin_station_path(station))
+    end
+    it 'they see a button to delete a station' do
+      station = Station.create!(name: 'test2', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
+
+      visit station_path(station)
+
+      click_button 'Delete'
+
+      expect(current_path).to eq(stations_path)
+      expect(page).to have_content("You have successfully deleted #{station.name}")
+    end
+  end
 end

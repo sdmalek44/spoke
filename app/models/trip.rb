@@ -26,12 +26,12 @@ class Trip < ApplicationRecord
   end
 
   def self.most_frequent_start_station
-    station_id = select('start_station_id, COUNT(start_station_id) AS start_station_count')
+    station = select('start_station_id, COUNT(start_station_id) AS start_station_count')
     .group(:start_station_id)
     .order('start_station_count DESC')
     .limit(1)
     .first
-    Station.find(station_id.start_station_id)
+    Station.find(station.start_station_id)
   end
 
   def self.most_frequent_end_station

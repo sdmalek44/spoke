@@ -18,6 +18,9 @@
        <%= link_to "Login", login_path %>
        <%= link_to "Create Account", new_user_path %>
       <% end %>
+      <%= link_to 'Stations', stations_path %>
+      <%= link_to 'Trips', trips_path %>
+      <%= link_to 'Conditions', conditions_path %>
     </nav>
     <%= flash[:notice] if flash[:notice] %>
     <%= yield %>

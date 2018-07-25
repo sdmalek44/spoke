@@ -73,3 +73,7 @@ Accessory.create(title: 'Picture Frame', description: 'Display your favorite pho
 Accessory.create(title: 'Bike Seat', description: 'Stay comfortable on long bike rides', price: 30.00)
 
 puts "Seeded #{Accessory.count} accessories"
+
+User.create!(username: 'admin', password: 'password', email: 'admin@email.com', role: 1)
+
+puts "Created admin user (username: admin, password: password)"
