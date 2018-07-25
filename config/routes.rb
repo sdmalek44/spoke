@@ -4,16 +4,16 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  resources :users, only: [:new, :create]
-  resources :stations, only: [:show, :index, :destroy, :create, :update]
+  get '/bike-shop', to: 'accessories#index'
+  get '/trips-dashboard', to: 'trips#dashboard'
   get '/stations-dashboard', to: 'stations#dashboard'
+  resources :users, only: [:new, :create]
+  resources :stations, only: [:show, :index, :create, :update, :destroy]
+  resources :trips, only: [:show, :index, :create, :update, :destroy]
   resources :conditions, only: [:index, :show]
-  resources :trips, only: [:show, :index, :destroy, :create, :update]
   resources :dashboard, only: [:index]
   resources :accessories, only: [:show]
-  get '/bike-shop', to: 'accessories#index'
   resources :carts, only: [:create]
-  get '/trips-dashboard', to: 'trips#dashboard'
   namespace :admin do
     resources :stations, only: [:new, :edit]
     resources :trips, only: [:new, :edit]
