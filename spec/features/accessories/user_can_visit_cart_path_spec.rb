@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'when user visits /cart' do
   before(:each) do
-    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
     @accessory1 = Accessory.create!(title: 'title1', description: 'desc1', price: 11.00)
     accessory2 = Accessory.create!(title: 'title2', description: 'desc1', price: 23.33)
     accessory3 = Accessory.create!(title: 'title3', description: 'desc1', price: 23.33)
@@ -15,8 +15,6 @@ describe 'when user visits /cart' do
     accessory10 = Accessory.create!(title: 'title10', description: 'desc1', price: 23.33)
     accessory11 = Accessory.create!(title: 'title11', description: 'desc1', price: 23.33)
     @accessory12 = Accessory.create!(title: 'title12', description: 'desc1', price: 10.00)
-
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit bike_shop_path
 
@@ -35,6 +33,22 @@ describe 'when user visits /cart' do
 
   end
   it 'see all bike accessories i have added to my cart' do
+    visit cart_path
+    subtotal12 = (@accessory12.price * 2)
+    subtotal1 = @accessory1.price
+    grand_total = subtotal12 + subtotal1
+    expect(page).to have_content(@accessory12.title)
+    expect(page).to have_content("$#{@accessory12.price}")
+    expect(page).to have_content(@accessory1.title)
+    expect(page).to have_content("$#{@accessory1.price}")
+    expect(page).to have_xpath("//img[@src='#{@accessory12.image}']")
+    expect(page).to have_content("Subtotal: $#{subtotal12}")
+    expect(page).to have_content("Subtotal: $#{subtotal1}")
+    expect(page).to have_content("Grand Total: $#{grand_total}")
+  end
+  it 'see accessories when logged in' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
     visit cart_path
     subtotal12 = (@accessory12.price * 2)
     subtotal1 = @accessory1.price
