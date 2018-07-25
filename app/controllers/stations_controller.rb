@@ -16,6 +16,17 @@ class StationsController < ApplicationController
     @stations = Station.all
   end
 
+  def create
+    station = Station.new(station_params)
+    if station.save
+      flash[:notice] = "Successfully created #{station.name}"
+      redirect_to station_path(station)
+    else
+      flash[:notice] = "Station not created, try again"
+      render :admin_new
+    end
+  end
+
   def edit
   end
 
@@ -34,5 +45,11 @@ class StationsController < ApplicationController
     @station_least_bikes = @stations.station_with_least_bikes
     @newest_station = @stations.newest_station
     @oldest_station = @stations.oldest_station
+  end
+
+  private
+
+  def station_params
+    params.require(:station).permit(:name, :city, :dock_count, :installation_date)
   end
 end

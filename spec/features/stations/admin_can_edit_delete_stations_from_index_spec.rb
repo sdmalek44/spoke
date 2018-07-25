@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "admin user visits '/show/:id" do
+describe "admin user visits '/stations/:name" do
   before :each do
     user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -45,6 +45,6 @@ describe "admin user visits '/show/:id" do
     click_button 'Delete'
 
     expect(current_path).to eq(stations_path)
-    expect(page).to have_content("You have successfully deleted #{station.name}")  
+    expect(page).to have_content("You have successfully deleted #{station.name}")
   end
 end
