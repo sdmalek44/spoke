@@ -1,8 +1,12 @@
 <p>This Trip</p>
 <div class="">Duration: <%= @trip.duration %></div>
-<div class="">Start Station: <%= @trip.start_station.name %></div>
+<% unless @trip.start_station.nil? %>
+  <div class="">Start Station: <%= @trip.start_station.name %></div>
+<% end %>
 <div class="">Start Date: <%= @trip.start_date.strftime("%m/%d/%Y") %></div>
-<div class="">End Station: <%= @trip.end_station.name %></div>
+<% unless @trip.end_station.nil? %>
+  <div class="">End Station: <%= @trip.end_station.name %></div>
+<% end %>
 <div class="">End Date: <%= @trip.end_date.strftime("%m/%d/%Y") %></div>
 <div class="">Bike ID: <%= @trip.bike_id %></div>
 <div class="">Subscription Type: <%= @trip.subscription_type %></div>
