@@ -142,11 +142,6 @@ describe Trip, type: :model do
 
       expect(Trip.date_with_most_rides[:date]).to eq("2000-01-04 00:00:00 UTC")
       expect(Trip.date_with_most_rides[:rides]).to eq(2)
-
-      temp = 70
-
-      expect(Trip.date_with_most_rides(temp)[:date]).to eq("2000-01-04 00:00:00 UTC")
-      expect(Trip.date_with_most_rides(temp)[:rides]).to eq(2)
     end
 
     it '.date_with_least_rides' do
@@ -162,11 +157,6 @@ describe Trip, type: :model do
 
       expect(Trip.date_with_least_rides[:date]).to eq("2000-02-04 00:00:00 UTC")
       expect(Trip.date_with_least_rides[:rides]).to eq(1)
-
-      temp = 70
-
-      expect(Trip.date_with_least_rides(temp)[:date]).to eq("2000-02-04 00:00:00 UTC")
-      expect(Trip.date_with_least_rides(temp)[:rides]).to eq(1)
     end
   end
 end

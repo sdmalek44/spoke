@@ -73,25 +73,13 @@ class Trip < ApplicationRecord
     group(:subscription_type).count
   end
 
-  def self.date_with_most_rides(temp=nil)
-    if temp
-      dates = Condition.dates_within_max_temp_range(temp)
-      date_rides = group(:start_date).where(start_date: dates).order('count_all DESC').count.first
-    else
-      date_rides = group(:start_date).order('count_all DESC').count.first
-    end
-    return Hash.new(0) if date_rides.nil?
+  def self.date_with_most_rides
+    date_rides = group(:start_date).order('count_all DESC').count.first
     {date: date_rides.first, rides: date_rides.last}
   end
 
-  def self.date_with_least_rides(temp=nil)
-    if temp
-      dates = Condition.dates_within_max_temp_range(temp)
-      date_rides = group(:start_date).where(start_date: dates).order('count_all ASC').count.first
-    else
-      date_rides = group(:start_date).order('count_all ASC').count.first
-    end
-    return Hash.new(0) if date_rides.nil?
+  def self.date_with_least_rides
+    date_rides = group(:start_date).order('count_all ASC').count.first
     {date: date_rides.first, rides: date_rides.last}
   end
 end
