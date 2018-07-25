@@ -38,4 +38,29 @@ describe "An admin user visits '/admin/conditions/new'" do
     expect(page).to have_content("Mean Wind Speed: #{mean_wind_speed}")
     expect(page).to have_content("Precipitation: #{precipitation}")
   end
+  it 'they cannot create a new condition without inputting valid information' do
+    date = Date.new(2014, 1, 1)
+    max_temp = 75.0
+    mean_temp = 70.0
+    min_temp = 65.0
+    mean_humidity = 60.0
+    mean_visibility = 10.0
+    mean_wind_speed = 20.0
+    precipitation = 0.23
+
+    visit new_admin_condition_path
+
+    fill_in :condition_date, with: nil
+    fill_in :condition_max_temperature, with: max_temp
+    fill_in :condition_mean_temperature, with: mean_temp
+    fill_in :condition_min_temperature, with: min_temp
+    fill_in :condition_mean_humidity, with: mean_humidity
+    fill_in :condition_mean_visibility, with: mean_visibility
+    fill_in :condition_mean_wind_speed, with: mean_wind_speed
+    fill_in :condition_precipitation, with: precipitation
+    click_on 'Create Condition'
+
+    expect(current_path).to eq(new_admin_condition_path)
+    expect(page).to have_content('Weather condition not created. Try again.')
+  end
 end
