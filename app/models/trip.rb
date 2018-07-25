@@ -10,8 +10,8 @@ class Trip < ApplicationRecord
 
   enum subscription_type: ['customer', 'subscriber']
 
-  belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id
-  belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id
+  belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id, dependent: :destroy
+  belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id, dependent: :destroy
 
   def self.average_ride_duration
     average(:duration)
