@@ -27,6 +27,17 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
+  def update
+    trip = Trip.find(params[:id])
+    if trip.update(trip_params)
+      flash[:notice] = "Successfully updated trip"
+      redirect_to trip_path(trip)
+    else
+      flash[:notice] = "Trip was not updated. Try again."
+      redirect_to edit_admin_trip_path(trip)
+    end
+  end
+
   def dashboard
     @average_ride_duration = Trip.average_ride_duration
     @longest_ride_duration = Trip.longest_ride_duration
