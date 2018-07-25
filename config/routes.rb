@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:show, :index, :destroy, :create, :update]
-  resources :dashboard, only: [:index]
+  get '/dashboard', to: 'users#dashboard'
   resources :accessories, only: [:show]
   get '/bike-shop', to: 'accessories#index'
   resources :carts, only: [:create]

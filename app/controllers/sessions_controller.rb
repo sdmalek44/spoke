@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_username(params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to dashboard_index_path
+      redirect_to dashboard_path
     else
       flash[:notice] = "Incorrect login information. Please try again."
       render :new

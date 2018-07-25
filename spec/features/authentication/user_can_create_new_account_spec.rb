@@ -15,7 +15,7 @@ describe 'when user visits /login page' do
 
     click_button "Create Account"
 
-    expect(current_path).to eq(dashboard_index_path)
+    expect(current_path).to eq(dashboard_path)
   end
   it 'renders new user view if incorrect input' do
 
