@@ -116,7 +116,7 @@ describe 'user can go to station show page' do
 
       click_button 'Edit'
 
-      expect(current_path).to eq(edit_station_path(station))
+      expect(current_path).to eq(edit_admin_station_path(station))
     end
     it 'they see a button to delete a station' do
       station = Station.create!(name: 'test2', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))

@@ -3,4 +3,7 @@ class Admin::StationsController < ApplicationController
     @station = Station.new
   end
 
+  def edit
+    @station = Station.find_by(slug: params[:id])
+  end
 end

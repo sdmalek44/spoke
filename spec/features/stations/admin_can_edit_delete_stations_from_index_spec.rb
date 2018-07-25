@@ -34,7 +34,7 @@ describe "admin user visits '/stations/:name" do
 
     click_button 'Edit'
 
-    expect(current_path).to eq(edit_station_path(station))
+    expect(current_path).to eq(edit_admin_station_path(station))
   end
 
   it 'they can see a button next to each station to edit a station' do

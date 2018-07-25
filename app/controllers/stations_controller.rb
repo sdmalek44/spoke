@@ -27,7 +27,15 @@ class StationsController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    station = Station.find_by(slug: params[:id])
+    if station.update(station_params)
+      flash[:notice] = "Successfully updated #{station.name}"
+      redirect_to station_path(station)
+    else
+      flash[:notce] = "Station was not updated. Try again."
+      redirect_to edit_admin_station_path(station)
+    end
   end
 
   def destroy
