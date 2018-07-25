@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stations, only: [:new, :edit]
     resources :trips, only: [:new, :edit]
+    resources :conditions, only: [:new, :edit]
   end
 end

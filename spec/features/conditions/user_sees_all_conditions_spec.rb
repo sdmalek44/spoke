@@ -69,5 +69,22 @@ describe "A visitor visits '/conditions'" do
       expect(page).to have_content("Mean Wind Speed: #{condition_1.mean_wind_speed}")
       expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
     end
+    it 'they see a button next to each condition to edit that condition' do
+      condition_1 = Condition.create(
+        date: Date.new(2017, 12, 11),
+        max_temperature: 75.0,
+        mean_temperature: 65.0,
+        min_temperature: 55.0,
+        mean_humidity: 75.0,
+        mean_visibility: 10.0,
+        mean_wind_speed: 11.0,
+        precipitation: 0.23)
+
+      visit conditions_path
+
+      click_button 'Edit'
+
+      expect(current_path).to eq(edit_admin_condition_path(condition_1))
+    end    
   end
 end
