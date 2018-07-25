@@ -36,7 +36,7 @@ class Condition < ApplicationRecord
     ride_counts = joins("inner join trips on conditions.date = trips.start_date")
     .where("conditions.max_temperature between #{temperature} and #{temperature + 9}")
     if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count
+      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
     else
       0
     end
@@ -70,7 +70,7 @@ class Condition < ApplicationRecord
     ride_counts = joins("inner join trips on conditions.date = trips.start_date")
     .where("conditions.precipitation between #{precipitation} and #{precipitation + 0.5}")
     if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count
+      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
     else
       0
     end
