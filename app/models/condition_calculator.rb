@@ -1,17 +1,13 @@
 class ConditionCalculator
-  def ride_count_by_max_temp
+  attr_reader :ride_count_by_max_temp
+  attr_reader :ride_count_by_precipitation
+  attr_reader :ride_count_by_mean_wind_speed
+  attr_reader :ride_count_by_mean_visibility
+
+  def initialize
     @ride_count_by_max_temp ||= Condition.ride_count_grouped_by_date_max_temperature
-  end
-
-  def ride_count_by_precipitation
     @ride_count_by_precipitation ||= Condition.ride_count_grouped_by_date_precipitation
-  end
-
-  def ride_count_by_mean_wind_speed
     @ride_count_by_mean_wind_speed ||= Condition.ride_count_grouped_by_date_mean_wind_speed
-  end
-
-  def ride_count_by_mean_visibility
     @ride_count_by_mean_visibility ||= Condition.ride_count_grouped_by_date_mean_visibility
   end
 
