@@ -43,7 +43,7 @@ describe "admin user visits 'admin/stations/:name/edit" do
     fill_in :station_installation_date, with: editted_installation_date
     click_on 'Update Station'
 
-    expect(current_path).to eq(edit_admin_station_path(station))
+    expect(current_path).to eq(admin_station_path(station))
     expect(page).to have_content("Station was not updated. Try again.")
   end
 end

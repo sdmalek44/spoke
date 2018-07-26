@@ -1,6 +1,5 @@
 class StationsController < ApplicationController
   before_action :require_registered_user, only: [:dashboard]
-  before_action :require_admin_user, only: [:create, :update, :destroy]
 
   def show
     @station = Station.friendly.find(params[:id])
@@ -17,35 +16,6 @@ class StationsController < ApplicationController
     @stations = Station.all
   end
 
-  def create
-    station = Station.new(station_params)
-    if station.save
-      flash[:notice] = "Successfully created #{station.name}"
-      redirect_to station_path(station)
-    else
-      flash[:notice] = "Station not created, try again"
-      redirect_to new_admin_station_path
-    end
-  end
-
-  def update
-    station = Station.find_by(slug: params[:id])
-    if station.update(station_params)
-      flash[:notice] = "Successfully updated #{station.name}"
-      redirect_to station_path(station)
-    else
-      flash[:notice] = "Station was not updated. Try again."
-      redirect_to edit_admin_station_path(station)
-    end
-  end
-
-  def destroy
-    station = Station.find_by(slug: params[:id])
-    station.destroy
-    flash[:notice] = "You have successfully deleted #{station.name}"
-    redirect_to stations_path
-  end
-
   def dashboard
     @stations = Station.all
     @stations_count = @stations.total_count
@@ -54,11 +24,5 @@ class StationsController < ApplicationController
     @station_least_bikes = @stations.station_with_least_bikes
     @newest_station = @stations.newest_station
     @oldest_station = @stations.oldest_station
-  end
-
-  private
-
-  def station_params
-    params.require(:station).permit(:name, :city, :dock_count, :installation_date)
   end
 end

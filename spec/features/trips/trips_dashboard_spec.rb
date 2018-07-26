@@ -18,6 +18,10 @@ describe "A registered user visits 'trip-dashboard'" do
     @trip_6 = Trip.create!(duration: 360, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
     @trip_7 = Trip.create!(duration: 420, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
     @trip_8 = Trip.create!(duration: 480, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
+
+    @condtion_1 = Condition.create!(date: Date.new(2001, 1, 1), max_temperature: 75.0, mean_temperature: 65.0, min_temperature: 55.0, mean_humidity: 75.0, mean_visibility: 10.0, mean_wind_speed: 11.0, precipitation: 0.23)
+    @condtion_2 = Condition.create!(date: Date.new(2002, 2, 2), max_temperature: 70.0, mean_temperature: 60.0, min_temperature: 50.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 12.0, precipitation: 0.12)
+    @condtion_3 = Condition.create!(date: Date.new(2003, 3, 3), max_temperature: 77.0, mean_temperature: 66.0, min_temperature: 51.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 22.0, precipitation: 1.12)
   end
 
   it 'they see information about ride durations' do
@@ -85,6 +89,34 @@ describe "A registered user visits 'trip-dashboard'" do
     within '.least-rides-by-date' do
       expect(page).to have_content("Date With Fewest Rides: 01/01/2001")
       expect(page).to have_content("Ride Count: 1")
+    end
+  end
+
+  it 'they see information about the weather on the day with the most rides' do
+    visit trips_dashboard_path
+
+    within '.most-rides-by-date' do
+      expect(page).to have_content("Max Temperature: #{@condtion_3.max_temperature} ºF")
+      expect(page).to have_content("Mean Temperature: #{@condition_3.mean_temperature} ºF")
+      expect(page).to have_content("Min Temperature: #{@condition_3.min_temperature} ºF")
+      expect(page).to have_content("Mean Humidity: #{@condition_3.mean_humidity}%")
+      expect(page).to have_content("Mean Visibility: #{@condition_3.mean_visibility} miles")
+      expect(page).to have_content("Mean Wind Speed: #{@condition_3.mean_wind_speed} mph")
+      expect(page).to have_content("Precipitation: #{@condition_3.precipitation} \"")
+    end
+  end
+
+  it 'they see information abouth the weather on the day with the most rides' do
+    visit trips_dashboard_path
+
+    within '.least-rides-by-date' do
+      expect(page).to have_content("Max Temperature: #{@condtion_1.max_temperature} ºF")
+      expect(page).to have_content("Mean Temperature: #{@condition_1.mean_temperature} ºF")
+      expect(page).to have_content("Min Temperature: #{@condition_1.min_temperature} ºF")
+      expect(page).to have_content("Mean Humidity: #{@condition_1.mean_humidity}%")
+      expect(page).to have_content("Mean Visibility: #{@condition_1.mean_visibility} miles")
+      expect(page).to have_content("Mean Wind Speed: #{@condition_1.mean_wind_speed} mph")
+      expect(page).to have_content("Precipitation: #{@condition_1.precipitation} \"")
     end
   end
 end
