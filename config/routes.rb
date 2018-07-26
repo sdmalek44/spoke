@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :edit, :create, :update, :destroy]
     resources :trips, only: [:new, :edit, :create, :update, :destroy]
     resources :conditions, only: [:new, :edit, :create, :update, :destroy]
+    resources :accessories, only: [:create]
+    get '/bike-shop/new', to: 'accessories#new'
   end
   get '/admin/dashboard', to: 'admin/users#dashboard'
   get '/cart', to: 'carts#show'

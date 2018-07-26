@@ -1,5 +1,5 @@
 class Accessory < ApplicationRecord
-  validates_presence_of :title
+  validates :title, presence: true, uniqueness: true
   validates_presence_of :description
   validates_presence_of :price
   has_many :order_accessories
