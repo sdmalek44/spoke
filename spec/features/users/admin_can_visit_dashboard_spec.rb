@@ -19,6 +19,13 @@ describe 'when admin user visits /dashboard' do
     @order_3 = @user.orders.create!(status: 'canceled')
     @order_3.order_accessories.create!(quantity: 4, accessory_id: @accessory1.id)
     @order_3.order_accessories.create!(quantity: 4, accessory_id: @accessory3.id)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+  end
+  it 'can see list of all orders' do
+    visit admin_dashboard_path
+
+    expect(page).to have_content("Order Id: #{@order_1.id}")
+    expect(page).to have_content("Order Id: #{@order_2.id}")
+    expect(page).to have_content("Order Id: #{@order_3.id}")
   end
 end
