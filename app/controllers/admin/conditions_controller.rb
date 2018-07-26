@@ -20,12 +20,12 @@ class Admin::ConditionsController < Admin::BaseController
 
   def update
     @condition = Condition.find(params[:id])
-    if condition.update(@condition_params)
+    if @condition.update(condition_params)
       flash[:notice] = "Successfully updated weather condition for #{@condition.date.strftime('%m/%d/%Y')}"
       redirect_to condition_path(@condition)
     else
       flash[:notice] = "Weather condition was not updated. Try again."
-      redirect_to edit_admin_condition_path(condition)
+      redirect_to edit_admin_condition_path(@condition)
     end
   end
 
