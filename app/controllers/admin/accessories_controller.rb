@@ -1,4 +1,7 @@
 class Admin::AccessoriesController < Admin::BaseController
+  def index
+    @accessories = Accessory.all
+  end
   def new
     @accessory = Accessory.new
   end
