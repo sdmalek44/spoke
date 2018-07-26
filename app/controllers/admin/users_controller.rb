@@ -1,6 +1,6 @@
-class Admin::UsersController < Base::Controller
+class Admin::UsersController < Admin::BaseController
 
   def dashboard
-
+    
   end
 end
