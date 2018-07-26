@@ -2,9 +2,9 @@
 <p>Email: <%= current_user.email %></p>
 
 <div class="dropdown">
-  <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-secondary dropdown-toggle" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sort By Status
-  </div>
+  </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="/admin/dashboard?status=all">All</a>
     <a class="dropdown-item" href="/admin/dashboard?status=ordered">Ordered</a>
@@ -15,8 +15,10 @@
 </div>
 
 <% if @orders %>
-  <%= @status_totals.each do |status, total| %>
-    <div><%= "#{status.titleize}: #{total}" %></div>
+  <% @status_totals.each do |status, total| %>
+    <div><%= status.titleize %> Orders: <%= total %></div>
+  <% end %>
+  </br>
   <% @orders.each do |order| %>
     <div><%= link_to "Order Id: #{order.id}", order_path(order) %></div>
     <div>Status: <%= order.status.titleize %></div>

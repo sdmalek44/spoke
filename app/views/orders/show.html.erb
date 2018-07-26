@@ -10,5 +10,5 @@
 <p>Status: <%= @order.status.titleize %></p>
 <p>Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></p>
 <% if (@order.status.downcase == "completed") || (@order.status.downcase == "cancelled") %>
-  <p><%= @order.status.titleize %> on: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
+  <p><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
 <% end %>
