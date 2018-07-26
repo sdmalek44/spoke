@@ -31,7 +31,7 @@ describe 'when admin user visits /dashboard' do
   it 'they can click a link to go to the admin bike-shop' do
     visit admin_dashboard_path
 
-    click_link 'Admin Bike Shop'
+    click_link 'View All Accessories'
 
     expect(current_path).to eq(admin_bike_shop_path)
   end

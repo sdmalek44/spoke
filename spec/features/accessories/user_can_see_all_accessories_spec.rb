@@ -39,16 +39,18 @@ describe "A user visits '/bike-shop'" do
     end
     it 'they see same information as a regular visitor' do
       accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50)
-      accessory_2 = Accessory.create(title: 'Water Bottle', description: 'Stay hydrated', price: 8.50)
+      accessory_2 = Accessory.create(title: 'Water Bottle', description: 'Stay hydrated', price: 8.50, retired?: true)
 
       visit admin_bike_shop_path
 
       expect(page).to have_content(accessory_1.title)
       expect(page).to have_content(accessory_1.description)
       expect(page).to have_content("Price: $#{accessory_1.price}")
+      expect(page).to have_content("Status: Active")
       expect(page).to have_content(accessory_2.title)
       expect(page).to have_content(accessory_2.description)
       expect(page).to have_content("Price: $#{accessory_2.price}")
+      expect(page).to have_content("Status: Retired")
     end
   end
 end

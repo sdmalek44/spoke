@@ -17,6 +17,24 @@ class Admin::AccessoriesController < Admin::BaseController
     end
   end
 
+  def edit
+    @accessory = Accessory.find(params[:id])
+  end
+
+  def update
+    @accessory = Accessory.find(params[:id])
+    if @accessory.update(accessory_params)
+      flash[:notice] = "Successfully update #{@accessory}"
+      redirect_to accessory_path(@accessory)
+    else
+      flash[:notice] = "Accessory not update. Try again."
+      render :edit
+    end
+  end
+
+  def destroy
+  end
+
   private
 
   def accessory_params
