@@ -15,8 +15,9 @@
 </div>
 
 <% if @orders %>
+  <%= @status_totals.each do |status, total| %>
+    <div><%= "#{status.titleize}: #{total}" %></div>
   <% @orders.each do |order| %>
-
     <div><%= link_to "Order Id: #{order.id}", order_path(order) %></div>
     <div>Status: <%= order.status.titleize %></div>
     <% if order.status.downcase == 'paid' || order.status.downcase == 'ordered' %>
