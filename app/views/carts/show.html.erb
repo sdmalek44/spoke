@@ -14,8 +14,8 @@
     </article>
   <% end %>
 <div class="">Grand Total: <%= currency = number_to_currency(@cart.grand_total(@cart_accessories)) %></div>
-<% if current_user %>
+<% if current_user && !(@cart_accessories.empty?)%>
   <%= button_to "Checkout", orders_path(grand_total: currency), method: :post %>
-<% else %>
+<% elsif current_user.nil? %>
   <%= button_to "Checkout", login_path, method: :get %>
 <% end %>
