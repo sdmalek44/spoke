@@ -31,26 +31,17 @@ describe 'a registered user visits /conditions-dashboard' do
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_max_temperature_range(70)
     expect(page).to have_content("Highest number of rides: #{ride_count}")
-
-    ride_count = Condition.highest_number_of_rides_on_a_day_in_max_temperature_range(0)
-    expect(page).to have_content("Highest number of rides: #{ride_count}")
   end
   it 'sees lowest number of rides with max temperature in 10 degree chunks' do
     visit conditions_dashboard_path
 
     ride_count = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(70)
     expect(page).to have_content("Lowest number of rides: #{ride_count}")
-
-    ride_count = Condition.lowest_number_of_rides_on_a_day_in_max_temperature_range(0)
-    expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
   it 'sees average number of rides with max temperature in 10 degree chunks' do
     visit conditions_dashboard_path
 
     ride_count = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(70)
-    expect(page).to have_content("Average number of rides: #{ride_count}")
-
-    ride_count = Condition.average_number_of_rides_on_a_day_in_max_temperature_range(0)
     expect(page).to have_content("Average number of rides: #{ride_count}")
   end
 
@@ -59,26 +50,17 @@ describe 'a registered user visits /conditions-dashboard' do
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_precipitation_range(0)
     expect(page).to have_content("Highest number of rides: #{ride_count}")
-
-    ride_count = Condition.highest_number_of_rides_on_a_day_in_precipitation_range(0.5)
-    expect(page).to have_content("Highest number of rides: #{ride_count}")
   end
   it 'sees lowest number of rides with precipitation in half inch chunks' do
     visit conditions_dashboard_path
 
     ride_count = Condition.lowest_number_of_rides_on_a_day_in_precipitation_range(0)
     expect(page).to have_content("Lowest number of rides: #{ride_count}")
-
-    ride_count = Condition.lowest_number_of_rides_on_a_day_in_precipitation_range(0.5)
-    expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
   it 'sees average number of rides with precipitation in half inch chunks' do
     visit conditions_dashboard_path
 
     ride_count = Condition.average_number_of_rides_on_a_day_in_precipitation_range(0)
-    expect(page).to have_content("Average number of rides: #{ride_count}")
-
-    ride_count = Condition.average_number_of_rides_on_a_day_in_precipitation_range(0.5)
     expect(page).to have_content("Average number of rides: #{ride_count}")
   end
 
@@ -87,26 +69,17 @@ describe 'a registered user visits /conditions-dashboard' do
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(10)
     expect(page).to have_content("Highest number of rides: #{ride_count}")
-
-    ride_count = Condition.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(100)
-    expect(page).to have_content("Highest number of rides: #{ride_count}")
   end
   it 'sees lowest number of rides with mean_wind_speed in 4 mph ranges' do
     visit conditions_dashboard_path
 
     ride_count = Condition.lowest_number_of_rides_on_a_day_in_mean_wind_speed_range(10)
     expect(page).to have_content("Lowest number of rides: #{ride_count}")
-
-    ride_count = Condition.lowest_number_of_rides_on_a_day_in_mean_wind_speed_range(100)
-    expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
   it 'sees average number of rides with mean_wind_speed in 4 mph ranges' do
     visit conditions_dashboard_path
 
     ride_count = Condition.average_number_of_rides_on_a_day_in_mean_wind_speed_range(10)
-    expect(page).to have_content("Average number of rides: #{ride_count}")
-
-    ride_count = Condition.average_number_of_rides_on_a_day_in_mean_wind_speed_range(100)
     expect(page).to have_content("Average number of rides: #{ride_count}")
   end
 
@@ -115,26 +88,17 @@ describe 'a registered user visits /conditions-dashboard' do
 
     ride_count = Condition.highest_number_of_rides_on_a_day_in_mean_visibility_range(4)
     expect(page).to have_content("Highest number of rides: #{ride_count}")
-
-    ride_count = Condition.highest_number_of_rides_on_a_day_in_mean_visibility_range(100)
-    expect(page).to have_content("Highest number of rides: #{ride_count}")
   end
   it 'sees lowest number of rides with mean_visibility in 4 mph ranges' do
     visit conditions_dashboard_path
 
     ride_count = Condition.lowest_number_of_rides_on_a_day_in_mean_visibility_range(4)
     expect(page).to have_content("Lowest number of rides: #{ride_count}")
-
-    ride_count = Condition.lowest_number_of_rides_on_a_day_in_mean_visibility_range(100)
-    expect(page).to have_content("Lowest number of rides: #{ride_count}")
   end
   it 'sees average number of rides with mean_visibility in 4 mph ranges' do
     visit conditions_dashboard_path
 
     ride_count = Condition.average_number_of_rides_on_a_day_in_mean_visibility_range(4)
-    expect(page).to have_content("Average number of rides: #{ride_count}")
-
-    ride_count = Condition.average_number_of_rides_on_a_day_in_mean_visibility_range(100)
     expect(page).to have_content("Average number of rides: #{ride_count}")
   end
 end
