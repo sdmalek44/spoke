@@ -26,7 +26,7 @@ describe "admin user visits '/stations/new" do
     fill_in :station_installation_date, with: Date.new(2014, 1, 1)
     click_on 'Create Station'
 
-    expect(current_path).to eq(new_admin_station_path)
+    expect(current_path).to eq(admin_stations_path)
     expect(page).to have_content("Station not created, try again")
   end
 end

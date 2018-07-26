@@ -71,6 +71,12 @@ Accessory.create(title: 'Fanny Pack', description: "It's like a backpack for you
 Accessory.create(title: 'Postcard', description: 'Write home to your friends', price: 1.00)
 Accessory.create(title: 'Picture Frame', description: 'Display your favorite photos', price: 7.00)
 Accessory.create(title: 'Bike Seat', description: 'Stay comfortable on long bike rides', price: 30.00)
+Accessory.create(title: 'Spoke', description: 'Keep your tires strong and sturdy', price: 3.00, retired?: true)
+Accessory.create(title: 'Sunscreen', description: "Don't Get Burnt!", price: 5.00, retired?: true)
+Accessory.create(title: 'Shoes', description: 'They go on your feet', price: 25.00, retired?: true)
+Accessory.create(title: 'Dog Leash', description: 'For walking your dog', price: 10.00, retired?: true)
+Accessory.create(title: 'Flashlight', description: 'For late night rides', price: 15.00, retired?: true)
+
 
 puts "Seeded #{Accessory.count} accessories"
 

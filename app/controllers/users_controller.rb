@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_registered_user, only: [:dashboard]
+
   def new
     @user = User.new
   end
@@ -7,11 +9,15 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to dashboard_index_path
+      redirect_to dashboard_path
     else
       flash[:notice] = "Invalid input. Please try again."
       render :new
     end
+  end
+
+  def dashboard
+    @orders = current_user.orders
   end
 
   private

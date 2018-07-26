@@ -38,11 +38,27 @@
 </div>
 
 <div class="most-rides-by-date">
-  <p>Date With Most Rides: <%= @date_with_most_rides[:date].strftime('%m/%d/%Y') %>
-  <p>Ride Count: <%= @date_with_most_rides[:rides] %></p>
+  <h4>Date With Most Rides: <%= @date_with_most_rides[:date].strftime('%m/%d/%Y') %></h4>
+  <h4>Ride Count: <%= @date_with_most_rides[:rides] %></h4>
+  <h5>Weather Conditions:</h5>
+  <p>Max Temperature: <%= @date_with_most_rides[:condition].max_temperature %> ºF</p>
+  <p>Mean Temperature: <%= @date_with_most_rides[:condition].mean_temperature %> ºF</p>
+  <p>Min Temperature: <%= @date_with_most_rides[:condition].min_temperature %> ºF</p>
+  <p>Mean Humidity: <%= @date_with_most_rides[:condition].mean_humidity %>%</p>
+  <p>Mean Visibility: <%= @date_with_most_rides[:condition].mean_visibility %> miles</p>
+  <p>Mean Wind Speed: <%= @date_with_most_rides[:condition].mean_wind_speed %> mph</p>
+  <p>Precipitation: <%= @date_with_most_rides[:condition].precipitation %> "</p>
 </div>
 
 <div class="least-rides-by-date">
-  <p>Date With Fewest Rides: <%= @date_with_least_rides[:date].strftime('%m/%d/%Y') %>
-  <p>Ride Count: <%= @date_with_least_rides[:rides] %></p>
+  <h4>Date With Fewest Rides: <%= @date_with_least_rides[:date].strftime('%m/%d/%Y') %></h4>
+  <h4>Ride Count: <%= @date_with_least_rides[:rides] %></h4>
+  <h5>Weather Conditions:</h5>
+  <p>Max Temperature: <%= @date_with_least_rides[:condition].max_temperature %> ºF</p>
+  <p>Mean Temperature: <%= @date_with_least_rides[:condition].mean_temperature %> ºF</p>
+  <p>Min Temperature: <%= @date_with_least_rides[:condition].min_temperature %> ºF</p>
+  <p>Mean Humidity: <%= @date_with_least_rides[:condition].mean_humidity %>%</p>
+  <p>Mean Visibility: <%= @date_with_least_rides[:condition].mean_visibility %> miles</p>
+  <p>Mean Wind Speed: <%= @date_with_least_rides[:condition].mean_wind_speed %> mph</p>
+  <p>Precipitation: <%= @date_with_least_rides[:condition].precipitation %> "</p>
 </div>

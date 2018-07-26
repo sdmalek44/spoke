@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :require_registered_user, only: [:dashboard]
+  before_action :require_admin_user, only: [:create, :update, :destroy]
 
   def index
     @trips = Trip.search(params[:page])
@@ -7,35 +8,6 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-  end
-
-  def create
-    trip = Trip.new(trip_params)
-    if trip.save
-      flash[:notice] = 'Successfully created trip'
-      redirect_to trip_path(trip)
-    else
-      flash[:notice] = 'Trip not created. Try again.'
-      redirect_to new_admin_trip_path
-    end
-  end
-
-  def destroy
-    trip = Trip.find(params[:id])
-    trip.destroy
-    flash[:notice] = "Successfully deleted trip."
-    redirect_to trips_path
-  end
-
-  def update
-    trip = Trip.find(params[:id])
-    if trip.update(trip_params)
-      flash[:notice] = "Successfully updated trip"
-      redirect_to trip_path(trip)
-    else
-      flash[:notice] = "Trip was not updated. Try again."
-      redirect_to edit_admin_trip_path(trip)
-    end
   end
 
   def dashboard
@@ -49,22 +21,8 @@ class TripsController < ApplicationController
     @most_ridden_bike = Trip.most_ridden_bike
     @least_ridden_bike = Trip.least_ridden_bike
     @subscription_type_count = Trip.subscription_type_count
-    @total_trips = Trip.all.count
+    @total_trips = Trip.count
     @date_with_most_rides = Trip.date_with_most_rides
     @date_with_least_rides = Trip.date_with_least_rides
-  end
-
-  private
-
-  def trip_params
-    params.require(:trip).permit(
-      :duration,
-      :start_date,
-      :end_date,
-      :start_station_id,
-      :end_station_id,
-      :bike_id,
-      :zip_code,
-      :subscription_type)
   end
 end

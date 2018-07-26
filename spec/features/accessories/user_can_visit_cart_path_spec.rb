@@ -61,6 +61,7 @@ describe 'when user visits /cart' do
     expect(page).to have_content("Subtotal: $#{subtotal12}")
     expect(page).to have_content("Subtotal: $#{subtotal1}")
     expect(page).to have_content("Grand Total: $#{grand_total}")
+    expect(page).to have_button("Checkout")
   end
   it 'can click to remove an item from cart' do
     visit cart_path
@@ -107,5 +108,18 @@ describe 'when user visits /cart' do
     within(".cart-accessory-#{@accessory12.id}") do
       expect(page).to have_content("Quantity: 3")
     end
+  end
+  it 'can click checkout button and see flash messsage' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+    visit cart_path
+
+    click_button "Checkout"
+
+    expect(current_path).to eq(dashboard_path)
+    
+    expect(page).to have_content("Successfully submitted your order totalling $31.00")
+    expect(page).to have_link("Order Id: 1")
+
   end
 end
