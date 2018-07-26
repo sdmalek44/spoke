@@ -5,7 +5,12 @@ class OrdersController < ApplicationController
     order = current_user.orders.create(status: 'pending')
     order.create_order_accessories(session[:cart])
     session[:cart] = nil
-    
+
     redirect_to dashboard_path
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_accessories = @order.order_accessories
   end
 end
