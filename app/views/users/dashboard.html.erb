@@ -1,0 +1,8 @@
+<p>Username: <%= current_user.username %></p>
+<p>Email: <%= current_user.email %></p>
+
+<% if @orders %>
+  <% @orders.each_with_index do |order, index| %>
+    <%= link_to "Order Id: #{order.id}", order_path(order) %>
+  <% end %>
+<% end %>

@@ -11,8 +11,8 @@ describe 'user is logged in' do
 
     click_button 'Log In'
 
-    expect(current_path).to eq(dashboard_index_path)
-    
+    expect(current_path).to eq(dashboard_path)
+
     click_link "Logout"
 
     expect(page).to have_link("Login")

@@ -8,4 +8,7 @@ describe User, type: :model do
     it {should validate_uniqueness_of :email}
     it {should have_secure_password}
   end
+  describe 'Relationships' do
+    it {should have_many :orders}
+  end
 end
