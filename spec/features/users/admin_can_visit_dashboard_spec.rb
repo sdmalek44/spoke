@@ -28,4 +28,11 @@ describe 'when admin user visits /dashboard' do
     expect(page).to have_content("Order Id: #{@order_2.id}")
     expect(page).to have_content("Order Id: #{@order_3.id}")
   end
+  it 'they can click a link to go to the admin bike-shop' do
+    visit admin_dashboard_path
+
+    click_link 'Admin Bike Shop'
+
+    expect(current_path).to eq(admin_bike_shop_path)
+  end
 end
