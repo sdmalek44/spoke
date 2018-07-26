@@ -15,4 +15,8 @@ class Order < ApplicationRecord
       sum += (order_accesory.quantity * order_accesory.accessory.price)
     end
   end
+
+  def self.orders_per_status
+    group(:status).count
+  end
 end

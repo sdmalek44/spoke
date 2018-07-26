@@ -1,6 +1,18 @@
 <p>Username: <%= current_user.username %></p>
 <p>Email: <%= current_user.email %></p>
 
+<div class="dropdown">
+  <div class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By Status
+  </div>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/admin/dashboard?status=ordered">Ordered</a>
+    <a class="dropdown-item" href="/admin/dashboard?status=paid">Paid</a>
+    <a class="dropdown-item" href="/admin/dashboard?status=cancelled">Cancelled</a>
+    <a class="dropdown-item" href="/admin/dashboard?status=completed">Completed</a>
+  </div>
+</div>
+
 <% if @orders %>
   <% @orders.each do |order| %>
     <%= link_to "Order Id: #{order.id}", order_path(order) %>
