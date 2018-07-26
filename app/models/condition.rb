@@ -8,139 +8,28 @@ class Condition < ApplicationRecord
   validates_presence_of :mean_wind_speed
   validates_presence_of :precipitation
 
-  def self.highest_number_of_rides_on_a_day_in_max_temperature_range(temperature)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.max_temperature between #{temperature} and #{temperature + 9}")
-    .group(:start_date, :id)
-    .order('count(trips.id) desc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
+  def self.ride_count_grouped_by_date_max_temperature
+    joins("inner join trips on conditions.date = trips.start_date")
+    .group(:date, :max_temperature).count
   end
 
-  def self.lowest_number_of_rides_on_a_day_in_max_temperature_range(temperature)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.max_temperature between #{temperature} and #{temperature + 9}")
-    .group(:start_date, :id)
-    .order('count(trips.id) asc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
+  def self.ride_count_grouped_by_date_precipitation
+    joins("inner join trips on conditions.date = trips.start_date")
+    .group(:date, :precipitation).count
   end
 
-  def self.average_number_of_rides_on_a_day_in_max_temperature_range(temperature)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.max_temperature between #{temperature} and #{temperature + 9}")
-    if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
-    else
-      0
-    end
+  def self.ride_count_grouped_by_date_mean_wind_speed
+    joins("inner join trips on conditions.date = trips.start_date")
+    .group(:date, :mean_wind_speed).count
   end
 
-  def self.highest_number_of_rides_on_a_day_in_precipitation_range(precipitation)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.precipitation between #{precipitation} and #{precipitation + 0.5}")
-    .group(:start_date, :id)
-    .order('count(trips.id) desc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.lowest_number_of_rides_on_a_day_in_precipitation_range(precipitation)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.precipitation between #{precipitation} and #{precipitation + 0.5}")
-    .group(:start_date, :id)
-    .order('count(trips.id) asc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.average_number_of_rides_on_a_day_in_precipitation_range(precipitation)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.precipitation between #{precipitation} and #{precipitation + 0.5}")
-    if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
-    else
-      0
-    end
-  end
-
-  def self.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(mean_wind_speed)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_wind_speed between #{mean_wind_speed} and #{mean_wind_speed + 4}")
-    .group(:start_date, :id)
-    .order('count(trips.id) desc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.lowest_number_of_rides_on_a_day_in_mean_wind_speed_range(mean_wind_speed)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_wind_speed between #{mean_wind_speed} and #{mean_wind_speed + 4}")
-    .group(:start_date, :id)
-    .order('count(trips.id) asc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.average_number_of_rides_on_a_day_in_mean_wind_speed_range(mean_wind_speed)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_wind_speed between #{mean_wind_speed} and #{mean_wind_speed + 4}")
-    if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
-    else
-      0
-    end
-  end
-
-  def self.highest_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
-    .group(:start_date, :id)
-    .order('count(trips.id) desc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.lowest_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
-    .group(:start_date, :id)
-    .order('count(trips.id) asc').count
-    unless ride_counts.first.nil?
-      ride_counts.first.last
-    else
-      0
-    end
-  end
-
-  def self.average_number_of_rides_on_a_day_in_mean_visibility_range(mean_visibility)
-    ride_counts = joins("inner join trips on conditions.date = trips.start_date")
-    .where("conditions.mean_visibility between #{mean_visibility} and #{mean_visibility + 4}")
-    if ride_counts.group(:start_date, :id).count.count > 0
-      ride_counts.count / ride_counts.group(:start_date, :id).count.count.to_f
-    else
-      0
-    end
+  def self.ride_count_grouped_by_date_mean_visibility
+    joins("inner join trips on conditions.date = trips.start_date")
+    .group(:date, :mean_visibility).count
   end
 end
+
+# Condition.select('conditions.date, count(trips.id) as trip_count').joins("INNER JOIN trips ON conditions.date = trips.start_date").where("conditions.max_temperature between 30 and 39").group(:date, :id).order('trip_count')
+# ride_count = Condition.joins("inner join trips on conditions.date = trips.start_date").group(:date, :max_temperature).count   # {[date, temp] => ride_count}
+#
+# rides_in_the_70s = ride_count.select {|date,temp| date >= 70 && date < 80}
