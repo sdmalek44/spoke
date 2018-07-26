@@ -25,4 +25,19 @@ describe "An admin user visits '/admin/bike-shop/new'" do
     expect(page).to have_link('Add to Cart')
     expect(Accessory.last.image).to eq('https://www.hsjaa.com/images/joomlart/demo/default.jpg')
   end
+  it 'they cannot create a new accessory without inputting valid information' do
+    title = 'Test Accessory'
+    description = "It's testable!"
+    price = 15.0
+
+    visit admin_bike_shop_new_path
+
+    fill_in :accessory_title, with: nil
+    fill_in :accessory_description, with: description
+    fill_in :accessory_price, with: price
+    click_on 'Create Accessory'
+
+    expect(current_path).to eq(admin_accessories_path)
+    expect(page).to have_content("Accessory not created. Try again.")
+  end
 end
