@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :edit, :create, :update, :destroy]
     resources :conditions, only: [:new, :edit, :create, :update, :destroy]
   end
+  get '/admin/dashboard', to: 'admin/users#dashboard'
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
   resources :orders, only: [:create, :show]
