@@ -74,7 +74,7 @@ Accessory.create(title: 'Bike Seat', description: 'Stay comfortable on long bike
 Accessory.create(title: 'Spoke', description: 'Keep your tires strong and sturdy', price: 3.00, retired?: true)
 Accessory.create(title: 'Sunscreen', description: "Don't Get Burnt!", price: 5.00, retired?: true)
 Accessory.create(title: 'Shoes', description: 'They go on your feet', price: 25.00, retired?: true)
-Accessory.create(title: 'Dog Leash', description: 'For walking your food', price: 10.00, retired?: true)
+Accessory.create(title: 'Dog Leash', description: 'For walking your dog', price: 10.00, retired?: true)
 Accessory.create(title: 'Flashlight', description: 'For late night rides', price: 15.00, retired?: true)
 
 

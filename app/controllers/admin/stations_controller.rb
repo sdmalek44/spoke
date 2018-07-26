@@ -29,7 +29,6 @@ class Admin::StationsController < Admin::BaseController
     end
   end
 
-
   def destroy
     station = Station.find_by(slug: params[:id])
     station.destroy

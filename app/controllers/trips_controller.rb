@@ -25,18 +25,4 @@ class TripsController < ApplicationController
     @date_with_most_rides = Trip.date_with_most_rides
     @date_with_least_rides = Trip.date_with_least_rides
   end
-
-  private
-
-  def trip_params
-    params.require(:trip).permit(
-      :duration,
-      :start_date,
-      :end_date,
-      :start_station_id,
-      :end_station_id,
-      :bike_id,
-      :zip_code,
-      :subscription_type)
-  end
 end

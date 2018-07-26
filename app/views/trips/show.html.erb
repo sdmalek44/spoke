@@ -13,5 +13,5 @@
 <div class="">Zip Code: <%= @trip.zip_code %></div>
 <% if admin_user? %>
   <%= button_to 'Edit', edit_admin_trip_path(@trip), method: :get %>
-  <%= button_to 'Delete', trip_path(@trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
+  <%= button_to 'Delete', admin_trip_path(@trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
 <% end %>
