@@ -110,7 +110,7 @@ describe "A registered user visits 'trip-dashboard'" do
     visit trips_dashboard_path
 
     within '.least-rides-by-date' do
-      expect(page).to have_content("Max Temperature: #{@condtion_1.max_temperature} ºF")
+      expect(page).to have_content("Max Temperature: #{@condition_1.max_temperature} ºF")
       expect(page).to have_content("Mean Temperature: #{@condition_1.mean_temperature} ºF")
       expect(page).to have_content("Min Temperature: #{@condition_1.min_temperature} ºF")
       expect(page).to have_content("Mean Humidity: #{@condition_1.mean_humidity}%")
