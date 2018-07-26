@@ -75,11 +75,13 @@ class Trip < ApplicationRecord
 
   def self.date_with_most_rides
     date_rides = group(:start_date).order('count_all DESC').count.first
-    {date: date_rides.first, rides: date_rides.last}
+    condition = Condition.find_by(date: date_rides.first)
+    {date: date_rides.first, rides: date_rides.last, condition: condition}
   end
 
   def self.date_with_least_rides
     date_rides = group(:start_date).order('count_all ASC').count.first
-    {date: date_rides.first, rides: date_rides.last}
+    condition = Condition.find_by(date: date_rides.first)
+    {date: date_rides.first, rides: date_rides.last, condition: condition}
   end
 end

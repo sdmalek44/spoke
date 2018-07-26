@@ -19,9 +19,9 @@ describe "A registered user visits 'trip-dashboard'" do
     @trip_7 = Trip.create!(duration: 420, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_3.id, end_station_id: @station_4.id, bike_id: 2, subscription_type: 1, zip_code: 68686)
     @trip_8 = Trip.create!(duration: 480, start_date: Date.new(2003, 3, 3), end_date: Date.new(2003, 3, 3), start_station_id: @station_4.id, end_station_id: @station_3.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
 
-    @condtion_1 = Condition.create!(date: Date.new(2001, 1, 1), max_temperature: 75.0, mean_temperature: 65.0, min_temperature: 55.0, mean_humidity: 75.0, mean_visibility: 10.0, mean_wind_speed: 11.0, precipitation: 0.23)
-    @condtion_2 = Condition.create!(date: Date.new(2002, 2, 2), max_temperature: 70.0, mean_temperature: 60.0, min_temperature: 50.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 12.0, precipitation: 0.12)
-    @condtion_3 = Condition.create!(date: Date.new(2003, 3, 3), max_temperature: 77.0, mean_temperature: 66.0, min_temperature: 51.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 22.0, precipitation: 1.12)
+    @condition_1 = Condition.create!(date: Date.new(2001, 1, 1), max_temperature: 75.0, mean_temperature: 65.0, min_temperature: 55.0, mean_humidity: 75.0, mean_visibility: 10.0, mean_wind_speed: 11.0, precipitation: 0.23)
+    @condition_2 = Condition.create!(date: Date.new(2002, 2, 2), max_temperature: 70.0, mean_temperature: 60.0, min_temperature: 50.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 12.0, precipitation: 0.12)
+    @condition_3 = Condition.create!(date: Date.new(2003, 3, 3), max_temperature: 77.0, mean_temperature: 66.0, min_temperature: 51.0, mean_humidity: 65.0, mean_visibility: 5.0, mean_wind_speed: 22.0, precipitation: 1.12)
   end
 
   it 'they see information about ride durations' do
@@ -96,7 +96,7 @@ describe "A registered user visits 'trip-dashboard'" do
     visit trips_dashboard_path
 
     within '.most-rides-by-date' do
-      expect(page).to have_content("Max Temperature: #{@condtion_3.max_temperature} ºF")
+      expect(page).to have_content("Max Temperature: #{@condition_3.max_temperature} ºF")
       expect(page).to have_content("Mean Temperature: #{@condition_3.mean_temperature} ºF")
       expect(page).to have_content("Min Temperature: #{@condition_3.min_temperature} ºF")
       expect(page).to have_content("Mean Humidity: #{@condition_3.mean_humidity}%")
