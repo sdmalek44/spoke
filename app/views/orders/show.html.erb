@@ -8,6 +8,6 @@
 <p>Grand Total: <%= number_to_currency(@order.grand_total) %></p>
 <p>Status: <%= @order.status %></p>
 <p>Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></p>
-<% if @order.status.titleize == "Completed" || "Cancelled" %>
+<% if @order.status.titleize == ("Completed" || "Cancelled") %>
   <p><%= @order.status.titleize %> on: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
 <% end %>
