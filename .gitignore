@@ -21,3 +21,5 @@ coverage
 
 /db/csv
 .rspec
+
+config/application.yml

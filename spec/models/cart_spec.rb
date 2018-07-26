@@ -33,19 +33,19 @@ RSpec.describe Cart do
     end
     it 'can make accessories from contents' do
       accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
-      accessory_2 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+      accessory_2 = Accessory.create(title: 'Tire', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
 
       expect(subject.make_accessories).to eq([accessory_1, accessory_2])
     end
     it 'can create total for single item with' do
       accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
-      accessory_2 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+      accessory_2 = Accessory.create(title: 'Tire', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
 
       expect(subject.subtotal(accessory_1)).to eq(25.00)
     end
     it 'calculate total for whole cart' do
       accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
-      accessory_2 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+      accessory_2 = Accessory.create(title: 'Tire', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
 
       expect(subject.grand_total(Accessory.all)) .to eq(62.50)
     end
