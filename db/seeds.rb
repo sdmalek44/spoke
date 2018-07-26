@@ -83,3 +83,7 @@ puts "Seeded #{Accessory.count} accessories"
 User.create!(username: 'admin', password: 'password', email: 'admin@email.com', role: 1)
 
 puts "Created admin user (username: admin, password: password)"
+
+User.create!(username: 'default', password: 'password', email: 'default@email.com')
+
+puts 'Created default user (username: default, password: password)'
