@@ -18,14 +18,16 @@
   <% @orders.each do |order| %>
 
     <div><%= link_to "Order Id: #{order.id}", order_path(order) %></div>
-    <% if order.status == 'paid' || order.status == 'ordered' %>
-      <div><%= link_to "Cancel", admin_order_path(order) %></div>
+    <div>Status: <%= order.status.titleize %></div>
+    <% if order.status.downcase == 'paid' || order.status.downcase == 'ordered' %>
+      <div><%= link_to "Cancel", admin_order_path(order, status: 'cancelled'), method: :patch %></div>
     <% end %>
-    <% if order.status == 'ordered' %>
-      <div class=""><%= link_to "Mark As Paid", admin_order_path(order) %></div>
+    <% if order.status.downcase == 'ordered' %>
+      <div class=""><%= link_to "Mark As Paid", admin_order_path(order, status: 'paid'), method: :patch %></div>
     <% end %>
-    <% if order.status == 'paid' %>
-      <div class=""><%= link_to "Mark As Completed", admin_order_path(order) %></div>
+    <% if order.status.downcase == 'paid' %>
+      <div class=""><%= link_to "Mark As Completed", admin_order_path(order, status: 'completed'), method: :patch %></div>
     <% end %>
+  </br>
   <% end %>
 <% end %>

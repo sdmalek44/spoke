@@ -3,11 +3,12 @@
   <div><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></div>
   <div>Quantity: <%= order_accessory.quantity %></div>
   <div>Subtotal: <%= number_to_currency(order_accessory.subtotal) %></div>
+  </br>
 <% end %>
 
 <p>Grand Total: <%= number_to_currency(@order.grand_total) %></p>
-<p>Status: <%= @order.status %></p>
+<p>Status: <%= @order.status.titleize %></p>
 <p>Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></p>
-<% if @order.status.titleize == ("Completed" || "Cancelled") %>
+<% if (@order.status.downcase == "completed") || (@order.status.downcase == "cancelled") %>
   <p><%= @order.status.titleize %> on: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
 <% end %>
