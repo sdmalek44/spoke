@@ -10,8 +10,8 @@ class Trip < ApplicationRecord
 
   enum subscription_type: ['customer', 'subscriber']
 
-  belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id
-  belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id
+  belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id, dependent: :destroy
+  belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id, dependent: :destroy
 
   def self.average_ride_duration
     average(:duration)
@@ -75,11 +75,13 @@ class Trip < ApplicationRecord
 
   def self.date_with_most_rides
     date_rides = group(:start_date).order('count_all DESC').count.first
-    {date: date_rides.first, rides: date_rides.last}
+    condition = Condition.find_by(date: date_rides.first)
+    {date: date_rides.first, rides: date_rides.last, condition: condition}
   end
 
   def self.date_with_least_rides
     date_rides = group(:start_date).order('count_all ASC').count.first
-    {date: date_rides.first, rides: date_rides.last}
+    condition = Condition.find_by(date: date_rides.first)
+    {date: date_rides.first, rides: date_rides.last, condition: condition}
   end
 end

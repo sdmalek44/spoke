@@ -9,6 +9,9 @@ I see the Breakout of average, highest, and lowest number of rides on days with 
 =end
 describe 'a registered user visits /conditions-dashboard' do
   before :each do
+    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     station1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
     station2 = Station.create(name: 'Test 2', dock_count: 25, city: 'Chicago', installation_date: Date.new(2017, 11, 11))
     Condition.create!(date: Date.new(2017, 12, 11), max_temperature: 75.0, mean_temperature: 65.0, min_temperature: 55.0, mean_humidity: 75.0, mean_visibility: 10.0, mean_wind_speed: 11.0, precipitation: 0.23)

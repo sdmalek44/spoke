@@ -11,6 +11,6 @@
   <p>Precipitation: <%= condition.precipitation %> "</p>
   <% if admin_user? %>
     <%= button_to 'Edit', edit_admin_condition_path(condition), method: :get %>
-    <%= button_to 'Delete', condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
+    <%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
   <% end %>
 <% end %>

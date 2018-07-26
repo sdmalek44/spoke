@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/dashboard', to: 'users#dashboard'
   resources :users, only: [:new, :create]
-  resources :stations, only: [:show, :index, :create, :update, :destroy]
-  resources :trips, only: [:show, :index, :create, :update, :destroy]
-  resources :conditions, only: [:index, :show, :create, :update, :destroy]
+  resources :stations, only: [:show, :index]
+  resources :trips, only: [:show, :index]
+  resources :conditions, only: [:index, :show]
   get '/conditions-dashboard', to: 'conditions#dashboard'
   resources :accessories, only: [:show]
   resources :carts, only: [:create]
   namespace :admin do
-    resources :stations, only: [:new, :edit]
-    resources :trips, only: [:new, :edit]
-    resources :conditions, only: [:new, :edit]
+    resources :stations, only: [:new, :edit, :create, :update, :destroy]
+    resources :trips, only: [:new, :edit, :create, :update, :destroy]
+    resources :conditions, only: [:new, :edit, :create, :update, :destroy]
   end
   get '/admin/dashboard', to: 'admin/users#dashboard'
   get '/cart', to: 'carts#show'
