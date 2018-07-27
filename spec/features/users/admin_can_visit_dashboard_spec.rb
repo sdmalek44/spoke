@@ -30,12 +30,61 @@ describe 'when admin user visits /dashboard' do
     expect(page).to have_content("Order Id: #{@order_2.id}")
     expect(page).to have_content("Order Id: #{@order_3.id}")
   end
-
-  it 'they can click a link to go to the admin bike-shop' do
+  it 'can select all orders' do
     visit admin_dashboard_path
 
-    click_link 'View All Accessories'
+    click_on "Sort By Status"
+    click_on "All"
 
-    expect(current_path).to eq(admin_bike_shop_path)
+    expect(page).to have_content("Order Id: #{@order_1.id}")
+    expect(page).to have_content("Order Id: #{@order_2.id}")
+    expect(page).to have_content("Order Id: #{@order_3.id}")
+    expect(page).to have_content("Order Id: #{@order_4.id}")
+  end
+  it 'can select all orders' do
+    visit admin_dashboard_path
+
+    click_on "Sort By Status"
+    click_on "Ordered"
+
+    expect(page).to have_content("Order Id: #{@order_1.id}")
+    expect(page).to_not have_content("Order Id: #{@order_2.id}")
+    expect(page).to_not have_content("Order Id: #{@order_3.id}")
+    expect(page).to_not have_content("Order Id: #{@order_4.id}")
+  end
+  it 'can select paid orders' do
+    visit admin_dashboard_path
+
+    click_on "Sort By Status"
+    click_on "Paid"
+
+    expect(page).to_not have_content("Order Id: #{@order_1.id}")
+    expect(page).to_not have_content("Order Id: #{@order_2.id}")
+    expect(page).to have_content("Order Id: #{@order_3.id}")
+    expect(page).to_not have_content("Order Id: #{@order_4.id}")
+
+  end
+  it 'can select all orders' do
+    visit admin_dashboard_path
+
+    click_on "Sort By Status"
+    click_on "Cancelled"
+
+    expect(page).to_not have_content("Order Id: #{@order_1.id}")
+    expect(page).to_not have_content("Order Id: #{@order_2.id}")
+    expect(page).to_not have_content("Order Id: #{@order_3.id}")
+    expect(page).to have_content("Order Id: #{@order_4.id}")
+  end
+  it 'can select all orders' do
+    visit admin_dashboard_path
+
+    click_on "Sort By Status"
+    click_on "Completed"
+
+    expect(page).to_not have_content("Order Id: #{@order_1.id}")
+    expect(page).to_not have_content("Order Id: #{@order_3.id}")
+    expect(page).to have_content("Order Id: #{@order_2.id}")
+    expect(page).to_not have_content("Order Id: #{@order_4.id}")
+
   end
 end
