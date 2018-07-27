@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'when registered user visits /dashboard' do
   before(:each) do
-    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
     @accessory1 = Accessory.create!(title: 'title1', description: 'desc1', price: 10.00)
     @accessory2 = Accessory.create!(title: 'title2', description: 'desc2', price: 20.00)
     @accessory3 = Accessory.create!(title: 'title3', description: 'desc3', price: 30.00)

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'when admin user visits /dashboard' do
   before(:each) do
-    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
-    @admin = User.create!(username: 'bob', email: 'bob@email.email', password: 'bob', role: 1)
+    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
+    @admin = User.create!(username: 'bob', email: 'bob@email.email', password: 'bob', role: 1, first_name: 'billy', last_name: 'bobthorton', address: '5555 billybob st')
     @accessory1 = Accessory.create!(title: 'title1', description: 'desc1', price: 10.00)
     @accessory2 = Accessory.create!(title: 'title2', description: 'desc2', price: 20.00)
     @accessory3 = Accessory.create!(title: 'title3', description: 'desc3', price: 30.00)

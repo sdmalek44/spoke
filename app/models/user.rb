@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates_presence_of :password, :username, :email
+  validates_presence_of :password, :username, :email, :first_name, :last_name, :address
   validates_uniqueness_of :username
   validates_uniqueness_of :email
   has_many :orders

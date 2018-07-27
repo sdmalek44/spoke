@@ -77,7 +77,7 @@ Accessory.create(title: 'Shoes', description: 'They go on your feet', price: 25.
 Accessory.create(title: 'Dog Leash', description: 'For walking your dog', price: 10.00, retired?: true)
 Accessory.create(title: 'Flashlight', description: 'For late night rides', price: 15.00, retired?: true)
 
-user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
 User.create!(username: 'stephen', email: 'stephen@email.email', password: 'stephen', role: 1)
 accessory1 = Accessory.create!(title: 'Hat', description: 'goes on head', price: 10.00)
 accessory2 = Accessory.create!(title: 'Whistle', description: 'you blow it', price: 20.00)
