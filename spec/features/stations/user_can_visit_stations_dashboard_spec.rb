@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'when you visit /stations-dashboard' do
   before :each do
-    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 

@@ -9,7 +9,7 @@ describe "'when user visits the '/' page" do
     expect(current_path).to eq(login_path)
   end
   it 'can log in if already have an account' do
-    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
     visit login_path
 
     fill_in :username, with: user.username
@@ -23,7 +23,7 @@ describe "'when user visits the '/' page" do
     expect(page).to_not have_link("Login")
   end
   it 'renders login page again if incorrect username/password' do
-    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
     visit login_path
 
     fill_in :username, with: "lsldkj"

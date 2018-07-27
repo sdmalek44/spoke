@@ -95,7 +95,7 @@ describe 'user can go to station show page' do
 
   describe "admin user visits 'stations/:id'" do
     before :each do
-      user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1)
+      user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1, first_name: 'josh', last_name: 'mcbeth', address: '1111 tommy ln')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
     it 'they can see all station attributes' do
