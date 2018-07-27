@@ -30,7 +30,7 @@ describe 'when user visits /cart' do
       click_button "Add to Cart"
     end
   end
-  it 'see all bike accessories i have added to my cart' do
+  it 'see all bike accessories I have added to my cart' do
     visit cart_path
     subtotal12 = (@accessory12.price * 2)
     subtotal1 = @accessory1.price
@@ -118,6 +118,5 @@ describe 'when user visits /cart' do
 
     expect(page).to have_content("Successfully submitted your order totalling $31.00")
     expect(page).to have_link("Order Id: 1")
-
   end
 end
