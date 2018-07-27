@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'when registered user visits /dashboard' do
+describe 'when admin user visits /dashboard' do
   before(:each) do
     @user = User.create!(username: 'bob', email: 'bob@email.email', password: 'bob', role: 1, first_name: 'billy', last_name: 'bobthorton', address: '5555 billybob st')
     @admin = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.', role: 1)
