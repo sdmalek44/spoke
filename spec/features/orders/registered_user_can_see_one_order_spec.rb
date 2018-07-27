@@ -30,7 +30,6 @@ describe 'when registered user visits /dashboard' do
   it 'can not see another users order' do
     visit order_path(@order_2)
 
-save_and_open_page
     expect(page).to_not have_content(@order_accessory2.accessory.title)
     expect(page).to_not have_content("Quantity: #{@order_accessory3.quantity}")
     expect(page).to_not have_content("Subtotal: $#{@order_accessory3.subtotal}")
