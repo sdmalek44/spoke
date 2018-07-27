@@ -25,6 +25,7 @@ describe "Admin user visits '/admin/trips/new'" do
     fill_in :trip_end_date, with: end_date
     select station_1.name, from: :trip_start_station_id
     select station_2.name, from: :trip_end_station_id
+    select subscription_type, from: :trip_subscription_type
     fill_in :trip_bike_id, with: bike_id
     fill_in :trip_zip_code, with: zip_code
     click_on 'Create Trip'
@@ -52,6 +53,7 @@ describe "Admin user visits '/admin/trips/new'" do
     fill_in :trip_end_date, with: end_date
     select station_1.name, from: :trip_start_station_id
     select station_2.name, from: :trip_end_station_id
+    select subscription_type, from: :trip_subscription_type
     fill_in :trip_bike_id, with: bike_id
     fill_in :trip_zip_code, with: zip_code
     click_on 'Create Trip'
