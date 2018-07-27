@@ -15,5 +15,5 @@
 
 <% if admin_user? %>
   <div>Purchaser: <%= @order.user.first_name.titleize %> <%= @order.user.last_name.titleize %></div>
-  <div>Address: <%= @order.user.address %></div>
+  <div>Address: <%= @order.user.address.titleize %></div>
 <% end %>

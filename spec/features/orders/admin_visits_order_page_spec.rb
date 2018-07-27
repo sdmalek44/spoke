@@ -18,8 +18,8 @@ describe 'when registered user visits /dashboard' do
     visit order_path(@order_1)
 
     expect(page).to have_content(@order_1.created_at.strftime('%m/%d/%Y'))
-    expect(page).to have_content(@user.first_name)
-    expect(page).to have_content(@user.last_name)
-    expect(page).to have_content(@user.address)
+    expect(page).to have_content(@user.first_name.titleize)
+    expect(page).to have_content(@user.last_name.titleize)
+    expect(page).to have_content(@user.address.titleize)
   end
 end
