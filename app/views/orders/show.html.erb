@@ -1,4 +1,5 @@
 <p>Bike Accessories</p>
+
 <% @order_accessories.each do |order_accessory| %>
   <div><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></div>
   <div>Quantity: <%= order_accessory.quantity %></div>
