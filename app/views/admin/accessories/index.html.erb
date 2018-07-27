@@ -12,5 +12,10 @@
       <p>Status: Active</p>
     <% end %>
     <%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get %>
+    <% if accessory.retired? %>
+      <%= button_to 'Activate', admin_accessory_path(accessory, retire: 'false'), method: :patch %>
+    <% else %>
+      <%= button_to 'Retire', admin_accessory_path(accessory, retire: 'true'), method: :patch %>
+    <% end %>
   </div>
 <% end %>
