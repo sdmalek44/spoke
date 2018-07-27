@@ -12,3 +12,8 @@
 <% if (@order.status.downcase == "completed") || (@order.status.downcase == "cancelled") %>
   <p><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
 <% end %>
+
+<% if admin_user? %>
+  <div>Purchaser: <%= @order.user.first_name.titleize %> <%= @order.user.last_name.titleize %></div>
+  <div>Address: <%= @order.user.address %></div>
+<% end %>
