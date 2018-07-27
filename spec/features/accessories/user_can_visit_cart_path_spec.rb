@@ -29,8 +29,6 @@ describe 'when user visits /cart' do
     within(".accessory-#{@accessory12.id}") do
       click_button "Add to Cart"
     end
-
-
   end
   it 'see all bike accessories i have added to my cart' do
     visit cart_path
@@ -117,7 +115,7 @@ describe 'when user visits /cart' do
     click_button "Checkout"
 
     expect(current_path).to eq(dashboard_path)
-    
+
     expect(page).to have_content("Successfully submitted your order totalling $31.00")
     expect(page).to have_link("Order Id: 1")
 

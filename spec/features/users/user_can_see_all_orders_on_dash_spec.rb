@@ -43,5 +43,4 @@ describe 'when registered user visits /dashboard' do
     expect(page).to have_content("Quantity: #{@order_accessory2.quantity}")
     expect(page).to have_content("Subtotal: $#{@order_accessory2.subtotal}")
   end
-
 end

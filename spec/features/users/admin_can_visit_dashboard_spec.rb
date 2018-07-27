@@ -85,6 +85,5 @@ describe 'when admin user visits /dashboard' do
     expect(page).to_not have_content("Order Id: #{@order_3.id}")
     expect(page).to have_content("Order Id: #{@order_2.id}")
     expect(page).to_not have_content("Order Id: #{@order_4.id}")
-
   end
 end

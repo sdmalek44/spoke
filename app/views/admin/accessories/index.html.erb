@@ -1,14 +1,16 @@
-<h1>Bike Shop</h1>
+<h1>Admin Bike Shop</h1>
 
 <% @accessories.each do |accessory| %>
   <div class="accessory-<%= accessory.id %>">
     <h3><%= link_to accessory.title, accessory_path(accessory) %></h3>
+    <img src="<%= accessory.image %>" alt="Accessory Image">
     <p>Description: <%= accessory.description %></p>
     <p>Price: <%= number_to_currency(accessory.price) %></p>
     <% if accessory.retired? %>
-      <p>Accessory Retired</p>
+      <p>Status: Retired</p>
     <% else %>
-      <%= button_to "Add to Cart", carts_path(accessory_id: accessory.id) %>
+      <p>Status: Active</p>
     <% end %>
+    <%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get %>
   </div>
 <% end %>
