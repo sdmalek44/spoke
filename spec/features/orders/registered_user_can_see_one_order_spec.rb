@@ -22,5 +22,9 @@ describe 'when registered user visits /dashboard' do
     expect(page).to have_content(@order_accessory1.accessory.title)
     expect(page).to have_content("Quantity: #{@order_accessory1.quantity}")
     expect(page).to have_content("Subtotal: $#{@order_accessory1.subtotal}")
+    expect(page).to have_content("Grand Total: $#{@order_1.grand_total}")
+    expect(page).to have_content("Status: #{@order_1.status.titleize}")
+    expect(page).to have_content("Ordered On: #{@order_1.created_at.strftime('%m/%d/%Y')}")
+    expect(page).to have_content("#{@order_1.status.titleize} On: #{@order_1.updated_at.strftime('%m/%d/%Y')}")
   end
 end
