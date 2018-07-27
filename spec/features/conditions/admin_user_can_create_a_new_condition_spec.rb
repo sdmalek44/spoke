@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "An admin user visits '/admin/conditions/new'" do
   before :each do
-    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1)
+    user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', role: 1, first_name: 'josh', last_name: 'mcbeth', address: '1111 tommy ln')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
   it 'they can create a new condition by inputting valid information' do

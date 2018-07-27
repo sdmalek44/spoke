@@ -11,7 +11,7 @@ describe Order, type: :model do
   end
   describe 'instance methods' do
     it 'can create order accessories given cart hash' do
-      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
       @accessory1 = Accessory.create!(title: 'title1', description: 'desc1', price: 10.00)
       @accessory2 = Accessory.create!(title: 'title2', description: 'desc2', price: 20.00)
       @order_1 = @user.orders.create!(status: 'Completed')
@@ -20,7 +20,7 @@ describe Order, type: :model do
       expect(OrderAccessory.count).to eq(2)
     end
     it 'can get grand total of everything in order' do
-      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
       @accessory1 = Accessory.create!(title: 'title1', description: 'desc1', price: 10.00)
       @accessory2 = Accessory.create!(title: 'title2', description: 'desc2', price: 20.00)
       @order_1 = @user.orders.create!(status: 'Completed')
@@ -31,7 +31,7 @@ describe Order, type: :model do
   end
   describe 'class methods' do
     it 'can get total number of orders in each status' do
-      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles')
+      @user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
       @order_1 = @user.orders.create!(status: 'Completed')
       @order_2 = @user.orders.create!(status: 'Ordered')
       @order_3 = @user.orders.create!(status: 'Ordered')
