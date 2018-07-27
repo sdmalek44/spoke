@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :edit, :create, :update, :destroy]
     resources :conditions, only: [:new, :edit, :create, :update, :destroy]
     resources :accessories, only: [:create, :edit, :update]
+    resources :orders, only: [:update]
     get '/bike-shop/new', to: 'accessories#new'
     post '/bike-shop', to: 'accessories#create'
     get '/bike-shop', to: 'accessories#index'
