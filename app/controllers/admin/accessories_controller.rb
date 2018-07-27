@@ -23,7 +23,15 @@ class Admin::AccessoriesController < Admin::BaseController
 
   def update
     @accessory = Accessory.find(params[:id])
-    if @accessory.update(accessory_params)
+    if params[:retire] == 'true'
+      @accessory.update!(retired?: true)
+      flash[:notice] = "Successfully retired #{@accessory.title}"
+      redirect_to admin_bike_shop_path
+    elsif params[:retire] == 'false'
+      @accessory.update(retired?: false)
+      flash[:notice] = "Successfully activated #{@accessory.title}"
+      redirect_to admin_bike_shop_path
+    elsif @accessory.update(accessory_params)
       flash[:notice] = "Successfully updated #{@accessory.title}"
       redirect_to accessory_path(@accessory)
     else
