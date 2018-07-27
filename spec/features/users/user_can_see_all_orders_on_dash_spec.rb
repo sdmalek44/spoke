@@ -34,13 +34,14 @@ describe 'when registered user visits /dashboard' do
 
     expect(current_path).to eq(order_path(@order_1))
     expect(page).to have_content("Grand Total: $#{@order_1.grand_total}")
-    expect(page).to have_content(@order_1.status + " on: " + @order_1.created_at.strftime('%m/%d/%Y'))
+    expect(page).to have_content(@order_1.status + " On: " + @order_1.created_at.strftime('%m/%d/%Y'))
     expect(page).to have_link(@accessory1.title)
-    
+
     expect(page).to have_content("Quantity: #{@order_accessory1.quantity}")
     expect(page).to have_content("Subtotal: $#{@order_accessory1.subtotal}")
     expect(page).to have_link(@accessory2.title)
     expect(page).to have_content("Quantity: #{@order_accessory2.quantity}")
     expect(page).to have_content("Subtotal: $#{@order_accessory2.subtotal}")
   end
+
 end
