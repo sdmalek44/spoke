@@ -13,11 +13,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_accessories = @order.order_accessories
+    @order_accessories = current_order.order_accessories
   end
 
   def require_specific_user
-    render file: "/public/404" unless admin_user? || (current_order == current_user.order)
+    render file: "/public/404" unless admin_user? || (current_order.id == current_user.order.id)
   end
 
   def current_order
