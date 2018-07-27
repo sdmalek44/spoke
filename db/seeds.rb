@@ -78,7 +78,7 @@ Accessory.create(title: 'Dog Leash', description: 'For walking your dog', price:
 Accessory.create(title: 'Flashlight', description: 'For late night rides', price: 15.00, retired?: true)
 
 user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
-User.create!(username: 'stephen', email: 'stephen@email.email', password: 'stephen', role: 1)
+User.create!(username: 'stephen', email: 'stephen@email.email', password: 'stephen', role: 1, first_name: 'Billy', last_name: 'Bob', address: '132 Oak St')
 accessory1 = Accessory.create!(title: 'Hat', description: 'goes on head', price: 10.00)
 accessory2 = Accessory.create!(title: 'Whistle', description: 'you blow it', price: 20.00)
 accessory3 = Accessory.create!(title: 'Bike Chain', description: 'extra rusty bike chain', price: 30.00)
@@ -109,10 +109,10 @@ puts "Seeded #{OrderAccessory.count} OrderAccessories"
 
 puts "Seeded #{Accessory.count} accessories"
 
-User.create!(username: 'admin', password: 'password', email: 'admin@email.com', role: 1)
+User.create(username: 'admin', password: 'password', email: 'admin@email.com', role: 1, first_name: 'Admin', last_name: 'Boy', address: '123 Maple St')
 
 puts "Created admin user (username: admin, password: password)"
 
-User.create!(username: 'default', password: 'password', email: 'default@email.com')
+User.create(username: 'default', password: 'password', email: 'default@email.com', first_name: 'Tristan', last_name: 'Smith', address: '1255 19th St')
 
 puts 'Created default user (username: default, password: password)'
