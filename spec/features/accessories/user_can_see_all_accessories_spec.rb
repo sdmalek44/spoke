@@ -74,5 +74,18 @@ describe "A user visits '/bike-shop'" do
       expect(page).to have_content("Successfully retired #{accessory_1.title}")
       expect(page).to have_content('Status: Retired')
     end
+    it 'they can activate a retired accessory from the admin bike-shop' do
+      accessory_1 = Accessory.create!(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
+
+      visit admin_bike_shop_path
+
+      expect(page).to have_content('Status: Retired')
+
+      click_button 'Activate'
+
+      expect(current_path).to eq(admin_bike_shop_path)
+      expect(page).to have_content("Successfully activated #{accessory_1.title}")
+      expect(page).to have_content('Status: Active')
+    end
   end
 end
