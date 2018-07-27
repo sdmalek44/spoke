@@ -17,6 +17,9 @@
   <%= f.label :bike_id %>
   <%= f.number_field :bike_id, step: 1 %>
 
+  <%= f.label :subscription_type %>
+  <%= f.select :subscription_type, ['Customer', 'Subscriber'], include_blank: true %>
+
   <%= f.label :zip_code%>
   <%= f.number_field :zip_code, in: 11111..99999, step: 1 %>
 

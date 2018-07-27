@@ -72,8 +72,8 @@ describe "A registered user visits 'trip-dashboard'" do
   it 'they see information about user subscription types' do
     visit trips_dashboard_path
 
-    expect(page).to have_content("Subscription Type: customer, Count: 3")
-    expect(page).to have_content("Subscription Type: subscriber, Count: 5")
+    expect(page).to have_content("Subscription Type: Customer, Count: 3")
+    expect(page).to have_content("Subscription Type: Subscriber, Count: 5")
     expect(page).to have_content("Percentage of Total Trips: 37.5%")
     expect(page).to have_content("Percentage of Total Trips: 62.5%")
   end

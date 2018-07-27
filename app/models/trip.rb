@@ -8,7 +8,7 @@ class Trip < ApplicationRecord
   validates_presence_of :subscription_type
   validates_presence_of :zip_code
 
-  enum subscription_type: ['customer', 'subscriber']
+  enum subscription_type: ['Customer', 'Subscriber']
 
   belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id, dependent: :destroy
   belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id, dependent: :destroy
