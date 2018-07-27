@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   helper_method :current_order
-  before_action :require_specific_user
-  before_action :require_registered_user, only: [:show, :create]
+  before_action :require_specific_user, only: [:show]
+  before_action :require_registered_user, only: [:create]
 
   def create
     flash[:notice] = "Successfully submitted your order totalling #{params[:grand_total]}"
