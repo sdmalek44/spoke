@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  helper_method :current_order
+  helper_method :current_order, :current_order_user
   before_action :require_specific_user, only: [:show]
   before_action :require_registered_user, only: [:create]
 
@@ -13,14 +13,16 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_accessories = current_order.order_accessories
+    @order = Order.find(params[:id])
+    @order_accessories = @order.order_accessories if @order
   end
 
   def require_specific_user
-    render file: "/public/404" unless admin_user? || (current_order.id == current_user.order.id)
+    render file: "/public/404" unless admin_user? || (current_order_user == current_user)
   end
 
-  def current_order
+  def current_order_user
     @order = Order.find(params[:id]) if params[:id]
+    @order.user if @order
   end
 end
