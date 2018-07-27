@@ -24,10 +24,10 @@ class Admin::AccessoriesController < Admin::BaseController
   def update
     @accessory = Accessory.find(params[:id])
     if @accessory.update(accessory_params)
-      flash[:notice] = "Successfully update #{@accessory}"
+      flash[:notice] = "Successfully updated #{@accessory.title}"
       redirect_to accessory_path(@accessory)
     else
-      flash[:notice] = "Accessory not update. Try again."
+      flash[:notice] = "Accessory not updated. Try again."
       render :edit
     end
   end
