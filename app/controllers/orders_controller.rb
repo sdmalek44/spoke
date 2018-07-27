@@ -14,4 +14,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_accessories = @order.order_accessories
   end
+
+  def require_specific_user
+    render file: "/public/404" unless admin_user?
+  end
 end
