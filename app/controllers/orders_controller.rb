@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :require_registered_user, only: [:show, :create]
+  helper_method :current_order, :current_order_user
+  before_action :require_specific_user, only: [:show]
+  before_action :require_registered_user, only: [:create]
 
   def create
     flash[:notice] = "Successfully submitted your order totalling #{params[:grand_total]}"
@@ -12,6 +14,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_accessories = @order.order_accessories
+    @order_accessories = @order.order_accessories if @order
+  end
+
+  def require_specific_user
+    render file: "/public/404" unless admin_user? || (current_order_user == current_user)
+  end
+
+  def current_order_user
+    @order = Order.find(params[:id]) if params[:id]
+    @order.user if @order
   end
 end
