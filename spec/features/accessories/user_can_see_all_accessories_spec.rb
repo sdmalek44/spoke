@@ -67,8 +67,8 @@ describe "A user visits '/bike-shop'" do
       visit admin_bike_shop_path
 
       expect(page).to have_content('Status: Active')
-      
-      click_on 'Retire'
+
+      click_button 'Retire'
 
       expect(current_path).to eq(admin_bike_shop_path)
       expect(page).to have_content("Successfully retired #{accessory_1.title}")
