@@ -28,6 +28,7 @@ class Cart
   end
 
   def grand_total(all_accessories)
+    byebug
     all_accessories.inject(0) do |sum, accessory|
        sum += @contents[accessory.id.to_s] * accessory.price
     end

@@ -11,9 +11,7 @@ class Order < ApplicationRecord
   end
 
   def grand_total
-    order_accessories.inject(0) do |sum, order_accesory|
-      sum += (order_accesory.quantity * order_accesory.accessory.price)
-    end
+    accessories.sum("accessories.price * order_accessories.quantity")
   end
 
   def self.orders_per_status
