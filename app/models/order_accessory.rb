@@ -4,6 +4,6 @@ class OrderAccessory < ApplicationRecord
   belongs_to :accessory
 
   def subtotal
-    (accessory.price * quantity).round(2)
+    accessory.price * quantity
   end
 end
