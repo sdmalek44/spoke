@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_registered_user
-    render file: "/public/404" unless current_user
+    render file: "/public/404", layout: false unless current_user
   end
 
   def require_admin_user
-    render file: "/public/404" unless admin_user?
+    render file: "/public/404", layout: false unless admin_user?
   end
 end

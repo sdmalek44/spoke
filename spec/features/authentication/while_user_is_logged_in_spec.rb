@@ -16,7 +16,6 @@ describe 'user is logged in' do
     click_link "Logout"
 
     expect(page).to have_link("Login")
-    expect(page).to have_link("Create Account")
     expect(page).to_not have_content("Logged in as #{user.username}")
     expect(page).to_not have_link("Logout")
   end

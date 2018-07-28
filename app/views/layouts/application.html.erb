@@ -10,20 +10,19 @@
 
   <body>
     <nav>
-      <%= "Cart Count: #{@cart.total_count}" %>
-      <% if admin_user? %>
-        <%= "Logged in as Admin User: #{current_user.username}" %>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% elsif current_user %>
-        <%= "Logged in as #{current_user.username}" %>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% else %>
-       <%= link_to "Login", login_path %>
-       <%= link_to "Create Account", new_user_path %>
-      <% end %>
       <%= link_to 'Stations', stations_path %>
       <%= link_to 'Trips', trips_path %>
       <%= link_to 'Conditions', conditions_path %>
+      <%= "Cart Count: #{@cart.total_count}" if @cart.total_count > 0 %>
+      <% if current_user %>
+        <%= link_to "Trips-Dashboard", trips_dashboard_path %>
+        <%= link_to "Stations-Dashboard", stations_dashboard_path %>
+        <%= link_to "Conditions-Dashboard", conditions_dashboard_path %>
+        <span>Logged in as <%= "Admin User: " if admin_user? %><%= current_user.first_name %></span>
+        <%= link_to "Logout", logout_path, method: :delete %>
+      <% else %>
+       <%= link_to "Login", login_path %>
+      <% end %>
     </nav>
     <%= flash[:notice] if flash[:notice] %>
     <%= yield %>
