@@ -1,5 +1,10 @@
 <p>Username: <%= current_user.username %></p>
 <p>Email: <%= current_user.email %></p>
+<p>First Name: <%= current_user.first_name %></p>
+<p>Last Name: <%= current_user.last_name %></p>
+<p>Address: <%= current_user.address %></p>
+
+<%= link_to 'Edit Account Info', edit_user_path(current_user) %>
 
 <% if @orders %>
   <% @orders.each do |order| %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/trips-dashboard', to: 'trips#dashboard'
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/dashboard', to: 'users#dashboard'
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   resources :stations, only: [:index]
   resources :trips, only: [:show, :index]
   resources :conditions, only: [:index, :show]
