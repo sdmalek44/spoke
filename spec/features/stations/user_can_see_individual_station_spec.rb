@@ -6,7 +6,7 @@ describe 'user can go to station show page' do
 
     visit station_path(station)
 
-    expect(current_path).to eq('/stations/2name')
+    expect(current_path).to eq(station_path(station))
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
@@ -103,7 +103,7 @@ describe 'user can go to station show page' do
 
       visit station_path(station)
 
-      expect(current_path).to eq('/stations/2name')
+      expect(current_path).to eq(station_path(station))
       expect(page).to have_content(station.name)
       expect(page).to have_content(station.dock_count)
       expect(page).to have_content(station.city)

@@ -9,7 +9,7 @@ describe "A visitor visits '/accessory/:id'" do
     expect(page).to have_content(accessory_1.title)
     expect(page).to have_content(accessory_1.description)
     expect(page).to have_content("$#{accessory_1.price}")
-    expect(page).to have_link('Add to Cart')
+    expect(page).to have_button('Add to Cart')
     expect(page).to_not have_content('Accessory Retired')
   end
 
@@ -21,7 +21,7 @@ describe "A visitor visits '/accessory/:id'" do
     expect(page).to have_content(accessory_1.title)
     expect(page).to have_content(accessory_1.description)
     expect(page).to have_content("$12.50")
-    expect(page).to have_content('Accessory Retired')
+    expect(page).to have_button('Accessory Retired', disabled: true)
     expect(page).to_not have_link('Add to Cart')
   end
 end

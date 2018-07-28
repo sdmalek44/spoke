@@ -21,7 +21,7 @@ describe "admin user visits 'admin/stations/:name/edit" do
     fill_in :station_installation_date, with: editted_installation_date
     click_on 'Update Station'
 
-    expect(current_path).to eq(station_path(station))
+    expect(current_path).to eq(station_path('station-editted'))
     expect(page).to have_content("Successfully updated #{editted_name}")
     expect(page).to have_content("City: #{editted_city}")
     expect(page).to have_content("Dock Count: #{editted_dock_count}")
