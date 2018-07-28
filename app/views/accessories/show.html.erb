@@ -4,7 +4,7 @@
 <p>Price: <%= number_to_currency(@accessory.price) %></p>
 
 <% if @accessory.retired? %>
-  <p>Accessory Retired</p>
+  <%= button_to 'Accessory Retired', nil, disabled: true %>
 <% else %>
-  <%= link_to 'Add to Cart' %>
+  <%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id, on_show: true) %>
 <% end %>

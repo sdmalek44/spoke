@@ -7,10 +7,12 @@ class CartsController < ApplicationController
     session[:cart] = @cart.add_accessory(accessory.id)
     quantity = @cart.count_of(accessory.id)
 
+    flash[:notice] = "You now have #{pluralize(quantity, accessory.title)} in your cart."
     if params[:in_cart]
       redirect_to cart_path
+    elsif params[:on_show]
+      redirect_to accessory_path(accessory)
     else
-      flash[:notice] = "You now have #{pluralize(quantity, accessory.title)} in your cart."
       redirect_to bike_shop_path
     end
   end
