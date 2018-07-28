@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/dashboard', to: 'users#dashboard'
   resources :users, only: [:new, :create]
-  resources :stations, only: [:show, :index]
+  resources :stations, only: [:index]
   resources :trips, only: [:show, :index]
   resources :conditions, only: [:index, :show]
   get '/conditions-dashboard', to: 'conditions#dashboard'
@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
   resources :orders, only: [:create, :show]
+  get '/:id', to: 'stations#show', as: :station
 end

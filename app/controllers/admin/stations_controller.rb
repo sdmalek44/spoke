@@ -21,6 +21,7 @@ class Admin::StationsController < Admin::BaseController
   def update
     @station = Station.find_by(slug: params[:id])
     if @station.update(station_params)
+      @station.update(slug: params[:name])
       flash[:notice] = "Successfully updated #{@station.name}"
       redirect_to station_path(@station)
     else

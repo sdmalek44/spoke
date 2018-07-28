@@ -27,7 +27,7 @@ describe "A user visits '/bike-shop'" do
 
       visit bike_shop_path
 
-      expect(page).to have_content('Accessory Retired')
+      expect(page).to have_button('Accessory Retired', disabled: true)
       expect(page).to_not have_button 'Add to Cart'
     end
   end
