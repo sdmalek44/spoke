@@ -24,4 +24,14 @@ describe "A visitor visits '/accessory/:id'" do
     expect(page).to have_button('Accessory Retired', disabled: true)
     expect(page).to_not have_link('Add to Cart')
   end
+  it 'can add to cart' do
+    accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50)
+
+    visit accessory_path(accessory_1)
+
+    click_button "Add to Cart"
+
+    expect(current_path).to eq(accessory_path(accessory_1))
+    expect(page).to have_content("You now have 1 #{accessory_1.title} in your cart.")
+  end
 end
