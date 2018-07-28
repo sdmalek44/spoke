@@ -4,8 +4,8 @@
     <title>Spoke</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"> </script>
   </head>
 
   <body>
@@ -18,6 +18,8 @@
         <%= link_to "Trips-Dashboard", trips_dashboard_path %>
         <%= link_to "Stations-Dashboard", stations_dashboard_path %>
         <%= link_to "Conditions-Dashboard", conditions_dashboard_path %>
+        <%= link_to "Profile", dashboard_path  %>
+        <%= link_to "Admin-Dashboard", admin_dashboard_path if admin_user? %>
         <span>Logged in as <%= "Admin User: " if admin_user? %><%= current_user.first_name %></span>
         <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>

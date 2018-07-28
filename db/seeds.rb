@@ -77,31 +77,31 @@ Accessory.create(title: 'Shoes', description: 'They go on your feet', price: 25.
 Accessory.create(title: 'Dog Leash', description: 'For walking your dog', price: 10.00, retired?: true)
 Accessory.create(title: 'Flashlight', description: 'For late night rides', price: 15.00, retired?: true)
 
-user = User.create!(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
-User.create!(username: 'stephen', email: 'stephen@email.email', password: 'stephen', role: 1, first_name: 'Billy', last_name: 'Bob', address: '132 Oak St')
-accessory1 = Accessory.create!(title: 'Hat', description: 'goes on head', price: 10.00)
-accessory2 = Accessory.create!(title: 'Whistle', description: 'you blow it', price: 20.00)
-accessory3 = Accessory.create!(title: 'Bike Chain', description: 'extra rusty bike chain', price: 30.00)
+user = User.create(username: 'happyharry', email: 'email@email.email', password: 'turtles', first_name: 'hare', last_name: 'margret', address: '1234 dolly st.')
+User.create(username: 'stephen', email: 'stephen@email.email', password: 'stephen', role: 1, first_name: 'Billy', last_name: 'Bob', address: '132 Oak St')
+accessory1 = Accessory.create(title: 'Hat', description: 'goes on head', price: 10.00)
+accessory2 = Accessory.create(title: 'Whistle', description: 'you blow it', price: 20.00)
+accessory3 = Accessory.create(title: 'Bike Chain', description: 'extra rusty bike chain', price: 30.00)
 
-order_1 = user.orders.create!(status: 'completed')
-order_accessory1 = order_1.order_accessories.create!(quantity: 5, accessory_id: accessory1.id)
-order_accessory2 = order_1.order_accessories.create!(quantity: 3, accessory_id: accessory2.id)
+order_1 = user.orders.create(status: 'completed')
+order_accessory1 = order_1.order_accessories.create(quantity: 5, accessory_id: accessory1.id)
+order_accessory2 = order_1.order_accessories.create(quantity: 3, accessory_id: accessory2.id)
 
-order_2 = user.orders.create!(status: 'ordered')
-order_2.order_accessories.create!(quantity: 2, accessory_id: accessory2.id)
-order_2.order_accessories.create!(quantity: 3, accessory_id: accessory3.id)
+order_2 = user.orders.create(status: 'ordered')
+order_2.order_accessories.create(quantity: 2, accessory_id: accessory2.id)
+order_2.order_accessories.create(quantity: 3, accessory_id: accessory3.id)
 
-order_3 = user.orders.create!(status: 'cancelled')
-order_3.order_accessories.create!(quantity: 4, accessory_id: accessory1.id)
-order_3.order_accessories.create!(quantity: 4, accessory_id: accessory3.id)
+order_3 = user.orders.create(status: 'cancelled')
+order_3.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
+order_3.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
 
-order_4 = user.orders.create!(status: 'paid')
-order_4.order_accessories.create!(quantity: 2, accessory_id: accessory1.id)
-order_4.order_accessories.create!(quantity: 4, accessory_id: accessory3.id)
+order_4 = user.orders.create(status: 'paid')
+order_4.order_accessories.create(quantity: 2, accessory_id: accessory1.id)
+order_4.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
 
-order_5 = user.orders.create!(status: 'paid')
-order_5.order_accessories.create!(quantity: 4, accessory_id: accessory1.id)
-order_5.order_accessories.create!(quantity: 6, accessory_id: accessory3.id)
+order_5 = user.orders.create(status: 'paid')
+order_5.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
+order_5.order_accessories.create(quantity: 6, accessory_id: accessory3.id)
 
 puts "Seeded #{Order.count} Orders"
 
