@@ -16,6 +16,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Successfully updated your account"
+      redirect_to dashboard_path
+    else
+      flash[:notice] = "Your account was not updated. Try again."
+      render :edit
+    end
+  end
+
   def dashboard
     @orders = current_user.orders
   end

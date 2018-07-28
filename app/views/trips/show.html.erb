@@ -1,4 +1,5 @@
-<p>This Trip</p>
+<h1>Trip #<%= @trip.id %></h1>
+
 <div class="">Duration: <%= @trip.duration %></div>
 <% unless @trip.start_station.nil? %>
   <div class="">Start Station: <%= @trip.start_station.name %></div>
@@ -15,3 +16,5 @@
   <%= button_to 'Edit', edit_admin_trip_path(@trip), method: :get %>
   <%= button_to 'Delete', admin_trip_path(@trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
 <% end %>
+
+<p><%= link_to '<< Back to Trips Index', trips_path %></p>

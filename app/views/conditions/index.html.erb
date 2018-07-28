@@ -1,5 +1,9 @@
 <h1>Conditions</h1>
 
+<% if admin_user? %>
+  <p><%= link_to 'Create New Weather Condition', new_admin_condition_path %><p>
+<% end %>
+
 <% @conditions.each do |condition| %>
   <h3><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></h3>
   <p>Max Temperature: <%= condition.max_temperature %> ºF</p>
