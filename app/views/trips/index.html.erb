@@ -1,7 +1,11 @@
 <h1>Trips</h1>
 
+<% if admin_user? %>
+  <p><%= link_to 'Create New Trip', new_admin_trip_path %><p>
+<% end %>
+
 <% @trips.each do |trip| %>
-  <%= link_to 'This Trip', trip_path(trip) %>
+  <h3><%= link_to "Trip ##{trip.id}", trip_path(trip) %></h3>
   <p>Duration: <%= trip.duration %></p>
   <p>Start Date: <%= trip.start_date.strftime('%m/%d/%Y') %></p>
   <p>End Date: <%= trip.end_date.strftime('%m/%d/%Y') %></p>

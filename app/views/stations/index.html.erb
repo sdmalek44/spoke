@@ -1,6 +1,7 @@
 <h1>Stations</h1>
+
 <% if admin_user? %>
-  <%= link_to 'Create New Station', new_admin_station_path %>
+  <p><%= link_to 'Create New Station', new_admin_station_path %></p>
 <% end %>
 
 <% @stations.each do |station| %>

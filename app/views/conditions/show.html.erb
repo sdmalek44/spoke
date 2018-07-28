@@ -12,3 +12,5 @@
   <%= button_to 'Edit', edit_admin_condition_path(@condition), method: :get %>
   <%= button_to 'Delete', admin_condition_path(@condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
 <% end %>
+
+<%= link_to '<< Back to Weather Conditions Index', conditions_path %>
