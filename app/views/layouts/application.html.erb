@@ -5,26 +5,70 @@
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <nav>
-      <%= link_to 'Stations', stations_path %>
-      <%= link_to 'Trips', trips_path %>
-      <%= link_to 'Conditions', conditions_path %>
-      <%= "Cart Count: #{@cart.total_count}" if @cart.total_count > 0 %>
-      <% if current_user %>
-        <%= link_to "Trips-Dashboard", trips_dashboard_path %>
-        <%= link_to "Stations-Dashboard", stations_dashboard_path %>
-        <%= link_to "Conditions-Dashboard", conditions_dashboard_path %>
-        <%= link_to "Profile", dashboard_path  %>
-        <%= link_to "Admin-Dashboard", admin_dashboard_path if admin_user? %>
-        <span>Logged in as <%= "Admin User: " if admin_user? %><%= current_user.first_name %></span>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% else %>
-       <%= link_to "Login", login_path %>
-      <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Spoke</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav col-8">
+        <li class="nav-item">
+          <%  if current_user && !(admin_user?) %>
+            <a class="nav-link" href="<%= dashboard_path %>"><%= "Logged in as #{current_user.first_name.titleize}" %></a>
+          <% elsif admin_user? %>
+            <a class="nav-link" href="<%= admin_dashboard_path %>"><%= "Logged in as Admin User: #{current_user.first_name.titleize}"%></a>
+          <% end %>
+        </li>
+      </ul>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "Bike Shop", bike_shop_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Indexes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Stations', stations_path, class: 'dropdown-item' %>
+              <%= link_to 'Trips', trips_path, class: 'dropdown-item' %>
+              <%= link_to 'Conditions', conditions_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <% if current_user %>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dashboards
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to "Admin-Dashboard", admin_dashboard_path, class: 'dropdown-item' if admin_user? %>
+              <%= link_to "Trips-Dashboard", trips_dashboard_path, class: 'dropdown-item'%>
+              <%= link_to "Stations-Dashboard", stations_dashboard_path, class: 'dropdown-item' %>
+              <%= link_to "Conditions-Dashboard", conditions_dashboard_path, class: 'dropdown-item' %>
+            </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <ul class="navbar-nav col-1">
+        <li class="nav-item active">
+          <%= link_to "Cart Count: #{@cart.total_count}", cart_path, class: 'nav-link' if @cart.total_count > 0 %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <% if current_user %>
+            <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link' %>
+          <% else %>
+            <%= link_to "Login", login_path, class: 'nav-link' %>
+          <% end %>
+        </li>
+      </ul>
     </nav>
     <%= flash[:notice] if flash[:notice] %>
     <%= yield %>
