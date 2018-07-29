@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <% (30..90).step(10).each do |temp| %>
-        <thead class="thead-dark" id="max-temps">
+        <thead class="thead-dark">
           <tr>
             <th scope="col"><%= temp %>s</th>
             <th scope="col"></th>
@@ -38,7 +38,7 @@
         <% end %>
       </table>
 
-      <table id="precipitation" class="table table-striped col-4 margin-left-20">
+      <table id="precipitations" class="table table-striped col-4 margin-left-20">
         <thead class="bg-secondary text-white">
           <tr>
             <th scope="col">Precipitation</th>
@@ -46,7 +46,7 @@
           </tr>
         </thead>
         <% (0..3).step(0.5).each do |precip| %>
-        <thead class="thead-dark" id="max-temps">
+        <thead class="thead-dark">
           <tr>
             <th scope="col"><%= precip %>"</th>
             <th scope="col"></th>
@@ -79,7 +79,7 @@
           </tr>
         </thead>
         <% (0..24).step(4).each do |speed| %>
-        <thead class="thead-dark" id="max-temps">
+        <thead class="thead-dark">
           <tr>
             <th scope="col"><%= speed %> mph</th>
             <th scope="col"></th>
@@ -110,7 +110,7 @@
           </tr>
         </thead>
         <% (0..24).step(4).each do |distance| %>
-        <thead class="thead-dark" id="max-temps">
+        <thead class="thead-dark">
           <tr>
             <th scope="col"><%= distance %> miles</th>
             <th scope="col"></th>

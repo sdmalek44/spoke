@@ -42,7 +42,7 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="most-and-least-ridden-bike">
         <tr>
           <td>Id: <%= @most_ridden_bike.keys.first %></td>
           <td></td>
@@ -86,15 +86,17 @@
     <table class="table table-striped col-3 subscription-types">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Subscription Types</th>
-          <th scope="col"></th>
+          <th scope="col">Subscription Type</th>
+          <th scope="col">Count</th>
+          <th scope="col">Percentage of Total Trips</th>
         </tr>
       </thead>
       <tbody>
         <% @subscription_type_count.each do |subscription, count| %>
         <tr>
-          <td>Subscription Type: <%= subscription %></td>
-          <td>Count: <%= count %></td>
+          <td><%= subscription %>:</td>
+          <td><%= count %></td>
+          <td><%= ((count.to_f / @total_trips.to_f) * 100).round(2) %>%</td>
         </tr>
         <% end %>
       </tbody>
@@ -170,8 +172,8 @@
         </tr>
       </thead>
       <thead class="bg-secondary text-white">
-        <tr>
-          <th scope="col-6">Date With Least Rides: <%= @date_with_least_rides[:date].strftime('%m/%d/%Y') %></th>
+        <tr class="least-rides-by-date-head">
+          <th scope="col-6">Date With Fewest Rides: <%= @date_with_least_rides[:date].strftime('%m/%d/%Y') %></th>
           <th scope="col-6">Ride Count: <%= @date_with_least_rides[:rides] %></th>
         </tr>
       </thead>
@@ -208,7 +210,7 @@
         </tr>
         <tr>
           <td>Preciptation: </td>
-          <td><%= @date_with_least_rides[:condition].precipitation %> "</td>
+          <td><%= @date_with_least_rides[:condition].precipitation %>"</td>
         </tr>
       </tbody>
       <thead>
