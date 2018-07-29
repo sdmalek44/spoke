@@ -58,12 +58,12 @@ describe "A registered user visits 'trip-dashboard'" do
   it 'they see most and least ridden bikes' do
     visit trips_dashboard_path
 
-    within '.most-ridden-bike' do
+    within '.most-and-least-ridden-bike' do
       expect(page).to have_content("Id: 1")
       expect(page).to have_content("Rides: 4")
     end
 
-    within '.least-ridden-bike' do
+    within '.most-and-least-ridden-bike' do
       expect(page).to have_content("Id: 3")
       expect(page).to have_content("Rides: 1")
     end
@@ -72,10 +72,10 @@ describe "A registered user visits 'trip-dashboard'" do
   it 'they see information about user subscription types' do
     visit trips_dashboard_path
 
-    expect(page).to have_content("Subscription Type: Customer, Count: 3")
-    expect(page).to have_content("Subscription Type: Subscriber, Count: 5")
-    expect(page).to have_content("Percentage of Total Trips: 37.5%")
-    expect(page).to have_content("Percentage of Total Trips: 62.5%")
+    expect(page).to have_content("Customer:", "3")
+    expect(page).to have_content("Subscriber:", "5")
+    expect(page).to have_content("Percentage of Total Trips","37.5%")
+    expect(page).to have_content("Percentage of Total Trips", "62.5%")
   end
 
   it 'they see information about the dates with the mostest and fewest rides' do
@@ -86,7 +86,7 @@ describe "A registered user visits 'trip-dashboard'" do
       expect(page).to have_content("Ride Count: 4")
     end
 
-    within '.least-rides-by-date' do
+    within '.least-rides-by-date-head' do
       expect(page).to have_content("Date With Fewest Rides: 01/01/2001")
       expect(page).to have_content("Ride Count: 1")
     end
@@ -102,7 +102,7 @@ describe "A registered user visits 'trip-dashboard'" do
       expect(page).to have_content("Mean Humidity: #{@condition_3.mean_humidity}%")
       expect(page).to have_content("Mean Visibility: #{@condition_3.mean_visibility} miles")
       expect(page).to have_content("Mean Wind Speed: #{@condition_3.mean_wind_speed} mph")
-      expect(page).to have_content("Precipitation: #{@condition_3.precipitation} \"")
+      expect(page).to have_content("Precipitation:", "#{@condition_3.precipitation}")
     end
   end
 
@@ -116,7 +116,7 @@ describe "A registered user visits 'trip-dashboard'" do
       expect(page).to have_content("Mean Humidity: #{@condition_1.mean_humidity}%")
       expect(page).to have_content("Mean Visibility: #{@condition_1.mean_visibility} miles")
       expect(page).to have_content("Mean Wind Speed: #{@condition_1.mean_wind_speed} mph")
-      expect(page).to have_content("Precipitation: #{@condition_1.precipitation} \"")
+      expect(page).to have_content("Precipitation:", "#{@condition_1.precipitation}")
     end
   end
 end

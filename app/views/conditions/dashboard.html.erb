@@ -1,37 +1,139 @@
-<h1>Conditions Dashboard</h1>
-  <h3>Maximum Temperature</h3>
-  <div id='max-temps'>
-    <% (30..90).step(10).each do |temp| %>
-    <h4><%= temp %>s<br></h4>
-      Highest number of rides: <%= @conditions.highest_number_of_rides_on_a_day_in_max_temperature_range(temp) %><br>
-      Lowest number of rides: <%= @conditions.lowest_number_of_rides_on_a_day_in_max_temperature_range(temp) %><br>
-      Average number of rides: <%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_max_temperature_range(temp) %><br>
-    <% end %>
-  </div>
-  <h3>Precipitation</h3>
-  <div id='precipitations'>
-    <% (0..3).step(0.5).each do |precip| %>
-    <h4><%= precip %>"<br></h4>
-      Highest number of rides: <%= @conditions.highest_number_of_rides_on_a_day_in_precipitation_range(precip) %><br>
-      Lowest number of rides: <%= @conditions.lowest_number_of_rides_on_a_day_in_precipitation_range(precip) %><br>
-      Average number of rides: <%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_precipitation_range(precip) %><br>
-    <% end %>
-  </div>
-  <h3>Mean Wind Speeds</h3>
-  <div id='mean-wind-speeds'>
-    <% (0..24).step(4).each do |speed| %>
-    <h4><%= speed %> mph<br></h4>
-      Highest number of rides: <%= @conditions.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %><br>
-      Lowest number of rides: <%= @conditions.lowest_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %><br>
-      Average number of rides: <%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %><br>
-    <% end %>
-  </div>
-  <h3>Mean Visibility</h3>
-  <div id='mean-visibilities'>
-    <% (0..24).step(4).each do |distance| %>
-    <h4><%= distance %> miles<br></h4>
-      Highest number of rides: <%= @conditions.highest_number_of_rides_on_a_day_in_mean_visibility_range(distance) %><br>
-      Lowest number of rides: <%= @conditions.lowest_number_of_rides_on_a_day_in_mean_visibility_range(distance) %><br>
-      Average number of rides: <%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_mean_visibility_range(distance) %><br>
-    <% end %>
-  </div>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Conditions Dashboard</h1>
+</header>
+<header class='background-gray'>
+</header>
+<div class="background-gray">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-2"></div>
+      <table id="max-temps" class="table table-striped col-4 margin-right-20">
+        <thead class="bg-secondary text-white">
+          <tr>
+            <th scope="col">Rides By Temperature Range</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% (30..90).step(10).each do |temp| %>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><%= temp %>s</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Highest number of rides: </td>
+            <td><%= @conditions.highest_number_of_rides_on_a_day_in_max_temperature_range(temp) %></td>
+          </tr>
+          <tr>
+            <td>Lowest number of rides: </td>
+            <td><%= @conditions.lowest_number_of_rides_on_a_day_in_max_temperature_range(temp) %></td>
+          </tr>
+          <tr>
+            <td>Average number of rides: </td>
+            <td><%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_max_temperature_range(temp) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+
+      <table id="precipitations" class="table table-striped col-4 margin-left-20">
+        <thead class="bg-secondary text-white">
+          <tr>
+            <th scope="col">Precipitation</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% (0..3).step(0.5).each do |precip| %>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><%= precip %>"</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Highest number of rides: </td>
+            <td><%= @conditions.highest_number_of_rides_on_a_day_in_precipitation_range(precip) %></td>
+          </tr>
+          <tr>
+            <td>Lowest number of rides: </td>
+            <td><%= @conditions.lowest_number_of_rides_on_a_day_in_precipitation_range(precip) %></td>
+          </tr>
+          <tr>
+            <td>Average number of rides: </td>
+            <td><%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_precipitation_range(precip) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <table id="mean-wind-speeds" class="table table-striped col-4 margin-right-20">
+        <thead class="bg-secondary text-white">
+          <tr>
+            <th scope="col">Mean Wind Speeds</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% (0..24).step(4).each do |speed| %>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><%= speed %> mph</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Highest number of rides: </td>
+            <td><%= @conditions.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %></td>
+          </tr>
+          <tr>
+            <td>Lowest number of rides: </td>
+            <td><%= @conditions.lowest_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %></td>
+          </tr>
+          <tr>
+            <td>Average number of rides: </td>
+            <td><%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_mean_wind_speed_range(speed) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+
+      <table id="mean-visibilities" class="table table-striped col-4 margin-left-20">
+        <thead class="bg-secondary text-white">
+          <tr>
+            <th scope="col">Mean Visibility</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% (0..24).step(4).each do |distance| %>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><%= distance %> miles</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Highest number of rides: </td>
+            <td><%= @conditions.highest_number_of_rides_on_a_day_in_mean_visibility_range(distance) %></td>
+          </tr>
+          <tr>
+            <td>Lowest number of rides: </td>
+            <td><%= @conditions.lowest_number_of_rides_on_a_day_in_mean_visibility_range(distance) %></td>
+          </tr>
+          <tr>
+            <td>Average number of rides: </td>
+            <td><%= "%.2f" % @conditions.average_number_of_rides_on_a_day_in_mean_visibility_range(distance) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </section>
+</div>
+<header class='jumbotron background-gray'></header>
+<nav class="navbar navbar-dark bg-dark height-40"></nav>

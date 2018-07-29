@@ -1,10 +1,59 @@
-<h2>Station Dasboard</h2>
-
-<div>Total Station Count: <%= @stations_count %></div>
-<div>Average Bikes Per Station: <%= @avg_bikes %></div>
-<div>Most Bikes Per Station: <%= @station_most_bikes.dock_count %></div>
-<div>Station With Most Bikes: <%= @station_most_bikes.name %></div>
-<div>Least Bikes Per Station: <%= @station_least_bikes.dock_count %></div>
-<div>Station With Least Bikes: <%= @station_least_bikes.name %></div>
-<div>Newest Station: <%= @newest_station.name %></div>
-<div>Oldest Station: <%= @oldest_station.name %></div>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Stations Dashboard</h1>
+</header>
+<header class='background-gray'>
+</header>
+<div class="background-gray">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-3"></div>
+      <table id="max-temps" class="table table-striped col-6 margin-right-20">
+        <thead class="thead-dark" id="max-temps">
+          <tr>
+            <th scope="col">Station Stats</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Station Count: </td>
+            <td><%= @stations_count %></td>
+          </tr>
+          <tr>
+            <td>Average Bikes Per Station: </td>
+            <td><%= @avg_bikes %></td>
+          </tr>
+          <tr>
+            <td>Most Bikes Per Station: </td>
+            <td><%= @station_most_bikes.dock_count %></td>
+          </tr>
+          <tr>
+            <td>Station With Most Bikes: </td>
+            <td><%= @station_most_bikes.name %></td>
+          </tr>
+          <tr>
+            <td>Least Bikes Per Station: </td>
+            <td><%= @station_least_bikes.dock_count %></td>
+          </tr>
+          <tr>
+            <td>Station With Least Bikes: </td>
+            <td><%= @station_least_bikes.name %></td>
+          </tr>
+          <tr>
+            <td>Newest Station: </td>
+            <td><%= @newest_station.name %></td>
+          </tr>
+          <tr>
+            <td>Oldest Station: </td>
+            <td><%= @oldest_station.name %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<header class='background-gray'>
+</header>
+<header class='background-gray'>
+</header>
+<nav class="navbar navbar-dark bg-dark height-40"></nav>
