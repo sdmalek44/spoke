@@ -29,7 +29,7 @@ describe "An admin user visits '/admin/conditions/new'" do
 
     expect(current_path).to eq(condition_path(Condition.last))
     expect(page).to have_content("Successfully created weather condition for #{date.strftime('%m/%d/%Y')}")
-    expect(page).to have_content("Date: #{date.strftime("%m/%d/%Y")}")
+    expect(page).to have_content("Weather Conditions for #{date.strftime("%m/%d/%Y")}")
     expect(page).to have_content("Max Temperature: #{max_temp}")
     expect(page).to have_content("Mean Temperature: #{mean_temp}")
     expect(page).to have_content("Min Temperature: #{min_temp}")

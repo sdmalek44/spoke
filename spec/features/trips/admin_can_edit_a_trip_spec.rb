@@ -32,7 +32,7 @@ describe "Admin user visits '/admin/trips/:id/edit'" do
 
     expect(current_path).to eq(trip_path(trip))
     expect(page).to have_content('Successfully updated trip')
-    expect(page).to have_content("Duration: #{editted_duration}")
+    expect(page).to have_content("Duration: #{editted_duration / 60} minutes")
     expect(page).to have_content("Start Date: #{editted_start_date.strftime("%m/%d/%Y")}")
     expect(page).to have_content("End Date: #{editted_end_date.strftime("%m/%d/%Y")}")
     expect(page).to have_content("Start Station: #{station_2.name}")

@@ -39,7 +39,7 @@ describe "An admin user visits '/admin/conditions/:id/edit'" do
 
     expect(current_path).to eq(condition_path(condition_1))
     expect(page).to have_content("Successfully updated weather condition for #{editted_date.strftime('%m/%d/%Y')}")
-    expect(page).to have_content("Date: #{editted_date.strftime("%m/%d/%Y")}")
+    expect(page).to have_content("#{editted_date.strftime("%m/%d/%Y")}")
     expect(page).to have_content("Max Temperature: #{editted_max_temp}")
     expect(page).to have_content("Mean Temperature: #{editted_mean_temp}")
     expect(page).to have_content("Min Temperature: #{editted_min_temp}")

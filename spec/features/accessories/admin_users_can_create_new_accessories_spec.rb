@@ -21,7 +21,7 @@ describe "An admin user visits '/admin/bike-shop/new'" do
     expect(page).to have_content("Successfully created #{title}")
     expect(page).to have_content(title)
     expect(page).to have_content(description)
-    expect(page).to have_content("Price: $15.00")
+    expect(page).to have_content("$15.00")
     expect(page).to have_button('Add to Cart')
     expect(Accessory.last.image).to eq('https://www.hsjaa.com/images/joomlart/demo/default.jpg')
   end

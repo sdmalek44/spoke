@@ -21,7 +21,12 @@
       <div class="card-body">
         <h3 class="card-title"><%= @accessory.title %></h3>
         <p class="card-text"><%= @accessory.description %></p>
-        <p><%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id, on_show: true), class:"btn btn-primary" %></p>
+        <p class='card-text'><%= number_to_currency(@accessory.price) %></p>
+        <% if @accessory.retired? %>
+          <p><%= button_to 'Retired', nil, disabled: true, class:'btn btn-outline-dark retired-button' %></p>
+        <% else %>
+          <p><%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id, on_show: true), class:'btn btn-primary' %></p>
+        <% end %>
         <%= link_to '<< Back to Bike Shop', bike_shop_path %>
       </div>
     </div>

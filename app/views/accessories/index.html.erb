@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <% @accessories.each do |accessory| %>
-        <tr>
+        <tr class="accessory-<%= accessory.id %>"<%= accessory.id %>">
           <th id='table-entry'><%= link_to accessory.title, accessory_path(accessory) %></th>
           <td id='table-entry'><%= accessory.description %></td>
           <td id='table-entry'><%= number_to_currency(accessory.price) %></td>
