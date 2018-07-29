@@ -1,13 +1,13 @@
-<header>
-  <h1>Trips</h1>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Trips</h1>
   <% if admin_user? %>
   <p><%= link_to 'Create New Trip', new_admin_trip_path %><p>
     <% end %>
 </header>
 
 
-<table class="table table-striped table-dark">
-  <thead>
+<table class="table table-striped table-light">
+  <thead class='table-dark bg-dark table-header'>
     <tr>
       <td scope="col" id='table-entry'>Trip #</td>
       <td scope="col" id='table-entry'>Duration</td>
@@ -15,9 +15,13 @@
       <td scope="col" id='table-entry'>End Date</td>
       <td scope="col" id='table-entry'>Start Station</td>
       <td scope="col" id='table-entry'>End Station</td>
-      <td scope="col" id='table-entry'>Bike ID</td>
+      <td scope="col" id='table-entry'>Bike #</td>
       <td scope="col" id='table-entry'>Subscription Type</td>
       <td scope="col" id='table-entry'>Zip Code</td>
+      <% if admin_user? %>
+        <td></td>
+        <td></td>
+      <% end %>
     </tr>
   </thead>
   <tbody>
