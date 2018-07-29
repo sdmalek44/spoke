@@ -1,16 +1,28 @@
-<h1>Condition</h1>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Weather Conditions for <%= @condition.date.strftime("%m/%d/%Y") %></h1>
+  <% if admin_user? %>
+    <%= link_to 'Create New Weather Condition', new_admin_condition_path, class:'btn btn-secondary button-link' %>
+  <% end %>
+</header>
 
-<p>Date: <%= @condition.date.strftime("%m/%d/%Y") %></p>
-<p>Max Temperature: <%= @condition.max_temperature %> ºF</p>
-<p>Mean Temperature: <%= @condition.mean_temperature %> ºF</p>
-<p>Min Temperature: <%= @condition.min_temperature %> ºF</p>
-<p>Mean Humidity: <%= @condition.mean_humidity %> %</p>
-<p>Mean Visibility: <%= @condition.mean_visibility %> Miles</p>
-<p>Mean Wind Speed: <%= @condition.mean_wind_speed %> mph</p>
-<p>Precipitation: <%= @condition.precipitation %> "</p>
-<% if admin_user? %>
-  <%= button_to 'Edit', edit_admin_condition_path(@condition), method: :get %>
-  <%= button_to 'Delete', admin_condition_path(@condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
-<% end %>
+<section class='show-main'>
+  <div class="show-info">
+    <div>Max Temperature: <%= @condition.max_temperature %> ºF</div>
+    <div>Mean Temperature: <%= @condition.mean_temperature %> ºF</div>
+    <div>Min Temperature: <%= @condition.min_temperature %> ºF</div>
+    <div>Mean Humidity: <%= @condition.mean_humidity %> %</div>
+    <div>Mean Visibility: <%= @condition.mean_visibility %> Miles</div>
+    <div>Mean Wind Speed: <%= @condition.mean_wind_speed %> mph</div>
+    <div>Precipitation: <%= @condition.precipitation %> "</div>
+  </div>
+  <%= link_to '<< Back to Conditions Index', conditions_path %>
+</section>
 
-<%= link_to '<< Back to Weather Conditions Index', conditions_path %>
+<div class="show-buttons">
+  <div class="button-group">
+    <% if admin_user? %>
+      <%= button_to 'Edit', edit_admin_condition_path(@condition), method: :get, class:'btn btn-success show-edit-button' %>
+      <%= button_to 'Delete', admin_condition_path(@condition), method: :delete, data: {confirm: "Really want to delete this condition?"}, class:'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>
