@@ -1,20 +1,26 @@
-<h1>Conditions</h1>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Conditions</h1>
+  <% if admin_user? %>
+    <%= link_to 'Create New Weather Condition', new_admin_condition_path, class:'btn btn-secondary button-link' %>
+  <% end %>
+</header>
 
-<% if admin_user? %>
-  <p><%= link_to 'Create New Weather Condition', new_admin_condition_path %><p>
-<% end %>
-
-  <table class="table table-striped table-dark">
-    <thead>
+<section class='conditions-index-main'>
+  <table class="table table-striped table-light" id='conditions-index-table'>
+    <thead class='table-light table-header'>
       <tr>
-        <td scope="col" id='table-entry'>Date</td>
-        <td scope="col" id='table-entry'>Max Temp</td>
-        <td scope="col" id='table-entry'>Mean Temp</td>
-        <td scope="col" id='table-entry'>Min Temp</td>
-        <td scope="col" id='table-entry'>Mean Humidity</td>
-        <td scope="col" id='table-entry'>Mean Visibility</td>
-        <td scope="col" id='table-entry'>Mean Wind Speed</td>
-        <td scope="col" id='table-entry'>Precipitation</td>
+        <th scope="col" id='table-entry'>Date</th>
+        <th scope="col" id='table-entry'>Max Temp</th>
+        <th scope="col" id='table-entry'>Mean Temp</th>
+        <th scope="col" id='table-entry'>Min Temp</th>
+        <th scope="col" id='table-entry'>Mean Humidity</th>
+        <th scope="col" id='table-entry'>Mean Visibility</th>
+        <th scope="col" id='table-entry'>Mean Wind Speed</th>
+        <th scope="col" id='table-entry'>Precipitation</th>
+        <% if admin_user? %>
+          <th></th>
+          <th></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -29,10 +35,11 @@
         <td id='table-entry'><%= condition.mean_wind_speed %> mph</td>
         <td id='table-entry'><%= condition.precipitation %> "</td>
         <% if admin_user? %>
-          <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: :get %></td>
-          <td><%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %></td>
+          <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: :get, class:'btn btn-success edit-button' %></td>
+          <td><%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"}, class:'btn btn-danger delete-button' %></td>
         <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+</section>
