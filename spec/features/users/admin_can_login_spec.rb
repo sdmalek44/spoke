@@ -15,7 +15,7 @@ describe 'when admin user visits /' do
     click_on 'Log In'
 
     expect(current_path).to eq(admin_dashboard_path)
-    expect(page).to have_content("Logged in as Admin User: bob")
+    expect(page).to have_content("Logged in as Admin User: #{@admin.first_name.titleize}")
 
   end
 end

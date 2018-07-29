@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "A registered user visits 'trip-dashboard'" do
   before :each do
-    user = User.create(username: 'test123', email: 'email@gmail.com', password: '1234')
+    user = User.create!(username: 'test123', email: 'email@gmail.com', password: '1234', first_name: 'bill', last_name: 'confil', address: '111 argon st')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     @station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
