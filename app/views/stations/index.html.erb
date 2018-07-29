@@ -1,16 +1,32 @@
-<h1>Stations</h1>
+<header>
+  <h1>Stations</h1>
 
-<% if admin_user? %>
-  <p><%= link_to 'Create New Station', new_admin_station_path %></p>
-<% end %>
-
-<% @stations.each do |station| %>
-  <h3><%= link_to station.name, station_path(station) %></h3>
-  <p>Dock Count: <%= station.dock_count %></p>
-  <p>City: <%= station.city %></p>
-  <p>Installation Date: <%= station.installation_date.strftime('%m/%d/%Y') %></p>
   <% if admin_user? %>
-    <%= button_to 'Edit', edit_admin_station_path(station), method: :get %>
-    <%= button_to 'Delete', admin_station_path(station), method: :delete, data: {confirm: "Really want to delete this station?"} %>
+    <p><%= link_to 'Create New Station', new_admin_station_path %></p>
   <% end %>
-<% end %>
+</header>
+
+<table class="table table-striped table-dark" id='station-index-table'>
+  <thead>
+    <tr>
+      <td scope="col" id='table-entry'>Station</td>
+      <td scope="col" id='table-entry'>City</td>
+      <td scope="col" id='table-entry'>Dock Count</td>
+      <td scope="col" id='table-entry'>Installation Date</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stations.each do |station| %>
+    <tr>
+      <th id='table-entry'><%= link_to station.name, station_path(station) %></th>
+      <td id='table-entry'><%= station.city %></td>
+      <td id='table-entry'><%= station.dock_count %></td>
+      <td id='table-entry'><%= station.installation_date.strftime('%m/%d/%Y') %></td>
+      <% if admin_user? %>
+        <td><%= button_to 'Edit', edit_admin_station_path(station), method: :get %></td>
+        <td><%= button_to 'Delete', admin_station_path(station), method: :delete, data: {confirm: "Really want to delete this station?"} %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

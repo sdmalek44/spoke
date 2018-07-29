@@ -4,17 +4,35 @@
   <p><%= link_to 'Create New Weather Condition', new_admin_condition_path %><p>
 <% end %>
 
-<% @conditions.each do |condition| %>
-  <h3><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></h3>
-  <p>Max Temperature: <%= condition.max_temperature %> ºF</p>
-  <p>Mean Temperature: <%= condition.mean_temperature %> ºF</p>
-  <p>Min Temperature: <%= condition.min_temperature %> ºF</p>
-  <p>Mean Humidity: <%= condition.mean_humidity %> %</p>
-  <p>Mean Visibility: <%= condition.mean_visibility %> Miles</p>
-  <p>Mean Wind Speed: <%= condition.mean_wind_speed %> mph</p>
-  <p>Precipitation: <%= condition.precipitation %> "</p>
-  <% if admin_user? %>
-    <%= button_to 'Edit', edit_admin_condition_path(condition), method: :get %>
-    <%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %>
-  <% end %>
-<% end %>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <td scope="col" id='table-entry'>Date</td>
+        <td scope="col" id='table-entry'>Max Temp</td>
+        <td scope="col" id='table-entry'>Mean Temp</td>
+        <td scope="col" id='table-entry'>Min Temp</td>
+        <td scope="col" id='table-entry'>Mean Humidity</td>
+        <td scope="col" id='table-entry'>Mean Visibility</td>
+        <td scope="col" id='table-entry'>Mean Wind Speed</td>
+        <td scope="col" id='table-entry'>Precipitation</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @conditions.each do |condition| %>
+      <tr>
+        <td id='table-entry'><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></td>
+        <td id='table-entry'><%= condition.max_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.mean_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.min_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.mean_humidity %> %</td>
+        <td id='table-entry'><%= condition.mean_visibility %> miles</td>
+        <td id='table-entry'><%= condition.mean_wind_speed %> mph</td>
+        <td id='table-entry'><%= condition.precipitation %> "</td>
+        <% if admin_user? %>
+          <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: :get %></td>
+          <td><%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"} %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

@@ -24,21 +24,21 @@ describe "A visitor visits '/conditions'" do
     visit conditions_path
 
     expect(page).to have_link("#{condition_1.date.strftime('%m/%d/%Y')}")
-    expect(page).to have_content("Max Temperature: #{condition_1.max_temperature}")
-    expect(page).to have_content("Mean Temperature: #{condition_1.mean_temperature}")
-    expect(page).to have_content("Min Temperature: #{condition_1.min_temperature}")
-    expect(page).to have_content("Mean Humidity: #{condition_1.mean_humidity}")
-    expect(page).to have_content("Mean Visibility: #{condition_1.mean_visibility}")
-    expect(page).to have_content("Mean Wind Speed: #{condition_1.mean_wind_speed}")
-    expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
+    expect(page).to have_content("#{condition_1.max_temperature}")
+    expect(page).to have_content("#{condition_1.mean_temperature}")
+    expect(page).to have_content("#{condition_1.min_temperature}")
+    expect(page).to have_content("#{condition_1.mean_humidity}")
+    expect(page).to have_content("#{condition_1.mean_visibility}")
+    expect(page).to have_content("#{condition_1.mean_wind_speed}")
+    expect(page).to have_content("#{condition_1.precipitation}")
     expect(page).to have_link("#{condition_1.date.strftime('%m/%d/%Y')}")
-    expect(page).to have_content("Max Temperature: #{condition_2.max_temperature}")
-    expect(page).to have_content("Mean Temperature: #{condition_2.mean_temperature}")
-    expect(page).to have_content("Min Temperature: #{condition_2.min_temperature}")
-    expect(page).to have_content("Mean Humidity: #{condition_2.mean_humidity}")
-    expect(page).to have_content("Mean Visibility: #{condition_2.mean_visibility}")
-    expect(page).to have_content("Mean Wind Speed: #{condition_2.mean_wind_speed}")
-    expect(page).to have_content("Precipitation: #{condition_2.precipitation}")
+    expect(page).to have_content("#{condition_2.max_temperature}")
+    expect(page).to have_content("#{condition_2.mean_temperature}")
+    expect(page).to have_content("#{condition_2.min_temperature}")
+    expect(page).to have_content("#{condition_2.mean_humidity}")
+    expect(page).to have_content("#{condition_2.mean_visibility}")
+    expect(page).to have_content("#{condition_2.mean_wind_speed}")
+    expect(page).to have_content("#{condition_2.precipitation}")
   end
 
   describe "an admin user visits '/conditions'" do
@@ -69,13 +69,13 @@ describe "A visitor visits '/conditions'" do
       visit conditions_path
 
       expect(page).to have_link("#{condition_1.date.strftime('%m/%d/%Y')}")
-      expect(page).to have_content("Max Temperature: #{condition_1.max_temperature}")
-      expect(page).to have_content("Mean Temperature: #{condition_1.mean_temperature}")
-      expect(page).to have_content("Min Temperature: #{condition_1.min_temperature}")
-      expect(page).to have_content("Mean Humidity: #{condition_1.mean_humidity}")
-      expect(page).to have_content("Mean Visibility: #{condition_1.mean_visibility}")
-      expect(page).to have_content("Mean Wind Speed: #{condition_1.mean_wind_speed}")
-      expect(page).to have_content("Precipitation: #{condition_1.precipitation}")
+      expect(page).to have_content("#{condition_1.max_temperature}")
+      expect(page).to have_content("#{condition_1.mean_temperature}")
+      expect(page).to have_content("#{condition_1.min_temperature}")
+      expect(page).to have_content("#{condition_1.mean_humidity}")
+      expect(page).to have_content("#{condition_1.mean_visibility}")
+      expect(page).to have_content("#{condition_1.mean_wind_speed}")
+      expect(page).to have_content("#{condition_1.precipitation}")
     end
     it 'they see a button next to each condition to edit that condition' do
       condition_1 = Condition.create(
