@@ -1,27 +1,52 @@
-<h1>Trips</h1>
-
-<% if admin_user? %>
-  <p><%= link_to 'Create New Trip', new_admin_trip_path %><p>
-<% end %>
-
-<% @trips.each do |trip| %>
-  <h3><%= link_to "Trip ##{trip.id}", trip_path(trip) %></h3>
-  <p>Duration: <%= trip.duration %></p>
-  <p>Start Date: <%= trip.start_date.strftime('%m/%d/%Y') %></p>
-  <p>End Date: <%= trip.end_date.strftime('%m/%d/%Y') %></p>
-  <% unless trip.start_station.nil? %>
-    <p>Start Station: <%= trip.start_station.name %></p>
-  <% end %>
-  <% unless trip.end_station.nil? %>
-    <p>End Station: <%= trip.end_station.name %></p>
-  <% end %>
-  <p>Bike ID: <%= trip.bike_id %></p>
-  <p>Subscription Type: <%= trip.subscription_type %></p>
-  <p>Zip Code: <%= trip.zip_code %></p>
+<header>
+  <h1>Trips</h1>
   <% if admin_user? %>
-    <%= button_to 'Edit', edit_admin_trip_path(trip), method: :get %>
-    <%= button_to 'Delete', admin_trip_path(trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %>
-  <% end %>
-<% end %>
+  <p><%= link_to 'Create New Trip', new_admin_trip_path %><p>
+    <% end %>
+</header>
+
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <td scope="col" id='table-entry'>Trip #</td>
+      <td scope="col" id='table-entry'>Duration</td>
+      <td scope="col" id='table-entry'>Start Date</td>
+      <td scope="col" id='table-entry'>End Date</td>
+      <td scope="col" id='table-entry'>Start Station</td>
+      <td scope="col" id='table-entry'>End Station</td>
+      <td scope="col" id='table-entry'>Bike ID</td>
+      <td scope="col" id='table-entry'>Subscription Type</td>
+      <td scope="col" id='table-entry'>Zip Code</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+    <tr>
+      <td id='table-entry'><%= link_to "##{trip.id}", trip_path(trip) %></td>
+      <td id='table-entry'><%= trip.duration %></td>
+      <td id='table-entry'><%= trip.start_date.strftime('%m/%d/%Y') %></td>
+      <td id='table-entry'><%= trip.end_date.strftime('%m/%d/%Y') %></td>
+      <% if trip.start_station.nil? %>
+        <td id='table-entry'>-</td>
+      <% else %>
+        <td id='table-entry'><%= trip.start_station.name %></td>
+      <% end %>
+      <% if trip.end_station.nil? %>
+        <td id='table-entry'>-</td>
+      <% else %>
+        <td id='table-entry'><%= trip.end_station.name %></td>
+      <% end %>
+      <td id='table-entry'><%= trip.bike_id %></td>
+      <td id='table-entry'><%= trip.subscription_type %></td>
+      <td id='table-entry'><%= trip.zip_code %></td>
+      <% if admin_user? %>
+        <td><%= button_to 'Edit', edit_admin_trip_path(trip), method: :get %></td>
+        <td><%= button_to 'Delete', admin_trip_path(trip), method: :delete, data: {confirm: "Really want to delete this trip?"} %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= will_paginate @trips %>
