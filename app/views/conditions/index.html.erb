@@ -5,39 +5,41 @@
   <% end %>
 </header>
 
-<table class="table table-striped table-light">
-  <thead class='table-light table-header'>
-    <tr>
-      <th scope="col" id='table-entry'>Date</th>
-      <th scope="col" id='table-entry'>Max Temp</th>
-      <th scope="col" id='table-entry'>Mean Temp</th>
-      <th scope="col" id='table-entry'>Min Temp</th>
-      <th scope="col" id='table-entry'>Mean Humidity</th>
-      <th scope="col" id='table-entry'>Mean Visibility</th>
-      <th scope="col" id='table-entry'>Mean Wind Speed</th>
-      <th scope="col" id='table-entry'>Precipitation</th>
-      <% if admin_user? %>
-        <th></th>
-        <th></th>
+<section class='conditions-index-main'>
+  <table class="table table-striped table-light" id='conditions-index-table'>
+    <thead class='table-light table-header'>
+      <tr>
+        <th scope="col" id='table-entry'>Date</th>
+        <th scope="col" id='table-entry'>Max Temp</th>
+        <th scope="col" id='table-entry'>Mean Temp</th>
+        <th scope="col" id='table-entry'>Min Temp</th>
+        <th scope="col" id='table-entry'>Mean Humidity</th>
+        <th scope="col" id='table-entry'>Mean Visibility</th>
+        <th scope="col" id='table-entry'>Mean Wind Speed</th>
+        <th scope="col" id='table-entry'>Precipitation</th>
+        <% if admin_user? %>
+          <th></th>
+          <th></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @conditions.each do |condition| %>
+      <tr>
+        <td id='table-entry'><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></td>
+        <td id='table-entry'><%= condition.max_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.mean_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.min_temperature %> ºF</td>
+        <td id='table-entry'><%= condition.mean_humidity %> %</td>
+        <td id='table-entry'><%= condition.mean_visibility %> miles</td>
+        <td id='table-entry'><%= condition.mean_wind_speed %> mph</td>
+        <td id='table-entry'><%= condition.precipitation %> "</td>
+        <% if admin_user? %>
+          <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: :get, class:'btn btn-success edit-button' %></td>
+          <td><%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"}, class:'btn btn-danger delete-button' %></td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @conditions.each do |condition| %>
-    <tr>
-      <td id='table-entry'><%= link_to condition.date.strftime('%m/%d/%Y'), condition_path(condition) %></td>
-      <td id='table-entry'><%= condition.max_temperature %> ºF</td>
-      <td id='table-entry'><%= condition.mean_temperature %> ºF</td>
-      <td id='table-entry'><%= condition.min_temperature %> ºF</td>
-      <td id='table-entry'><%= condition.mean_humidity %> %</td>
-      <td id='table-entry'><%= condition.mean_visibility %> miles</td>
-      <td id='table-entry'><%= condition.mean_wind_speed %> mph</td>
-      <td id='table-entry'><%= condition.precipitation %> "</td>
-      <% if admin_user? %>
-        <td><%= button_to 'Edit', edit_admin_condition_path(condition), method: :get, class:'btn btn-success edit-button' %></td>
-        <td><%= button_to 'Delete', admin_condition_path(condition), method: :delete, data: {confirm: "Really want to delete this condition?"}, class:'btn btn-danger delete-button' %></td>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</section>
