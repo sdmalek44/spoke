@@ -1,21 +1,50 @@
-<h1>Admin Bike Shop</h1>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Admin Bike Shop</h1>
+  <% if admin_user? %>
+    <%= link_to 'Create New Accessory', admin_bike_shop_new_path, class:'btn btn-secondary button-link' %>
+  <% end %>
+</header>
 
-<% @accessories.each do |accessory| %>
-  <div class="accessory-<%= accessory.id %>">
-    <h3><%= link_to accessory.title, accessory_path(accessory) %></h3>
-    <img src="<%= accessory.image %>" alt="Accessory Image">
-    <p>Description: <%= accessory.description %></p>
-    <p>Price: <%= number_to_currency(accessory.price) %></p>
-    <% if accessory.retired? %>
-      <p>Status: Retired</p>
-    <% else %>
-      <p>Status: Active</p>
-    <% end %>
-    <%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get %>
-    <% if accessory.retired? %>
-      <%= button_to 'Activate', admin_accessory_path(accessory, retire: 'false'), method: :patch %>
-    <% else %>
-      <%= button_to 'Retire', admin_accessory_path(accessory, retire: 'true'), method: :patch %>
-    <% end %>
-  </div>
-<% end %>
+<div class="bikeshop-subheader">
+  <%= link_to ' Standard Bike Shop', bike_shop_path, class:'btn btn-info admin-bikeshop-button' %>
+</div>
+
+<section class='station-index-main'>
+  <table class="table table-striped table-ligth" id='station-index-table'>
+    <thead class='table-light table-header'>
+      <tr>
+        <th scope="col" id='table-entry'>Accessory</th>
+        <th scope="col" id='table-entry'>Description</th>
+        <th scope="col" id='table-entry'>Price</th>
+        <th scope="col" id='table-entry'>Status</th>
+        <th scope="col" id='table-entry'></th>
+        <% if admin_user? %>
+          <th scope="col" id='table-entry'></th>
+          <th scope="col" id='table-entry'></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @accessories.each do |accessory| %>
+        <tr class="accessory-<%= accessory.id %>"<%= accessory.id %>">
+          <th id='table-entry'><%= link_to accessory.title, accessory_path(accessory) %></th>
+          <td id='table-entry'><%= accessory.description %></td>
+          <td id='table-entry'><%= number_to_currency(accessory.price) %></td>
+          <% if accessory.retired? %>
+            <td id='table-entry'>Retired</td>
+          <% else %>
+            <td id='table-entry'>Active</td>
+          <% end %>
+          <% if admin_user? %>
+            <% if accessory.retired? %>
+              <td><%= button_to 'Activate', admin_accessory_path(accessory, retire: 'false'), method: :patch, class:'btn btn-primary' %></td>
+            <% else %>
+              <td><%= button_to 'Retire', admin_accessory_path(accessory, retire: 'true'), method: :patch, class:'btn btn-danger index-retire-button' %></td>
+            <% end %>
+            <td><%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get, class:'btn btn-success' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
