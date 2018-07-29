@@ -18,7 +18,7 @@ describe "'when user visits the '/' page" do
     click_button 'Log In'
 
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Logged in as #{user.first_name}")
+    expect(page).to have_content("Logged in as #{user.first_name.titleize}")
     expect(page).to have_link("Logout")
     expect(page).to_not have_link("Login")
   end
