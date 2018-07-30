@@ -45,12 +45,12 @@ describe "A user visits '/bike-shop'" do
 
       expect(page).to have_content(accessory_1.title)
       expect(page).to have_content(accessory_1.description)
-      expect(page).to have_content("Price: $#{accessory_1.price}")
-      expect(page).to have_content("Status: Active")
+      expect(page).to have_content("#{accessory_1.price}")
+      expect(page).to have_content("Active")
       expect(page).to have_content(accessory_2.title)
       expect(page).to have_content(accessory_2.description)
-      expect(page).to have_content("Price: $#{accessory_2.price}")
-      expect(page).to have_content("Status: Retired")
+      expect(page).to have_content("#{accessory_2.price}")
+      expect(page).to have_content("Retired")
     end
     it 'they can go to an edit page for an accessory' do
       accessory_1 = Accessory.create(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50)
@@ -66,26 +66,26 @@ describe "A user visits '/bike-shop'" do
 
       visit admin_bike_shop_path
 
-      expect(page).to have_content('Status: Active')
+      expect(page).to have_content('Active')
 
       click_button 'Retire'
 
       expect(current_path).to eq(admin_bike_shop_path)
       expect(page).to have_content("Successfully retired #{accessory_1.title}")
-      expect(page).to have_content('Status: Retired')
+      expect(page).to have_content('Retired')
     end
     it 'they can activate a retired accessory from the admin bike-shop' do
       accessory_1 = Accessory.create!(title: 'Horn', description: 'Let people know you are on a bike', price: 12.50, retired?: true)
 
       visit admin_bike_shop_path
 
-      expect(page).to have_content('Status: Retired')
+      expect(page).to have_content('Retired')
 
       click_button 'Activate'
 
       expect(current_path).to eq(admin_bike_shop_path)
       expect(page).to have_content("Successfully activated #{accessory_1.title}")
-      expect(page).to have_content('Status: Active')
+      expect(page).to have_content('Active')
     end
   end
 end

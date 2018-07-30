@@ -1,15 +1,17 @@
-<%= form_for [:admin, @accessory] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div>
+  <%= form_for [:admin, @accessory] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
 
-  <%= f.label :price %>
-  <%= f.number_field :price, min: '0', step: 0.01 %>
+    <%= f.label :price %>
+    <%= f.number_field :price, min: '0', step: 0.01 %>
 
-  <%= f.label :image %>
-  <%= f.text_field :image %>
+    <%= f.label :image %>
+    <%= f.text_field :image %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</div>
