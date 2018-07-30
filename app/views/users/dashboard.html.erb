@@ -1,13 +1,44 @@
-<p>Username: <%= current_user.username %></p>
-<p>Email: <%= current_user.email %></p>
-<p>First Name: <%= current_user.first_name %></p>
-<p>Last Name: <%= current_user.last_name %></p>
-<p>Address: <%= current_user.address %></p>
-
-<%= link_to 'Edit Account Info', edit_user_path(current_user) %>
-
-<% if @orders %>
-  <% @orders.each do |order| %>
-    <%= link_to "Order Id: #{order.id}", order_path(order) %>
-  <% end %>
-<% end %>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Dashboard</h1>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+  <ul class="navbar-nav col-2">
+    <li class="nav-item">Name: <%= current_user.first_name.titleize %> <%= current_user.last_name.titleize %></li>
+  </ul>
+  <ul class="navbar-nav col-2">
+    <li class="nav-item">Username: <%= current_user.username %></li>
+  </ul>
+  <ul class="navbar-nav col-2">
+    <li class="nav-item">Email: <%= current_user.email %></li>
+  </ul>
+  <ul class="navbar-nav col-2">
+    <li class="nav-item">Address: <%= current_user.address %></li>
+  </ul>
+</nav>
+<div class="">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-3"></div>
+      <table class="table table-striped col-6 mt-5">
+        <thead class="bg-secondary text-white">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Orders</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @orders %>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= link_to "Order Id: #{order.id}", order_path(order) %></td>
+                <td><%= order.status.titleize %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <div class="d-flex justify-content-center pb-5"><%= link_to 'Edit Account Info', edit_user_path(current_user) %></div>
+</div>
