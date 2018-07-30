@@ -1,9 +1,17 @@
-<%= link_to "Create Account", new_user_path %>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Log In</h1>
+</header>
 
-<%= form_tag login_path do %>
-<%= label_tag :username %>
-<%= text_field_tag :username %>
-<%= label_tag :password %>
-<%= password_field_tag :password %>
-<%= submit_tag "Log In" %>
-<% end %>
+<div class='create-account-button'>
+  <div><%= link_to "Create Account", new_user_path, class:'btn btn-primary' %></div>
+</div>
+
+<div class='form-block'>
+  <%= form_tag login_path do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log In", class:'btn btn-success' %>
+  <% end %>
+</div>
