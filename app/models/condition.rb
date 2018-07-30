@@ -28,8 +28,3 @@ class Condition < ApplicationRecord
     .group(:date, :mean_visibility).count
   end
 end
-
-# Condition.select('conditions.date, count(trips.id) as trip_count').joins("INNER JOIN trips ON conditions.date = trips.start_date").where("conditions.max_temperature between 30 and 39").group(:date, :id).order('trip_count')
-# ride_count = Condition.joins("inner join trips on conditions.date = trips.start_date").group(:date, :max_temperature).count   # {[date, temp] => ride_count}
-#
-# rides_in_the_70s = ride_count.select {|date,temp| date >= 70 && date < 80}
