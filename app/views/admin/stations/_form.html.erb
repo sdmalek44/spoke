@@ -1,15 +1,24 @@
-<%= form_for [:admin, @station] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-
-  <%= f.label :dock_count %>
-  <%= f.number_field :dock_count, in: 1..50, step: 1 %>
-
-  <%= f.label :installation_date %>
-  <%= f.date_field(:installation_date) %>
-
-  <%= f.submit %>
-<% end %>
+<div>
+  <%= form_for [:admin, @station] do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    <div>
+      <%= f.label :dock_count %>
+      <%= f.number_field :dock_count, in: 1..50, step: 1 %>
+    </div>
+    <div>
+      <%= f.label :installation_date %>
+      <%= f.date_field(:installation_date) %>
+    </div>
+    <div class='form-buttons'>
+      <%= link_to 'Cancel', stations_path, class:'btn btn-danger form-cancel-button' %>
+      <%= f.submit class:'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

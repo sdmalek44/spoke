@@ -5,6 +5,12 @@
   <% end %>
 </header>
 
+<div class="bikeshop-subheader">  
+  <% if admin_user? %>
+    <%= link_to 'Admin Bike Shop', admin_bike_shop_path, class:'btn btn-info admin-bikeshop-button' %>
+  <% end %>
+</div>
+
 <section class='station-index-main'>
   <table class="table table-striped table-ligth" id='station-index-table'>
     <thead class='table-light table-header'>
@@ -32,7 +38,6 @@
           <% end %>
           <% if admin_user? %>
             <td><%= button_to 'Edit', edit_admin_accessory_path(accessory), method: :get, class:'btn btn-success' %></td>
-            <td><%= button_to 'Delete', admin_accessory_path(accessory), method: :delete, data: {confirm: "Really want to delete this station?"}, class:'btn btn-danger' %></td>
           <% end %>
         </tr>
       <% end %>

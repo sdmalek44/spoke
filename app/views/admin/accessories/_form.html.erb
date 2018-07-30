@@ -1,15 +1,24 @@
-<%= form_for [:admin, @accessory] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.label :price %>
-  <%= f.number_field :price, min: '0', step: 0.01 %>
-
-  <%= f.label :image %>
-  <%= f.text_field :image %>
-
-  <%= f.submit %>
-<% end %>
+<div>
+  <%= form_for [:admin, @accessory] do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <div>
+      <%= f.label :price %>
+      <%= f.number_field :price, min: '0', step: 0.01 %>
+    </div>
+    <div>
+      <%= f.label :image %>
+      <%= f.text_field :image %>
+    </div>
+    <div class='form-buttons'>
+      <%= link_to 'Cancel', bike_shop_path, class:'btn btn-danger form-cancel-button' %>
+      <%= f.submit class:'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

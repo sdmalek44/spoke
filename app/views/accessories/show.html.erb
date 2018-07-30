@@ -27,6 +27,13 @@
         <% else %>
           <p><%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id, on_show: true), class:'btn btn-primary' %></p>
         <% end %>
+        <% if admin_user? %>
+          <% if @accessory.retired? %>
+            <td><%= button_to 'Activate', admin_accessory_path(@accessory, retire: 'false'), method: :patch, class:'btn btn-primary accessory-show-button-activate' %></td>
+          <% else %>
+            <td><%= button_to 'Retire', admin_accessory_path(@accessory, retire: 'true'), method: :patch, class:'btn btn-danger index-retire-button accessory-show-button-retire' %></td>
+          <% end %>
+        <% end %>
         <%= link_to '<< Back to Bike Shop', bike_shop_path %>
       </div>
     </div>

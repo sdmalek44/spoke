@@ -1,3 +1,7 @@
-<h1>Edit Condition</h1>
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Edit Weather Conditions for <%= @condition.date.strftime('%m/%d/%Y') %></h1>
+</header>
 
-<%= render partial: 'form' %>
+<div class='form-block'>
+  <%= render partial: 'form' %>
+</div>
