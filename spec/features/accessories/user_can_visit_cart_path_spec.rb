@@ -65,7 +65,7 @@ describe 'when user visits /cart' do
     visit cart_path
 
     within(".cart-accessory-#{@accessory12.id}") do
-      click_link "Remove"
+      click_button "Remove"
     end
 
     expect(current_path).to eq(cart_path)
@@ -80,7 +80,7 @@ describe 'when user visits /cart' do
     visit cart_path
 
     within(".cart-accessory-#{@accessory12.id}") do
-      click_link "Decrease Quantity"
+      click_button "Decrease Quantity"
     end
 
     within(".cart-accessory-#{@accessory12.id}") do
@@ -91,7 +91,7 @@ describe 'when user visits /cart' do
     visit cart_path
 
     within(".cart-accessory-#{@accessory1.id}") do
-      click_link "Decrease Quantity"
+      click_button "Decrease Quantity"
     end
 
     expect(page).to_not have_css(".cart-accessory-#{@accessory1.id}")
@@ -100,7 +100,7 @@ describe 'when user visits /cart' do
     visit cart_path
 
     within(".cart-accessory-#{@accessory12.id}") do
-      click_link "Increase Quantity"
+      click_button "Increase Quantity"
     end
 
     within(".cart-accessory-#{@accessory12.id}") do

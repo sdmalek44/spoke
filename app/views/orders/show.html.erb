@@ -1,20 +1,30 @@
-<p>Bike Accessories</p>
-
+<header class='jumbotron' id='header'>
+  <h1 class='text-white'>Order Id: <%= @order.id %></h1>
+</header>
+<div class=" d-flex flex-wrap justify-content-center">
 <% @order_accessories.each do |order_accessory| %>
-  <div><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></div>
-  <div>Quantity: <%= order_accessory.quantity %></div>
-  <div>Subtotal: <%= number_to_currency(order_accessory.subtotal) %></div>
-  </br>
-<% end %>
+      <article class="m-5">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= order_accessory.accessory.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></h5>
+          <p class="card-text">Quantity: <%= order_accessory.quantity %></p>
+          <p class="card-text">Subtotal: <%= number_to_currency(order_accessory.subtotal) %></p>
+        </div>
+      </div>
+    </article>
+  <% end %>
+</div>
+<h3 class="d-flex justify-content-center mb-4">Grand Total: <%= number_to_currency(@order.grand_total) %></h3>
+<h5 class="d-flex justify-content-center mb-4">Status: <%= @order.status.titleize %></h5>
+<h5 class="d-flex justify-content-center mb-4">Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></h3>
 
-<p>Grand Total: <%= number_to_currency(@order.grand_total) %></p>
-<p>Status: <%= @order.status.titleize %></p>
-<p>Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></p>
+
 <% if (@order.status.downcase == "completed") || (@order.status.downcase == "cancelled") %>
-  <p><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y") %></p>
+  <h5 class="d-flex justify-content-center mb-4"><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y") %></h5>
 <% end %>
 
 <% if admin_user? %>
-  <div>Purchaser: <%= @order.user.first_name.titleize %> <%= @order.user.last_name.titleize %></div>
-  <div>Address: <%= @order.user.address.titleize %></div>
+  <h5 class="d-flex justify-content-center mb-4">Purchaser: <%= @order.user.first_name.titleize %> <%= @order.user.last_name.titleize %></h5>
+  <h5 class="d-flex justify-content-center mb-4">Address: <%= @order.user.address.titleize %></h5>
 <% end %>
