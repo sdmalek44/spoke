@@ -1,0 +1,36 @@
+<section class='main'>
+      <article class='left-main'>
+        <div class="left-main-text">
+          <div class="follow-your-interests">
+            <i class="fas fa-road"></i>
+            <p>Quick, convenient bike rides.</p>
+          </div>
+          <div class="hear-what-people-are-talking-about">
+            <i class="fas fa-chart-bar"></i>
+            <p>Hard hitting analysis.</p>
+          </div>
+          <div class="join-the-conversation">
+            <i class="fas fa-bicycle"></i>
+            <p>Bikes and bike accessories.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class='right-main'>
+        <div class='right-main-header'>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjd-5Xoi6Qe2p5iaIUtz8fIpycAUKtydB0rDDG-BrgWS1ImYf5-g" alt="spoke logo" id='twitter-logo'>
+        </div>
+        <div class="right-main-subheader">
+          <div id='right-subheader'>Get around town the Spoke Share way.</div>
+        </div>
+        <div id='join-twitter'>
+          <p>Join Spoke Share today.</p>
+        </div>
+        <div><%= button_to 'Sign Up', new_user_path, method: :get,  class:'btn btn-primary welcome-signup-button' %></div>
+        <div><%= link_to 'Log In', login_path, method: :get, class:'btn btn-outline-primary welcome-login-button' %></div>
+      </article>
+    </section>
+
+    <footer>
+      <div class='footer-link'>presented by Colin Armstrong, Stephen Malek, and Matt Peters</div>
+    </footer>
