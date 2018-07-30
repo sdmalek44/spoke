@@ -33,7 +33,7 @@ describe 'when admin user visits /dashboard' do
   it 'can select all orders' do
     visit admin_dashboard_path
 
-    click_on "Sort Orders By Status"
+    click_on "Filter Orders by Status"
     click_on "All"
 
     expect(page).to have_content("Order Id: #{@order_1.id}")
@@ -44,7 +44,7 @@ describe 'when admin user visits /dashboard' do
   it 'can select all orders' do
     visit admin_dashboard_path
 
-    click_on "Sort Orders By Status"
+    click_on "Filter Orders by Status"
     click_on "Ordered"
 
     expect(page).to have_content("Order Id: #{@order_1.id}")
@@ -55,7 +55,7 @@ describe 'when admin user visits /dashboard' do
   it 'can select paid orders' do
     visit admin_dashboard_path
 
-    click_on "Sort Orders By Status"
+    click_on "Filter Orders by Status"
     click_on "Paid"
 
     expect(page).to_not have_content("Order Id: #{@order_1.id}")
@@ -67,7 +67,7 @@ describe 'when admin user visits /dashboard' do
   it 'can select all orders' do
     visit admin_dashboard_path
 
-    click_on "Sort Orders By Status"
+    click_on "Filter Orders by Status"
     click_on "Cancelled"
 
     expect(page).to_not have_content("Order Id: #{@order_1.id}")
@@ -78,7 +78,7 @@ describe 'when admin user visits /dashboard' do
   it 'can select all orders' do
     visit admin_dashboard_path
 
-    click_on "Sort Orders By Status"
+    click_on "Filter Orders by Status"
     click_on "Completed"
 
     expect(page).to_not have_content("Order Id: #{@order_1.id}")
