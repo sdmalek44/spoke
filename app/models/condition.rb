@@ -10,26 +10,25 @@ class Condition < ApplicationRecord
 
   def self.ride_count_grouped_by_date_max_temperature
     joins("inner join trips on conditions.date = trips.start_date")
-    .group(:date, :max_temperature).count
+    .where("max_temperature is not null or start_date is null")
+    .group(:date, :max_temperature).count(:start_date)
   end
 
   def self.ride_count_grouped_by_date_precipitation
     joins("inner join trips on conditions.date = trips.start_date")
-    .group(:date, :precipitation).count
+    .where("max_temperature is not null or start_date is null")
+    .group(:date, :precipitation).count(:start_date)
   end
 
   def self.ride_count_grouped_by_date_mean_wind_speed
     joins("inner join trips on conditions.date = trips.start_date")
-    .group(:date, :mean_wind_speed).count
+    .where("max_temperature is not null or start_date is null")
+    .group(:date, :mean_wind_speed).count(:start_date)
   end
 
   def self.ride_count_grouped_by_date_mean_visibility
     joins("inner join trips on conditions.date = trips.start_date")
-    .group(:date, :mean_visibility).count
+    .where("max_temperature is not null or start_date is null")
+    .group(:date, :mean_visibility).count(:start_date)
   end
 end
-
-# Condition.select('conditions.date, count(trips.id) as trip_count').joins("INNER JOIN trips ON conditions.date = trips.start_date").where("conditions.max_temperature between 30 and 39").group(:date, :id).order('trip_count')
-# ride_count = Condition.joins("inner join trips on conditions.date = trips.start_date").group(:date, :max_temperature).count   # {[date, temp] => ride_count}
-#
-# rides_in_the_70s = ride_count.select {|date,temp| date >= 70 && date < 80}
