@@ -1,21 +1,27 @@
 <% if @removed_accessory %>
   <div>Link to <%= link_to @removed_accessory.title, accessory_path(@removed_accessory) %> page.</div>
 <% end %>
+<div class=" d-flex flex-wrap justify-content-center">
 <% @cart_accessories.each do |accessory| %>
-    <article class="cart-accessory-<%= accessory.id %>">
-      <img src="<%= accessory.image %>">
-      <div class=""><%= accessory.title %></div>
-      <div class=""><%= number_to_currency(accessory.price) %></div>
-      <div class="">Quantity: <%= @cart.count_of(accessory.id) %></div>
-      <div class="">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></div>
-      <%= link_to "Remove", cart_path(accessory_id: accessory.id, remove: true), method: :delete %>
-      <%= link_to "Decrease Quantity", cart_path(accessory_id: accessory.id), method: :delete %>
-      <%= link_to "Increase Quantity", carts_path(accessory_id: accessory.id, in_cart: true), method: :post %>
+      <article class="cart-accessory-<%= accessory.id %> m-5">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= accessory.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= accessory.title %></h5>
+          <p class="card-text"><%= number_to_currency(accessory.price) %></p>
+          <p class="card-text">Quantity: <%= @cart.count_of(accessory.id) %></p>
+          <p class="card-text">Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></p>
+          <%= button_to "Increase Quantity", carts_path(accessory_id: accessory.id, in_cart: true), method: :post, class: 'btn btn-primary mb-1' %>
+          <%= button_to "Decrease Quantity", cart_path(accessory_id: accessory.id), method: :delete, class: 'btn btn-primary mb-1' %>
+          <%= button_to "Remove", cart_path(accessory_id: accessory.id, remove: true), method: :delete, class: 'btn btn-primary mb-1' %>
+        </div>
+      </div>
     </article>
   <% end %>
-<div class="">Grand Total: <%= currency = number_to_currency(@cart.grand_total(@cart_accessories)) %></div>
+</div>
+<h3 class="d-flex justify-content-center mb-4">Grand Total: <%= currency = number_to_currency(@cart.grand_total(@cart_accessories)) %></h3>
 <% if current_user && !(@cart_accessories.empty?)%>
-  <%= button_to "Checkout", orders_path(grand_total: currency), method: :post %>
+  <div class='d-flex justify-content-center'><%= button_to "Checkout", orders_path(grand_total: currency), method: :post, class: "btn btn-primary btn-lg" %></div>
 <% elsif current_user.nil? %>
-  <%= button_to "Checkout", login_path, method: :get %>
+  <div class='d-flex justify-content-center'><%= button_to "Checkout", login_path, method: :get, class: "btn btn-primary btn-lg" %></div>
 <% end %>
