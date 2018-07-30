@@ -1,10 +1,10 @@
 <header class='jumbotron' id='header'>
   <h1 class='text-white'>Log In</h1>
+    <div>
+      <%= link_to "Create Account", new_user_path, class:'btn btn-secondary' %>
+    </div>
 </header>
 
-<div class='create-account-button'>
-  <div><%= link_to "Create Account", new_user_path, class:'btn btn-primary' %></div>
-</div>
 
 <div class='form-block'>
   <%= form_tag login_path do %>
