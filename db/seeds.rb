@@ -116,3 +116,7 @@ puts "Created admin user (username: admin, password: password)"
 User.create(username: 'default', password: 'password', email: 'default@email.com', first_name: 'Tristan', last_name: 'Smith', address: '1255 19th St')
 
 puts 'Created default user (username: default, password: password)'
+
+ActiveRecord::Base.connection.reset_pk_sequence!('stations')
+ActiveRecord::Base.connection.reset_pk_sequence!('trips')
+ActiveRecord::Base.connection.reset_pk_sequence!('conditions')
