@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
     if params[:status] == 'all'
       @orders
     elsif params[:status]
-      @orders = Order.where(status: [params[:status], params[:status].titleize])
+      @orders = Order.where(status: params[:status].to_i)
     end
   end
 end
