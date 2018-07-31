@@ -46,7 +46,7 @@ class Admin::AccessoriesController < Admin::BaseController
   private
 
   def accessory_params
-    params[:image] = 'https://www.hsjaa.com/images/joomlart/demo/default.jpg' unless params[:image]
+    params[:accessory][:image] = 'https://www.hsjaa.com/images/joomlart/demo/default.jpg' unless params[:image]
     params.require(:accessory).permit(:title, :description, :price, :image)
   end
 end
