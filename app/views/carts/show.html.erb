@@ -1,9 +1,9 @@
+<% if @removed_accessory %>
+<div class="alert alert-primary m-0" role="alert">Link to <%= link_to @removed_accessory.title, accessory_path(@removed_accessory) %> page.</div>
+<% end %>
 <header class='jumbotron' id='header'>
   <h1 class='text-white'>Your Cart</h1>
 </header>
-<% if @removed_accessory %>
-  <div>Link to <%= link_to @removed_accessory.title, accessory_path(@removed_accessory) %> page.</div>
-<% end %>
 <div class=" d-flex flex-wrap justify-content-center">
 <% @cart_accessories.each do |accessory| %>
       <article class="cart-accessory-<%= accessory.id %> m-5">
