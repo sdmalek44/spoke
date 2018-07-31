@@ -1,6 +1,5 @@
 class TripsController < ApplicationController
   before_action :require_registered_user, only: [:dashboard]
-  before_action :require_admin_user, only: [:create, :update, :destroy]
 
   def index
     @trips = Trip.search(params[:page])
@@ -11,18 +10,12 @@ class TripsController < ApplicationController
   end
 
   def dashboard
-    @average_ride_duration = Trip.average_ride_duration
-    @longest_ride_duration = Trip.longest_ride_duration
-    @shortest_ride_duration = Trip.shortest_ride_duration
-    @most_frequent_start_station = Trip.most_frequent_start_station
-    @most_frequent_end_station = Trip.most_frequent_end_station
+    @ride_durations = Trip.duration_info
+    @station_info = Trip.station_info
     @rides_per_month = Trip.rides_per_month
     @rides_per_year = Trip.rides_per_year
-    @most_ridden_bike = Trip.most_ridden_bike
-    @least_ridden_bike = Trip.least_ridden_bike
-    @subscription_type_count = Trip.subscription_type_count
-    @total_trips = Trip.count
-    @date_with_most_rides = Trip.date_with_most_rides
-    @date_with_least_rides = Trip.date_with_least_rides
+    @bike_info = Trip.bike_info
+    @subscription_type_info = Trip.subscription_type_info
+    @ride_info = Trip.date_info
   end
 end

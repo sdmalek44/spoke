@@ -29,7 +29,7 @@ describe "A registered user visits 'trip-dashboard'" do
 
     expect(page).to have_content("Average Ride Duration: 4 minutes")
     expect(page).to have_content("Longest Ride Duration: 8 minutes")
-    expect(page).to have_content("Shortest Ride Duration: 1 minutes")
+    expect(page).to have_content("Shortest Ride Duration: 1 minute")
   end
 
   it 'they see information about stations where most rides started and ended' do
