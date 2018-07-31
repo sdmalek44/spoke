@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def create
     flash[:notice] = "Successfully submitted your order totalling #{params[:grand_total]}"
-    order = current_user.orders.create(status: 'ordered')
+    order = current_user.orders.create(status: 1)
     order.create_order_accessories(session[:cart])
     session[:cart] = nil
 
