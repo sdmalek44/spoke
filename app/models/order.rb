@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   has_many :order_accessories
   has_many :accessories, through: :order_accessories
 
+  enum status: ['Cancelled', 'Ordered', 'Paid', 'Completed']
+
   def create_order_accessories(cart_contents)
     cart_contents.each do |accessory_id, quantity|
       order_accessories.create(accessory_id: accessory_id, quantity: quantity)

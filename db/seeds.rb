@@ -83,23 +83,23 @@ accessory1 = Accessory.create(title: 'Hat', description: 'It goes on your head',
 accessory2 = Accessory.create(title: 'Whistle', description: "Let everyone know you're riding a bike", price: 20.00, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJBBUoYu-QmK47AB1Goq9Z6EdkTZ9OfwraFkecYFFQPn52UxJOPA')
 accessory3 = Accessory.create(title: 'Bike Chain', description: 'Extra rusty bike chain', price: 30.00, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGt_7xpa1F8a8cjjBQOr8gZXpRi08qT-2JkDZVIg6i94uvDlCCKA')
 
-order_1 = user.orders.create(status: 'completed')
+order_1 = user.orders.create(status: 3)
 order_accessory1 = order_1.order_accessories.create(quantity: 5, accessory_id: accessory1.id)
 order_accessory2 = order_1.order_accessories.create(quantity: 3, accessory_id: accessory2.id)
 
-order_2 = user.orders.create(status: 'ordered')
+order_2 = user.orders.create(status: 1)
 order_2.order_accessories.create(quantity: 2, accessory_id: accessory2.id)
 order_2.order_accessories.create(quantity: 3, accessory_id: accessory3.id)
 
-order_3 = user.orders.create(status: 'cancelled')
+order_3 = user.orders.create(status: 0)
 order_3.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
 order_3.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
 
-order_4 = user.orders.create(status: 'paid')
+order_4 = user.orders.create(status: 2)
 order_4.order_accessories.create(quantity: 2, accessory_id: accessory1.id)
 order_4.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
 
-order_5 = user.orders.create(status: 'paid')
+order_5 = user.orders.create(status: 2)
 order_5.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
 order_5.order_accessories.create(quantity: 6, accessory_id: accessory3.id)
 
