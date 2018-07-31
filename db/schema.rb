@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180725221337) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "status"
   end
 
   create_table "stations", force: :cascade do |t|
