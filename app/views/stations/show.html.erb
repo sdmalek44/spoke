@@ -14,11 +14,11 @@
     <div class="">Number of Rides Ended Here: <%= @station.rides_ended_here %></div>
 
     <% unless @station.trips.empty? %>
-      <div class="">Most Popular Place to Go From Here: <%= @most_popular_destination.name %></div>
-      <div class="">Where Most Trips Come From: <%= @most_popular_origination.name %></div>
-      <div class="">Date with the Most Trips Started Here: <%= @date_with_most_trips %></div>
-      <div class="">Most Frequent Zip Code of Users Starting Here: <%= @zip_code_with_most_trips %></div>
-      <div class="">Bike Id Starting Here Most Frequently: <%= @bike_id_with_most_trips %></div>
+      <div class="">Most Popular Place to Go From Here: <%= @station.frequent_destination_station.name %></div>
+      <div class="">Where Most Trips Come From: <%= @station.frequent_origination_station.name %></div>
+      <div class="">Date with the Most Trips Started Here: <%= @station.date_with_most_trips.strftime('%m/%d/%Y') %></div>
+      <div class="">Most Frequent Zip Code of Users Starting Here: <%= @station.zip_code_with_most_trips %></div>
+      <div class="">Bike Id Starting Here Most Frequently: <%= @station.bike_id_with_most_trips %></div>
     <% end %>
   </div>
   <p><%= link_to '<< Back to Stations Index', stations_path %></p>
