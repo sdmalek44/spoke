@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   end
 
   def dashboard
-    @ride_durations = Trip.ride_durations
+    @ride_durations = Trip.duration_info
     @most_frequent_stations = Trip.station_info
     @rides_per_month = Trip.rides_per_month
     @rides_per_year = Trip.rides_per_year

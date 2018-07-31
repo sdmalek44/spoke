@@ -13,7 +13,7 @@ class Trip < ApplicationRecord
   belongs_to :start_station, class_name: 'Station', foreign_key: :start_station_id, dependent: :destroy
   belongs_to :end_station, class_name: 'Station', foreign_key: :end_station_id, dependent: :destroy
 
-  def self.ride_durations
+  def self.duration_info
     [maximum(:duration), average(:duration), minimum(:duration)]
   end
 
@@ -37,10 +37,8 @@ class Trip < ApplicationRecord
     ordered_bikes = select('bike_id, COUNT(bike_id) AS ride_count')
     .group(:bike_id)
     .order('ride_count DESC')
-    .limit(1)
-    .first
     {most_ridden_bike: [ordered_bikes.first.id, ordered_bikes.first.ride_count],
-    least_ridden_bike: [ordered_bikes.last.id, odered_bikes.last.id, ordered_bikes.last.ride_count]}
+    least_ridden_bike: [ordered_bikes.last.id, ordered_bikes.last.id, ordered_bikes.last.ride_count]}
   end
 
   def self.subscription_type_info
@@ -49,9 +47,9 @@ class Trip < ApplicationRecord
 
   def self.date_info
     date_rides = group(:start_date).order('count_all DESC').count
-    condition_1 = Condition.find_by(date: date_rides.first.first)
-    condition_2 = Condition.find_by(date: date_rides.last.first)
-    {most_rides: [date: date_rides.first.first, rides: date_rides.first.last, condition: condition_1],
-     least_rides: [date: date_rides.last.first, rides: date_rides.last.last, condition: condition_2]}
+    condition_1 = Condition.find_by(date: date_rides.keys.first)
+    condition_2 = Condition.find_by(date: date_rides.keys.last)
+    x = {most_rides: {date: date_rides.keys.first, rides: date_rides.values.first, condition: condition_1},
+     least_rides: {date: date_rides.keys.last, rides: date_rides.values.last, condition: condition_2}}
   end
 end
