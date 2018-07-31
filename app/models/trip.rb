@@ -18,11 +18,25 @@ class Trip < ApplicationRecord
   end
 
   def self.station_info
-    stations = select('start_station_id, COUNT(start_station_id) AS start_station_count')
+    [self.most_frequent_start_station, self.most_frequent_end_station]
+  end
+
+  def self.most_frequent_start_station
+    station = select('start_station_id, COUNT(start_station_id) AS start_station_count')
     .group(:start_station_id)
     .order('start_station_count DESC')
-    {most_frequent_start_station: Station.find(stations.first.start_station_id),
-     most_frequent_end_station: Station.find(stations.last.start_station_id)}
+    .limit(1)
+    .first
+    Station.find(station.start_station_id)
+  end
+
+  def self.most_frequent_end_station
+    station_id = select('end_station_id, COUNT(end_station_id) AS end_station_count')
+    .group(:end_station_id)
+    .order('end_station_count DESC')
+    .limit(1)
+    .first
+    Station.find(station_id.end_station_id)
   end
 
   def self.rides_per_month
@@ -37,8 +51,8 @@ class Trip < ApplicationRecord
     ordered_bikes = select('bike_id, COUNT(bike_id) AS ride_count')
     .group(:bike_id)
     .order('ride_count DESC')
-    {most_ridden_bike: [ordered_bikes.first.id, ordered_bikes.first.ride_count],
-    least_ridden_bike: [ordered_bikes.last.id, ordered_bikes.last.id, ordered_bikes.last.ride_count]}
+    {most_ridden_bike: [ordered_bikes.first.bike_id, ordered_bikes.first.ride_count],
+    least_ridden_bike: [ordered_bikes.last.bike_id, ordered_bikes.last.ride_count]}
   end
 
   def self.subscription_type_info
@@ -49,7 +63,7 @@ class Trip < ApplicationRecord
     date_rides = group(:start_date).order('count_all DESC').count
     condition_1 = Condition.find_by(date: date_rides.keys.first)
     condition_2 = Condition.find_by(date: date_rides.keys.last)
-    x = {most_rides: {date: date_rides.keys.first, rides: date_rides.values.first, condition: condition_1},
+    {most_rides: {date: date_rides.keys.first, rides: date_rides.values.first, condition: condition_1},
      least_rides: {date: date_rides.keys.last, rides: date_rides.values.last, condition: condition_2}}
   end
 end

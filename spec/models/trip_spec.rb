@@ -34,7 +34,7 @@ describe Trip, type: :model do
       trip_2 = Trip.create!(duration: 20, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
       trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
 
-      expect(Trip.station_info).to eq({most_frequent_start_station: station_1, most_frequent_end_station: station_2})
+      expect(Trip.station_info).to eq([station_1, station_2])
     end
 
     it '.rides_per_month' do
@@ -69,7 +69,7 @@ describe Trip, type: :model do
       trip_2 = Trip.create!(duration: 20, start_date: Date.new(2000, 1, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_1.id, end_station_id: station_2.id, bike_id: 1, subscription_type: 0, zip_code: 68686)
       trip_3 = Trip.create!(duration: 30, start_date: Date.new(2000, 2, 4), end_date: Date.new(2000, 2, 4), start_station_id: station_2.id, end_station_id: station_1.id, bike_id: 2, subscription_type: 0, zip_code: 68686)
 
-      expect(Trip.bike_info).to eq({:most_ridden_bike=>[nil, 2], :least_ridden_bike=>[nil, nil, 1]})
+      expect(Trip.bike_info).to eq({:most_ridden_bike=>[1, 2], :least_ridden_bike=>[2, 1]})
     end
 
     it '.subscription_type_info' do
