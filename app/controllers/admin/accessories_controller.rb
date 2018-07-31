@@ -22,8 +22,6 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def update
-    update_params = accessory_params
-    update_params[:image] = 'https://www.hsjaa.com/images/joomlart/demo/default.jpg' unless params[:image]
     @accessory = Accessory.find(params[:id])
     if params[:retire] == 'true'
       @accessory.update!(retired?: true)
@@ -33,7 +31,7 @@ class Admin::AccessoriesController < Admin::BaseController
       @accessory.update(retired?: false)
       flash[:notice] = "Successfully activated #{@accessory.title}"
       redirect_to admin_bike_shop_path
-    elsif @accessory.update(update_params)
+    elsif @accessory.update(accessory_params)
       flash[:notice] = "Successfully updated #{@accessory.title}"
       redirect_to accessory_path(@accessory)
     else
@@ -48,6 +46,7 @@ class Admin::AccessoriesController < Admin::BaseController
   private
 
   def accessory_params
+    params[:accessory][:image] = 'https://www.hsjaa.com/images/joomlart/demo/default.jpg' unless params[:image]
     params.require(:accessory).permit(:title, :description, :price, :image)
   end
 end
