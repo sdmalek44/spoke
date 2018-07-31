@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Successfully updated your account"
-      redirect_to dashboard_path
+      redirect_to dashboard_path unless admin_user?
+      redirect_to admin_dashboard_path if admin_user?
     else
       flash[:notice] = "Your account was not updated. Try again."
       render :edit
