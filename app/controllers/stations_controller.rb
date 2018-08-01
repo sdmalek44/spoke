@@ -3,13 +3,6 @@ class StationsController < ApplicationController
 
   def show
     @station = Station.friendly.find(params[:id])
-    unless @station.trips.empty?
-      @most_popular_destination = @station.frequent_destination_station
-      @most_popular_origination = @station.frequent_origination_station
-      @date_with_most_trips = @station.date_with_most_trips.strftime('%m/%d/%Y')
-      @zip_code_with_most_trips = @station.zip_code_with_most_trips
-      @bike_id_with_most_trips = @station.bike_id_with_most_trips
-    end
   end
 
   def index
