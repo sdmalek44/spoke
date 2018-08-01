@@ -22,7 +22,7 @@
     </div>
     <div>
       <%= f.label :bike_id %>
-      <%= f.number_field :bike_id, step: 1 %>
+      <%= f.number_field :bike_id, min: 0, step: 1 %>
     </div>
     <div>
       <%= f.label :subscription_type %>
@@ -30,7 +30,7 @@
     </div>
     <div>
       <%= f.label :zip_code%>
-      <%= f.number_field :zip_code, in: 11111..99999, step: 1 %>
+      <%= f.number_field :zip_code, in: 10000..99999, step: 1 %>
     </div>
     <div class='form-buttons'>
       <%= link_to 'Cancel', trips_path, class:'btn btn-danger form-cancel-button' %>
