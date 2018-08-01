@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def require_specific_user
-    render file: "/public/404" unless admin_user? || (current_order_user == current_user)
+    render file: "/public/404", layout: false unless admin_user? || (current_order_user == current_user)
   end
 
   def current_order_user

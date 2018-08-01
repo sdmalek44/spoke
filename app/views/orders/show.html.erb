@@ -17,11 +17,11 @@
 </div>
 <h3 class="d-flex justify-content-center mb-4">Grand Total: <%= number_to_currency(@order.grand_total) %></h3>
 <h5 class="d-flex justify-content-center mb-4">Status: <%= @order.status.titleize %></h5>
-<h5 class="d-flex justify-content-center mb-4">Ordered On: <%= @order.created_at.strftime("%m/%d/%Y") %></h3>
+<h5 class="d-flex justify-content-center mb-4">Ordered On: <%= @order.created_at.strftime("%m/%d/%Y %I:%M:%S %p") %></h3>
 
 
 <% if (@order.status.downcase == "completed") || (@order.status.downcase == "cancelled") %>
-  <h5 class="d-flex justify-content-center mb-4"><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y") %></h5>
+  <h5 class="d-flex justify-content-center mb-4"><%= @order.status.titleize %> On: <%= @order.updated_at.strftime("%m/%d/%Y %I:%M:%S %p") %></h5>
 <% end %>
 
 <% if admin_user? %>
