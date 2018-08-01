@@ -19,8 +19,8 @@ describe ConditionCalculator do
     avg_ride_count = @conditions.average_number_of_rides_on_a_day_in_max_temperature_range(70)
 
     expect(max_ride_count).to eq(3)
-    expect(min_ride_count).to eq(1)
-    expect(avg_ride_count).to eq(2)
+    expect(min_ride_count).to eq(0)
+    expect(avg_ride_count).to eq(1)
   end
   it "calculates min, max, average number of rides for a day for precipitation" do
     max_ride_count = @conditions.highest_number_of_rides_on_a_day_in_precipitation_range(0)
@@ -28,8 +28,8 @@ describe ConditionCalculator do
     avg_ride_count = @conditions.average_number_of_rides_on_a_day_in_precipitation_range(0)
 
     expect(max_ride_count).to eq(3)
-    expect(min_ride_count).to eq(1)
-    expect(avg_ride_count).to eq(2)
+    expect(min_ride_count).to eq(0)
+    expect(avg_ride_count).to eq(1)
   end
   it "calculates min, max, average number of rides for a day for mean_wind_speed" do
     max_ride_count = @conditions.highest_number_of_rides_on_a_day_in_mean_wind_speed_range(10)
@@ -37,8 +37,8 @@ describe ConditionCalculator do
     avg_ride_count = @conditions.average_number_of_rides_on_a_day_in_mean_wind_speed_range(10)
 
     expect(max_ride_count).to eq(3)
-    expect(min_ride_count).to eq(1)
-    expect(avg_ride_count).to eq(2)
+    expect(min_ride_count).to eq(0)
+    expect(avg_ride_count).to eq(1)
   end
   it "calculates min, max, average number of rides for a day for mean_visibility" do
     max_ride_count = @conditions.highest_number_of_rides_on_a_day_in_mean_visibility_range(4)
@@ -46,7 +46,7 @@ describe ConditionCalculator do
     avg_ride_count = @conditions.average_number_of_rides_on_a_day_in_mean_visibility_range(4)
 
     expect(max_ride_count).to eq(3)
-    expect(min_ride_count).to eq(1)
-    expect(avg_ride_count).to eq(2)
+    expect(min_ride_count).to eq(0)
+    expect(avg_ride_count).to eq(1)
   end
 end

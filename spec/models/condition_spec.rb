@@ -26,11 +26,11 @@ describe Condition, type: :model do
       ride_count = Condition.ride_count_grouped_by_date_max_temperature
 
       expect(ride_count.class).to eq(Hash)
-      expect(ride_count.length).to eq(2)
+      expect(ride_count.length).to eq(4)
       expect(ride_count.keys[0].class).to eq(Array)
       expect(ride_count.values[0].class).to eq(Integer)
       expect(ride_count.values.max).to eq(3)
-      expect(ride_count.values.min).to eq(1)
+      expect(ride_count.values.min).to eq(0)
     end
     it ".ride_count_grouped_by_date_precipitation" do
       station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
@@ -46,11 +46,11 @@ describe Condition, type: :model do
       ride_count = Condition.ride_count_grouped_by_date_precipitation
 
       expect(ride_count.class).to eq(Hash)
-      expect(ride_count.length).to eq(2)
+      expect(ride_count.length).to eq(4)
       expect(ride_count.keys[0].class).to eq(Array)
       expect(ride_count.values[0].class).to eq(Integer)
       expect(ride_count.values.max).to eq(3)
-      expect(ride_count.values.min).to eq(1)
+      expect(ride_count.values.min).to eq(0)
     end
     it ".ride_count_grouped_by_date_mean_wind_speed" do
       station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
@@ -66,11 +66,11 @@ describe Condition, type: :model do
       ride_count = Condition.ride_count_grouped_by_date_mean_wind_speed
 
       expect(ride_count.class).to eq(Hash)
-      expect(ride_count.length).to eq(2)
+      expect(ride_count.length).to eq(4)
       expect(ride_count.keys[0].class).to eq(Array)
       expect(ride_count.values[0].class).to eq(Integer)
       expect(ride_count.values.max).to eq(3)
-      expect(ride_count.values.min).to eq(1)
+      expect(ride_count.values.min).to eq(0)
     end
     it ".average_number_of_rides_on_a_day_in_mean_visibility_range" do
       station_1 = Station.create(name: 'Test 1', dock_count: 20, city: 'Chicago', installation_date: Date.new(2017, 12, 12))
@@ -86,11 +86,11 @@ describe Condition, type: :model do
       ride_count = Condition.ride_count_grouped_by_date_mean_visibility
 
       expect(ride_count.class).to eq(Hash)
-      expect(ride_count.length).to eq(2)
+      expect(ride_count.length).to eq(4)
       expect(ride_count.keys[0].class).to eq(Array)
       expect(ride_count.values[0].class).to eq(Integer)
       expect(ride_count.values.max).to eq(3)
-      expect(ride_count.values.min).to eq(1)
+      expect(ride_count.values.min).to eq(0)
     end
   end
 end
