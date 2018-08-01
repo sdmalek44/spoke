@@ -90,20 +90,16 @@ order_accessory2 = order_1.order_accessories.create(quantity: 3, accessory_id: a
 order_2 = user.orders.create(status: 1)
 order_2.order_accessories.create(quantity: 2, accessory_id: accessory2.id)
 order_2.order_accessories.create(quantity: 3, accessory_id: accessory3.id)
+order_2.order_accessories.create(quantity: 2, accessory_id: 5)
+order_2.order_accessories.create(quantity: 3, accessory_id: 4)
 
 order_3 = user.orders.create(status: 0)
-order_3.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
-order_3.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
+order_3.order_accessories.create(quantity: 4, accessory_id: 8)
+order_3.order_accessories.create(quantity: 4, accessory_id: 7)
 
 order_4 = user.orders.create(status: 2)
-order_4.order_accessories.create(quantity: 2, accessory_id: accessory1.id)
-order_4.order_accessories.create(quantity: 4, accessory_id: accessory3.id)
-
-order_5 = user.orders.create(status: 2)
-order_5.order_accessories.create(quantity: 4, accessory_id: accessory1.id)
-order_5.order_accessories.create(quantity: 6, accessory_id: accessory3.id)
-
-puts "Seeded #{Order.count} Orders"
+order_4.order_accessories.create(quantity: 2, accessory_id: 10)
+order_4.order_accessories.create(quantity: 4, accessory_id: 9)
 
 puts "Seeded #{OrderAccessory.count} OrderAccessories"
 
@@ -112,10 +108,27 @@ puts "Seeded #{Accessory.count} accessories"
 User.create(username: 'admin', password: 'password', email: 'admin@email.com', role: 1, first_name: 'Admin', last_name: 'Boy', address: '123 Maple St')
 
 puts "Created admin user (username: admin, password: password)"
-
-User.create(username: 'default', password: 'password', email: 'default@email.com', first_name: 'Tristan', last_name: 'Smith', address: '1255 19th St')
-
 puts 'Created default user (username: default, password: password)'
+
+user = User.create(username: 'default', password: 'password', email: 'default@email.com', first_name: 'Tristan', last_name: 'Smith', address: '1255 19th St')
+
+order_5 = user.orders.create(status: 0)
+order_5.order_accessories.create(quantity: 2, accessory_id: 6)
+order_5.order_accessories.create(quantity: 6, accessory_id: 7)
+
+order_6 = user.orders.create(status: 1)
+order_6.order_accessories.create(quantity: 4, accessory_id: 8)
+order_6.order_accessories.create(quantity: 3, accessory_id: 5)
+
+order_7 = user.orders.create(status: 2)
+order_7.order_accessories.create(quantity: 4, accessory_id: 1)
+order_7.order_accessories.create(quantity: 2, accessory_id: 2)
+
+order_8 = user.orders.create(status: 3)
+order_8.order_accessories.create(quantity: 4, accessory_id: 3)
+order_8.order_accessories.create(quantity: 1, accessory_id: 4)
+
+puts "Seeded #{Order.count} Orders"
 
 ActiveRecord::Base.connection.reset_pk_sequence!('stations')
 ActiveRecord::Base.connection.reset_pk_sequence!('trips')

@@ -85,7 +85,7 @@ describe Station, type: :model do
     it 'can calculate most frequent origination date for trips that started at station' do
       station1 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
       station2 = Station.create!(name: '2name', dock_count: 45, city: 'city', installation_date: Date.new(2017, 3, 10))
-      date = Date.new(2000, 2, 4)
+      date = Time.new(2000, 2, 4)
 
       Trip.create!(duration: 44, start_date: date, end_date: Date.new(2000, 2, 5), start_station_id: station1.id, end_station_id: station1.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
       Trip.create!(duration: 44, start_date: date, end_date: Date.new(2000, 2, 5), start_station_id: station1.id, end_station_id: station1.id, bike_id: 3, subscription_type: 1, zip_code: 68686)
