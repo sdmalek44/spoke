@@ -1,8 +1,38 @@
 # Bike Share
 
+![alt text](https://i.imgur.com/4WnR2K7.jpg)
+
 ### Abstract
 
-Using Ruby, Rails, and ActiveRecord, this project analyses the Greater Bay Area's bike share program data.  It explores general statistics of bike trips and stations. It also explores usage statistics between stations and bikes docked, stations and other stations, and bike trips and weather data.  A bike shop was also created where visitors can browse bike accessories and add them to a shopping cart.  Visitors can register for an account in order to login and checkout the accessories in their cart.
+Using Ruby, Rails, and ActiveRecord, this project analyses the Greater Bay Area's bike share program data.  It explores general statistics of bike trips and stations. It also explores usage statistics between stations and bikes docked, stations and other stations, and bike trips and weather data.  
+
+A bike shop was also created where visitors can browse bike accessories and add them to a shopping cart.  Visitors can register for an account in order to login and checkout the accessories in their cart.
+
+### Configuration
+* Step 1: Clone this repository
+
+ ```
+ git clone https://github.com/sdmalek44/spoke
+ ```
+
+* Step 2: Install gems
+```ruby
+$ bundle install
+$ bundle update
+```
+Gems Included: Capybara, Database Cleaner, Shoulda Matchers, Pry, Launchy, SimpleCov, Bootstrap
+
+Step 3: Setup the database
+
+```
+$ rake db:{drop,create,migrate,install}
+```
+
+Step 4: Run the test suite
+
+```
+$ rspec
+```
 
 ### Usage
 
@@ -22,4 +52,11 @@ There is a link to the bike shop in the navigation bar.  On the bike shop page, 
 
 ### Dashboards
 
-Once you log in, you will have access to dashboards with aggregated statistics for stations, bike trips, and trips given various weather conditions.  
+Once you log in, you will have access to dashboards with aggregated statistics for stations, bike trips, and trips given various weather conditions.
+
+### Contact Information
+
+Feel free to contact us with any questions, comments, or suggestions:
+* Colin: [https://github.com/colinwarmstrong](https://github.com/colinwarmstrong)
+* Stephen: [https://github.com/sdmalek44](https://github.com/sdmalek44)
+* Matt: [https://github.com/wehttamclan](https://github.com/wehttamclan)
