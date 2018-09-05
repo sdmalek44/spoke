@@ -4,7 +4,7 @@
 
 ### Abstract
 
-Using Ruby, Rails, and ActiveRecord, this project analyses the Greater Bay Area's bike share program data.  It explores general statistics of bike trips and stations. It also explores usage statistics between stations and bikes docked, stations and other stations, and bike trips and weather data.  
+Using Ruby, Rails, and ActiveRecord, this project analyzes the Greater Bay Area's bike share program data.  It explores general statistics of bike trips and stations. It also explores usage statistics between stations and bikes docked, stations and other stations, and bike trips and weather data.  
 
 A bike shop was also created where visitors can browse bike accessories and add them to a shopping cart.  Visitors can register for an account in order to login and checkout the accessories in their cart.
 
