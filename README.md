@@ -1,8 +1,6 @@
-# Bike Share
+![screen shot 2018-09-18 at 11 05 27 pm](https://user-images.githubusercontent.com/30483194/46432731-2fc86f80-c70c-11e8-8ea3-b932e782abce.png)
 
-![alt text](https://i.imgur.com/4WnR2K7.jpg)
-
-### Abstract
+### Spoke
 
 Using Ruby, Rails, and ActiveRecord, this project analyzes the Greater Bay Area's bike share program data.  It explores general statistics of bike trips and stations. It also explores usage statistics between stations and bikes docked, stations and other stations, and bike trips and weather data.  
 
